@@ -24,5 +24,13 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
                 .getNamedQuery("Account.findAll").list();
     }
     
-    
+    public Account get(String username, String Password){
+        try{
+            return (Account) factory.getCurrentSession()
+                .getNamedQuery("Account.findByUsernameAndPassword").list().get(0);
+        }catch(Exception e){
+            return null;
+        }
+
+    }
 }
