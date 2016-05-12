@@ -20,9 +20,9 @@ public interface GenericDao<T, PK extends Serializable> {
     
     public T read(PK id);
     
-    public T update(T o);
+    public void update(T o);
     
-    public T delete(T o);
+    public void delete(T o);
     
     List<T> getall();
 }
