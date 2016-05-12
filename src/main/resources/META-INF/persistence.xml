@@ -2,19 +2,19 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="com.mycompany_JobSocialNetwork_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>dao.databasemodels.Teamresume</class>
-    <class>dao.databasemodels.Jobseeker</class>
-    <class>dao.databasemodels.Job</class>
-    <class>dao.databasemodels.Teamskills</class>
-    <class>dao.databasemodels.Employer</class>
-    <class>dao.databasemodels.Jobseekerresume</class>
-    <class>dao.databasemodels.Jobskills</class>
-    <class>dao.databasemodels.Employerjobfield</class>
-    <class>dao.databasemodels.Notification</class>
-    <class>dao.databasemodels.Employerresume</class>
-    <class>dao.databasemodels.Team</class>
-    <class>dao.databasemodels.Account</class>
-    <class>dao.databasemodels.Jobseekerskills</class>
+    <class>databasemodels.Teamresume</class>
+    <class>databasemodels.Notification</class>
+    <class>databasemodels.Jobseekerskills</class>
+    <class>databasemodels.Jobseekerresume</class>
+    <class>databasemodels.Employerresume</class>
+    <class>databasemodels.Job</class>
+    <class>databasemodels.Jobseeker</class>
+    <class>databasemodels.Employerjobfield</class>
+    <class>databasemodels.Employer</class>
+    <class>databasemodels.Account</class>
+    <class>databasemodels.Team</class>
+    <class>databasemodels.Teamskills</class>
+    <class>databasemodels.Jobskills</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jobsocialnetworkdb?zeroDateTimeBehavior=convertToNull"/>
