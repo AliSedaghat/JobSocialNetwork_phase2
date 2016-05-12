@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface GenericDao<T, PK extends Serializable> {
     
-    public void create(T o);
+    public PK create(T o);
     
     public T read(PK id);
     
