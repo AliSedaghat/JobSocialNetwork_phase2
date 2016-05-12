@@ -20,7 +20,8 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
 
     @Override
     List<Employer> getall() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return factory.getCurrentSession()
+                .getNamedQuery("Employer.findAll").list();
     }
     
     
