@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jobsocialnetworkdb?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">0000</property>
+    
+    <mapping class="dao.databasemodels.Account"/>
+    <mapping class="dao.databasemodels.Employer"/>
+    <mapping class="dao.databasemodels.Employerjobfield"/>
+    <mapping class="dao.databasemodels.EmployerjobfieldPK"/>
+    <mapping class="dao.databasemodels.Employerresume"/>
+    <mapping class="dao.databasemodels.Job"/>
+    <mapping class="dao.databasemodels.JobPK"/>
+    <mapping class="dao.databasemodels.Jobseeker"/>
+    <mapping class="dao.databasemodels.Jobseekerresume"/>
+    <mapping class="dao.databasemodels.Jobseekerskills"/>
+    <mapping class="dao.databasemodels.Jobskills"/>
+    <mapping class="dao.databasemodels.JobskillsPK"/>
+    <mapping class="dao.databasemodels.Notification"/>
+    <mapping class="dao.databasemodels.Team"/>
+    <mapping class="dao.databasemodels.Teamresume"/>
+    <mapping class="dao.databasemodels.Teamskills"/>
+    
+    <mapping class="dao.databasemodels."/>
+    
+  </session-factory>
+</hibernate-configuration>
