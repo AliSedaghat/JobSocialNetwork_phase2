@@ -19,7 +19,7 @@ public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
     }
 
     @Override
-    List<Team> getall() {
+    public List<Team> getall() {
         return factory.getCurrentSession()
                 .getNamedQuery("Team.findAll").list();
     }

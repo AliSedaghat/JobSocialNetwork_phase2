@@ -19,7 +19,7 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
     }
 
     @Override
-    List<Employer> getall() {
+    public List<Employer> getall() {
         return factory.getCurrentSession()
                 .getNamedQuery("Employer.findAll").list();
     }

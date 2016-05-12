@@ -52,5 +52,5 @@ public abstract class GenericDAOImpl<T, PK extends Serializable>
         factory.getCurrentSession().delete(o);
     }
     
-    abstract List<T> getall(); 
+    public abstract List<T> getall(); 
 }

@@ -19,9 +19,10 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
     }
 
     @Override
-    List<Account> getall() {
+    public List<Account> getall() {
         return factory.getCurrentSession()
                 .getNamedQuery("Account.findAll").list();
     }
+    
     
 }
