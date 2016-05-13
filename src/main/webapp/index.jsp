@@ -75,7 +75,7 @@
                             <a name="regLevel">تکمیل اطلاعات کاربری</a>
                         </div>
                     </div>
-                    <form>
+                    <form method="post" action="RegisterServlet">
                         <div class="w3-right-align">
                             <label class="w3-right"><b>نوع کاربری</b></label><br>
                             <label class="w3-validate">کارجو
@@ -123,7 +123,7 @@
                     <div id="errorPanel" class="w3-red w3-right-align w3-padding" style="display: none">
                         <p>نام کاربری یا رمز عبور اشتباه است</p>
                     </div>
-                    <form>
+                    <form method="post" action="LoginServlet">
                         <label class="w3-right"><b>نام کاربری</b></label>
                         <input id="email" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" placeholder="ایمیل خود را وارد کنید">
 
