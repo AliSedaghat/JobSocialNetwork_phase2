@@ -1,9 +1,4 @@
-<%-- 
-    Document   : index
-    Created on : May 11, 2016, 9:15:27 AM
-    Author     : ali
---%>
-
+<jsp:useBean id="homeViewModel" class="viewmodel.SiteCurrentInformation" scope="request" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +38,10 @@
     <div class="w3-container w3-section w3-light-green">
         <div class="w3-center w3-xxlarge"><b>آخرین به روز رسانی از سایت</b></div>
         <div class="w3-container w3-row" style="margin: 0 auto 0 auto; max-width: 770px;">
-            <div class="w3-card-8 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">500</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">شغل‌های موجود</div></div>
-            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">86</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">کارجویان</div></div>
-            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">100</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">کارفرمایان</div></div>
-            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">6</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">تیم‌های برون سپاری</div></div>
+            <div class="w3-card-8 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">${homeViewModel.numOfJobs}</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">شغل‌های موجود</div></div>
+            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">${homeViewModel.numOfJobSeekers}</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">کارجویان</div></div>
+            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">${homeViewModel.numOfEmployers}</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">کارفرمایان</div></div>
+            <div class="w3-card-4 w3-round-large w3-col l2 m3 s12 w3-center w3-margin w3-round-xlarge w3-white"><div class="w3-jumbo w3-section">${homeViewModel.numOfTeams}</div><div class="w3-teal" style="border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">تیم‌های برون سپاری</div></div>
         </div>
     </div>
 
