@@ -19,7 +19,7 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
     }
 
     @Override
-    public List<Account> getall() {
+    public List<Account> getAll() {
         return factory.getCurrentSession()
                 .getNamedQuery("Account.findAll").list();
     }
@@ -32,5 +32,10 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
             return null;
         }
 
+    }
+
+    @Override
+    public Integer getCountAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
