@@ -19,9 +19,15 @@ public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
     }
 
     @Override
-    public List<Team> getall() {
+    public List<Team> getAll() {
         return factory.getCurrentSession()
                 .getNamedQuery("Team.findAll").list();
+    }
+    
+    @Override
+    public Integer getCountAll() {
+        return (Integer) factory.getCurrentSession()
+                .getNamedQuery("Team.count").list().get(0);
     }
     
 }
