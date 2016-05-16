@@ -19,9 +19,15 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
     }
 
     @Override
-    public List<Employer> getall() {
+    public List<Employer> getAll() {
         return factory.getCurrentSession()
                 .getNamedQuery("Employer.findAll").list();
+    }
+
+    @Override
+    public Integer getCountAll() {
+        return (Integer) factory.getCurrentSession()
+                .getNamedQuery("Employer.count").list().get(0);
     }
     
     
