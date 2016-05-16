@@ -19,9 +19,15 @@ public class JobSeekerDAOImpl extends GenericDAOImpl<Jobseeker, Integer>{
     }
 
     @Override
-    public List<Jobseeker> getall() {
+    public List<Jobseeker> getAll() {
         return factory.getCurrentSession()
                 .getNamedQuery("Jobseeker.findAll").list();
+    }
+ 
+    @Override
+    public Integer getCountAll() {
+        return (Integer) factory.getCurrentSession()
+                .getNamedQuery("Jobseeker.count").list().get(0);
     }
     
 }
