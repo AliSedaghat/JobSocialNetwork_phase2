@@ -6,28 +6,25 @@
 package databasemodels;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "account")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Account.findAll", query = "SELECT a FROM Account a"),
@@ -41,28 +38,23 @@ public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "password")
     private String password;
     @Basic(optional = false)
     @NotNull
-    private int kind;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
-    private Collection<Team> teamCollection;
-    @OneToMany(mappedBy = "receiver")
-    private Collection<Notification> notificationCollection;
-    @OneToMany(mappedBy = "sender")
-    private Collection<Notification> notificationCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
-    private Collection<Jobseeker> jobseekerCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
-    private Collection<Employer> employerCollection;
+    @Size(min = 1, max = 9)
+    @Column(name = "kind")
+    private String kind;
 
     public Account() {
     }
@@ -71,7 +63,7 @@ public class Account implements Serializable {
         this.id = id;
     }
 
-    public Account(Integer id, String username, String password, int kind) {
+    public Account(Integer id, String username, String password, String kind) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -102,57 +94,12 @@ public class Account implements Serializable {
         this.password = password;
     }
 
-    public int getKind() {
+    public String getKind() {
         return kind;
     }
 
-    public void setKind(int kind) {
+    public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    @XmlTransient
-    public Collection<Team> getTeamCollection() {
-        return teamCollection;
-    }
-
-    public void setTeamCollection(Collection<Team> teamCollection) {
-        this.teamCollection = teamCollection;
-    }
-
-    @XmlTransient
-    public Collection<Notification> getNotificationCollection() {
-        return notificationCollection;
-    }
-
-    public void setNotificationCollection(Collection<Notification> notificationCollection) {
-        this.notificationCollection = notificationCollection;
-    }
-
-    @XmlTransient
-    public Collection<Notification> getNotificationCollection1() {
-        return notificationCollection1;
-    }
-
-    public void setNotificationCollection1(Collection<Notification> notificationCollection1) {
-        this.notificationCollection1 = notificationCollection1;
-    }
-
-    @XmlTransient
-    public Collection<Jobseeker> getJobseekerCollection() {
-        return jobseekerCollection;
-    }
-
-    public void setJobseekerCollection(Collection<Jobseeker> jobseekerCollection) {
-        this.jobseekerCollection = jobseekerCollection;
-    }
-
-    @XmlTransient
-    public Collection<Employer> getEmployerCollection() {
-        return employerCollection;
-    }
-
-    public void setEmployerCollection(Collection<Employer> employerCollection) {
-        this.employerCollection = employerCollection;
     }
 
     @Override
@@ -177,7 +124,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Account[ id=" + id + " ]";
+        return "databasemodels.Account[ id=" + id + " ]";
     }
     
 }
