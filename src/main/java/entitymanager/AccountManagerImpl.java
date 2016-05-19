@@ -5,10 +5,20 @@
  */
 package entitymanager;
 
+import dao.AccountDAOImpl;
+import databasemodels.Account;
+
 /**
  *
  * @author SAEED
  */
 public class AccountManagerImpl implements AccountManager{
+    
+    private AccountDAOImpl accountDAO;
+
+    @Override
+    public Integer create(Account account) {
+        return accountDAO.create(account);
+    }
     
 }
