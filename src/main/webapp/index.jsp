@@ -70,14 +70,14 @@
                             <a name="regLevel">تکمیل اطلاعات کاربری</a>
                         </div>
                     </div>
-                    <form method="post" action="RegisterServlet">
+                    <form method="post" action="/JobSocialNetwork/RegisterController">
                         <div class="w3-right-align">
                             <label class="w3-right"><b>نوع کاربری</b></label><br>
                             <label class="w3-validate">کارجو
-                                <input class="w3-radio" name="kind" type="radio" value="jobFinder" checked><br>
+                                <input class="w3-radio" name="kind" type="radio" value="jobseeker" checked><br>
                             </label>
                             <label class="w3-validate">کارفرما
-                                <input class="w3-radio" name="kind" type="radio" value="jobOrder"><br>
+                                <input class="w3-radio" name="kind" type="radio" value="employer"><br>
                             </label>
                             <label class="w3-validate">تیم
                                 <input class="w3-radio" name="kind" type="radio" value="team"><br>
@@ -86,13 +86,13 @@
 
                         <div class="w3-section">
                             <label class="w3-right"><b>نام کاربری</b></label>
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" required type="email" placeholder="ایمیل خود را وارد کنید">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" required name="username" type="email" placeholder="ایمیل خود را وارد کنید">
 
                             <label class="w3-right"><b>رمز عبور</b></label>
-                            <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" required type="password" placeholder="رمز خود را وارد کنید">
+                            <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" required name="password" type="password" placeholder="رمز خود را وارد کنید">
 
                             <label class="w3-right"><b>تکرار رمز عبور</b></label>
-                            <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" required type="password" placeholder="رمز خود را تکرار کنید">
+                            <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" required name="repeatPassword" type="password" placeholder="رمز خود را تکرار کنید">
 
                             <button class="w3-btn w3-btn-block w3-green" type="submit">تکمیل اطلاعات کاربری >></button>
                         </div>
