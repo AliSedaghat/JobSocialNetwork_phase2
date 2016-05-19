@@ -5,6 +5,8 @@
  */
 package controllers;
 
+import databasemodels.Account;
+import entitymanager.AccountManagerImpl;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,17 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-//        SiteCurrentInformation information = new SiteCurrentInformation();
-//        EmployerManagerImpl impl = new EmployerManagerImpl();
-//        information.setNumOfEmployers(impl.getCountAll());
-//        request.setAttribute(Params.HOME_VIEW_MODEL, information);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/aboutus.jsp");
-        dispatcher.forward(request, response);
-    }
-    
+   
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -42,13 +35,58 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req, resp);
-    }
-
-    
+        final String username = request.getParameter("username");
+        final String password = request.getParameter("password");
+        final String repeatPassword = request.getParameter("repeatPassword");
+        final String kind = request.getParameter("kind");
+        
+        // validations
+        
+        String errorMessages = "";
+        if(username.equals("")){
+            errorMessages += "نام کاربری را صحیح وارد نکردید" + "\n";
+        }
+        if(password.equals("")){
+            errorMessages += "رمز را وارد نکردید" + "\n";
+        }
+        if(repeatPassword.equals("")){
+            errorMessages += "تکرار رمز را وارد نکردید" + "\n";
+        }
+        if(!password.equals(repeatPassword)){
+            errorMessages += "رمز و تکرار آن مطابقت ندارد" + "\n";
+        }
+        
+        if(!kind.equals("employer") && !kind.equals("jobseeker") && !kind.equals("team")){
+            errorMessages += "نوع کاربری صحیح نیست";
+        }
+        
+        if(errorMessages.equals("")){// everythings is right
+            Account newAccount = new Account();
+            newAccount.setUsername(username);
+            newAccount.setPassword(password);
+            newAccount.setKind(kind);
+            AccountManagerImpl manager = new AccountManagerImpl();
+            int id = manager.create(newAccount);
+            HttpSession session = request.getSession();
+            session.setAttribute("acoountId", id); // save id of user in session
+            RequestDispatcher dispatcher;
+            switch(kind){
+                case "employer":
+                    dispatcher = request.getRequestDispatcher("EmployerEditProfile.jsp");
+                    break;
+                case "jobseeker":
+                    dispatcher = request.getRequestDispatcher("jobFinderEditProfile.jsp");
+                    break;
+                case "team":
+                    dispatcher = request.getRequestDispatcher("teamEditProfile.jsp");
+                    break;
+                default:
+                    dispatcher = request.getRequestDispatcher("404.jsp");
+            }
+            dispatcher.forward(request, response); // redirect to edit profile page
+        }else{
+            response.sendError(422, errorMessages);
+        }
+        
+    }    
 }
