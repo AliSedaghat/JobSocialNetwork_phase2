@@ -20,5 +20,15 @@ public class AccountManagerImpl implements AccountManager{
     public Integer create(Account account) {
         return accountDAO.create(account);
     }
+
+    @Override
+    public Account get(Integer id) {
+        return accountDAO.read(id);
+    }
+
+    @Override
+    public void update(Account account) {
+        accountDAO.update(account);
+    }
     
 }

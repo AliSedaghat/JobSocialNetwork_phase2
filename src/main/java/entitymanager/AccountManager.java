@@ -14,5 +14,6 @@ import databasemodels.Account;
 public interface AccountManager {
     
     public Integer create(Account account);
-    
+    public Account get(Integer id);
+    public void update(Account account);
 }
