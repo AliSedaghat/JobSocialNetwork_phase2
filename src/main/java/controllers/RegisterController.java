@@ -68,7 +68,7 @@ public class RegisterController extends HttpServlet {
             AccountManagerImpl manager = new AccountManagerImpl();
             int id = manager.create(newAccount);
             HttpSession session = request.getSession();
-            session.setAttribute("acoountId", id); // save id of user in session
+            session.setAttribute("accountId", id); // save id of user in session
             RequestDispatcher dispatcher;
             switch(kind){
                 case "employer":
