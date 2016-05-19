@@ -5,10 +5,14 @@
  */
 package entitymanager;
 
+import databasemodels.Account;
+
 /**
  *
  * @author SAEED
  */
 public interface AccountManager {
+    
+    public Integer create(Account account);
     
 }
