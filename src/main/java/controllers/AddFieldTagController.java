@@ -34,6 +34,7 @@ public class AddFieldTagController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         final String tagText = request.getParameter("tagText");
         if(tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
