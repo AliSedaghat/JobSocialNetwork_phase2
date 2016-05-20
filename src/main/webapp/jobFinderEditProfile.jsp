@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="jobSeekerInformationBean" class="viewmodel.JobSeekerInformationBean" scope="request"/>
+<jsp:useBean id="jobSeekerResumeBean" class="viewmodel.JobSeekerResumeBean" scope="request"/>
+<jsp:useBean id="passwordChangeBean" class="viewmodel.PasswordChangeBean" scope="request"/>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,24 +71,25 @@
                 <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
                     <div class="w3-third w3-padding">
                         <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.fromDate}">
                         </label>
                         <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.tillDate}">
                         </label>
                     </div>
                     <div class="w3-twothird w3-padding">
                         <label class="w3-validate">محل کار
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.workPlace}">
                         </label>
                         <label class="w3-validate">مسئولیت
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.responsibility}">
                         </label>
                     </div>
                 </div>
                 <div class="w3-btn-floating w3-card-2 w3-teal w3-right">+</div><br><br><br>
                 <label class="w3-right"><b>سایر توضیحات</b></label>
-                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" placeholder="یک پاراگراف در مورد خود بنویسید"></textarea>
+                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align"
+                          placeholder="یک پاراگراف در مورد خود بنویسید" value="${jobSeekerResumeBean.otherDesc}"></textarea>
 
                 <button class="w3-btn w3-btn-block w3-green">ثبت روزمه</button>
             </form>
@@ -95,7 +101,7 @@
             <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right" alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
                 <form class="w3-form" method="post" action="/ChangePasswordController">
-                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
+                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی" value="${passwordChangeBean.currentPass}">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="newPassword" placeholder="رمز جدید">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="repeatPassword" placeholder="تکرار رمز">
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
@@ -128,21 +134,25 @@
 
                 <div class="w3-section">
                     <label class="w3-right"><b>نام و نام خانوادگی*</b></label>
-                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" placeholder="نام و نام خانوادگی خود را وارد کنید">
+                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" 
+                           placeholder="نام و نام خانوادگی خود را وارد کنید" value="${jobSeekerInformationBean.nameAndFamilyName}">
 
                     <label><b class="w3-right">تاریخ تولد</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="date">
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="date"
+                               value="${jobSeekerInformationBean.birthDate}">
                     </label>
 
                     <label><b class="w3-right">شماره تلفن</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" placeholder="تلفن خود را وارد کنید">
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" 
+                               placeholder="تلفن خود را وارد کنید" value="${jobSeekerInformationBean.phoneNum}">
                     </label>
 
                     <label class="w3-right"><b>آدرس</b></label><br>
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" 
+                                          placeholder="آدرس را وارد کنید" value="${jobSeekerInformationBean.remainAddr}"></textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">

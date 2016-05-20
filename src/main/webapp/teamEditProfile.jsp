@@ -1,4 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="outSourceTeamResumeBean" class="viewmodel.OutSourceTeamResumeBean" scope="request"/>
+<jsp:useBean id="outSourceTeamInformationBean" class="viewmodel.OutSourceTeamInformationBean" scope="request"/>
+<jsp:useBean id="passwordChangeBean" class="viewmodel.PasswordChangeBean" scope="request"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,24 +53,25 @@
                 <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
                     <div class="w3-third w3-padding">
                         <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${outSourceTeamResumeBean.fromDate}">
                         </label>
                         <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${outSourceTeamResumeBean.tillDate}">
                         </label>
                     </div>
                     <div class="w3-twothird w3-padding">
                         <label class="w3-validate">عنوان پروژه
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${outSourceTeamResumeBean.projectTitle}">
                         </label>
                         <label class="w3-validate">کارفرما
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text">
+                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${outSourceTeamResumeBean.employer}">
                         </label>
                     </div>
                 </div>
                 <div class="w3-btn-floating w3-card-2 w3-teal w3-right">+</div><br><br><br>
                 <label class="w3-right"><b>سایر توضیحات</b></label>
-                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" placeholder="یک پاراگراف در مورد خود بنویسید"></textarea>
+                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" 
+                          placeholder="یک پاراگراف در مورد خود بنویسید" value="${outSourceTeamResumeBean.otherDesc}"></textarea>
 
                 <button class="w3-btn w3-btn-block w3-green">ثبت روزمه</button>
             </form>
@@ -78,7 +83,7 @@
             <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right" alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
                 <form class="w3-form">
-                    <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="رمز فعلی">
+                    <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="رمز فعلی" value="${passwordChangeBean.currentPass}">
                     <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="رمز جدید">
                     <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="تکرار رمز">
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
@@ -92,21 +97,24 @@
 
                 <div class="w3-section">
                     <label class="w3-right"><b>نام گروه</b></label>
-                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" placeholder="نام گروه خود را وارد کنید">
+                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" 
+                           placeholder="نام گروه خود را وارد کنید" value="${outSourceTeamInformationBean.teamName}">
 
                     <label><b class="w3-right">شماره تلفن</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" placeholder="تلفن خود را وارد کنید">
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" 
+                               placeholder="تلفن خود را وارد کنید" value="${outSourceTeamInformationBean.phoneNum}">
                     </label>
 
                     <label><b class="w3-right">ایمیل</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="email">
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="email"
+                               value="${outSourceTeamInformationBean.email}">
                     </label>
 
                     <label class="w3-right"><b>آدرس</b></label><br>
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" placeholder="آدرس را وارد کنید" value="${outSourceTeamInformationBean.rmainAddr}"></textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
