@@ -8,28 +8,27 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+//import org.hibernate.cfg.Configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 /**
  *
  * @author SAEED
  * @param <T> kind of class
  * @param <PK> primary key of the class
  */
+@Service
 public abstract class GenericDAOImpl<T, PK extends Serializable>
     implements GenericDAO<T, PK>{
 
     protected Class<T> type;
+    
+    @Autowired
     protected SessionFactory factory;
     
     public GenericDAOImpl(Class<T> type) {
-        this.type = type;
-        try{
-            factory = new Configuration().configure().buildSessionFactory();
-        }catch (Throwable ex) { 
-           System.err.println("Failed to create sessionFactory object." + ex);
-           throw new ExceptionInInitializerError(ex);
-        }
+        this.type = type;        
     }
     
     @Override

@@ -5,17 +5,22 @@
  */
 package entitymanager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import dao.EmployerDAOImpl;
 
 /**
  *
  * @author SAEED
  */
+@Service
 public class EmployerManagerImpl implements EmployerManager{
-
+    @Autowired
     private EmployerDAOImpl employerDAO;
     
     @Override
+    @Transactional
     public Integer getCountAll() {
         return employerDAO.getCountAll();
     }

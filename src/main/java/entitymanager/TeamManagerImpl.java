@@ -5,17 +5,22 @@
  */
 package entitymanager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import dao.TeamDAOImpl;
 
 /**
  *
  * @author SAEED
  */
+@Service
 public class TeamManagerImpl implements TeamManager{
-
+    @Autowired
     private TeamDAOImpl teamDAO;
     
     @Override
+    @Transactional
     public Integer getCountAll() {
         return teamDAO.getCountAll();
     }
