@@ -117,8 +117,6 @@
 
     <div class="w3-half w3-right w3-margin-top">
         <div class="w3-container w3-row">
-            <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right"
-                 alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
                 <form class="w3-form" method="post" action="/ChangePasswordController">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
@@ -127,24 +125,32 @@
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
                 </form>
             </div>
+            <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right"
+                 alt="عکس کاربر">
+            
         </div>
         <div class="w3-container">
             <p class="w3-right-align"><b>اطلاعات پایه</b></p>
             <hr class="w3-border-light-blue">
 
-            <form class="w3-right-align w3-form">
+            <form class="w3-right-align w3-form" action="/JobSocialNetwork/EmployerEditProfileController" method="post" >
                 <div class="w3-section">
+                    
+                    <label class="w3-right w3-right-align"><b>یک عکس انتخاب کنید</b>
+                        <input class="w3-left" name="imageFile" type="file">
+                    </label>
+                    <br/><br/>
                     <label class="w3-right"><b>نام شرکت</b></label>
-                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email"
+                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="name" type="text"
                            placeholder="نام شرکت یا محل کسب و کار خود را وارد کنید">
 
                     <label><b class="w3-right">شماره تلفن</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel"
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="phone" type="tel"
                                placeholder="تلفن خود را وارد کنید">
                     </label>
 
                     <label><b class="w3-right">ایمیل</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="email"
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="email" type="email"
                                placeholder="ایمیل خود را وارد کنید">
                     </label>
 
@@ -152,19 +158,19 @@
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">شهر
-                                <select id="Shahrestan" class="w3-select" >
+                                <select id="Shahrestan" class="w3-select" name="city">
                                     <option value="" disabled selected>شهر را انتخاب کنید</option>
                                 </select>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">استان
-                                <select onchange="cityAndRegionSelection(this.value,'Shahrestan')" class="w3-select" >
+                                <select onchange="cityAndRegionSelection(this.value,'Shahrestan')" name="region" class="w3-select" >
                                     <option value="" disabled selected>استان را انتخاب کنید</option>
                                     <option value="آذرشهر ,اسکو ,اهر ,بستان‌آباد ,بناب ,تبریز ,جلفا ,چاراویماق ,سراب ,شبستر ,عجب‌شیر ,کلیبر ,مراغه ,مرند ,ملکان ,میانه ,ورزقان ,هریس ,هشترود">آذربایجان شرقی</option>
                                     <option value="ارومیه ,اشنویه ,بوکان ,پیرانشهر ,تکاب ,چالدران ,خوی ,سردشت ,سلماس ,شاهین‌دژ ,ماکو ,مهاباد ,میاندوآب ,نقده">آذربایجان غربی</option>
@@ -201,7 +207,7 @@
                         </div>
                     </div>
 
-                    <button class="w3-btn w3-btn-block w3-green">ثبت ویرایش</button>
+                    <button class="w3-btn w3-btn-block w3-green" type="submit">ثبت ویرایش</button>
                 </div>
             </form>
         </div>
