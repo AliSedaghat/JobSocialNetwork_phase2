@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="jobSeekerInformationBean" class="viewmodel.JobSeekerInformationBean" scope="request" />
+<jsp:useBean id="jobSeekerProfileInfoBean" class="viewmodel.JobSeekerProfileInfoBean" scope="request" />
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +45,8 @@
             <div class="w3-text-black w3-card-2 w3-rightbar w3-border-teal w3-right-align w3-padding">
                 <b>مشخصات</b>
                 <hr class="w3-border-teal">
-                <p>من&nbsp;<b>سعید ژیانی</b>&nbsp;متولد&nbsp;<b>1372/12/20</b>&nbsp;هستم</p>
-                <p>شما می‌توانید از طریق شماره تلفن&nbsp;<b>09375107824</b>&nbsp;با من تماس حاصل فرمائید</p>
+                <p>من&nbsp;<b>${jobSeekerInformationBean.nameAndFamilyName}</b>&nbsp;متولد&nbsp;<b>${jobSeekerInformationBean.birthDate}</b>&nbsp;هستم</p>
+                <p>شما می‌توانید از طریق شماره تلفن&nbsp;<b>${jobSeekerInformationBean.phoneNum}</b>&nbsp;با من تماس حاصل فرمائید</p>
             </div>
         </div>
         <div id="googleMap" class="w3-half w3-left" style="width:500px;height:380px;"></div>
@@ -51,11 +55,11 @@
         <div class="w3-text-black w3-card-2 w3-rightbar w3-border-teal w3-right-align w3-padding">
             <b>رزومه</b>
             <hr class="w3-border-teal">
-            <p>میزان تحصیلات من&nbsp;<b>لیسانس</b>&nbsp;است</p>
-            <p>من در زمینه‌های&nbsp;<b>برنامه نویسی اندروید</b>,&nbsp;<b>برنامه نویسی وب</b>,&nbsp;<b>طراحی واسط
-                کاربری</b>&nbsp;توانایی دارم</p>
+            <p>میزان تحصیلات من&nbsp;<b>${jobSeekerProfileInfoBean.degree}</b>&nbsp;است</p>
+            <p>من در زمینه‌های&nbsp;<b>${jobSeekerProfileInfoBean.skills[0]}</b>,&nbsp;<b>${jobSeekerProfileInfoBean.skills[1]}</b>,&nbsp;
+                <b>${jobSeekerProfileInfoBean.skills[2]}</b>&nbsp;توانایی دارم</p>
             <table class="w3-table-all">
-                <tr class="w3-blue-grey">
+                <!--<tr class="w3-blue-grey">
                     <td class="w3-center"><b>از تاریخ</b></td>
                     <td class="w3-center"><b>تا تاریخ</b></td>
                     <td class="w3-center"><b>محل کار</b></td>
@@ -72,13 +76,18 @@
                     <td class="w3-center">1392/06/31</td>
                     <td class="w3-center">شرکت پیله</td>
                     <td class="w3-center">مدیریت پروژه و برنامه نویس اندروید</td>
-                </tr>
-                <tr>
-                    <td class="w3-center">1392/04/01</td>
-                    <td class="w3-center">1392/06/31</td>
-                    <td class="w3-center">شرکت پیله</td>
-                    <td class="w3-center">مدیریت پروژه و برنامه نویس اندروید</td>
-                </tr>
+                </tr> -->
+                
+                
+                
+                <c:forEach items="${jobSeekerWorkExperienceBeans}" var="item">
+                    <tr>
+                    <td class="w3-center"><c:out value="${item.tillDate}" /></td>
+                    <td class="w3-center"><c:out value="${item.fromDate}" /></td>
+                    <td class="w3-center"><c:out value="${item.workPlace}" /></td>
+                    <td class="w3-center"><c:out value="${item.responsibility}" /></td>
+                    </tr>                   
+                </c:forEach>
             </table>
         </div>
     </div>

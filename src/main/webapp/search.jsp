@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -392,7 +393,7 @@
      style="display: none;">
     <b>نتایج جستجو</b>
     <hr class="w3-border-teal">
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+  <!-- <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
         <div class="w3-center w3-container w3-teal"><p><b>برنامه نویس</b></p></div>
         <div class="w3-right-align w3-padding">
             <p>ما برای این شغل به&nbsp;<b>5</b>&nbsp;نفر&nbsp;<b>مرد</b>&nbsp;نیاز داریم</p>
@@ -791,39 +792,77 @@
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b>برنامه نویس</b></p></div>
-        <div class="w3-right-align w3-padding">
-            <p>ما برای این شغل به&nbsp;<b>5</b>&nbsp;نفر&nbsp;<b>مرد</b>&nbsp;نیاز داریم</p>
-            <p>نحوه مشارکت ما به صورت&nbsp;<b>پروژه‌ای</b>&nbsp;با حقوق&nbsp;<b>2,000,000 تومان</b>&nbsp;خواهد بود</p>
-            <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
-                    class="fa fa-expand"></i></span>
+    </div>  -->
+    
+    <c:forEach items="${jobSeekerSearchResultBeans}" var="item1">
+        <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+            <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item1.jobTitle}"/></b></p></div>
+                <div class="w3-right-align w3-padding">
+                    <p>ما برای این شغل به&nbsp;<b><c:out value="${item1.numOfPersons}"/></b>&nbsp;نفر&nbsp;<b><c:out value="${item1.sex}"/></b>&nbsp;نیاز داریم</p>
+                    <p>نحوه مشارکت ما به صورت&nbsp;<b><c:out value="${item1.kindOfWork}"/></b>&nbsp;با حقوق&nbsp;<b><c:out value="${item1.minWage}"/> تومان</b>&nbsp;خواهد بود</p>
+                    <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
+                        class="fa fa-expand"></i></span>
                 توانایی‌هایی که از شما انتظار داریم این‌هاست
 
                 <ul class="w3-dropdown-content w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
-                    <li>مدیریت پروژه</li>
-                    <li>برنامه نویسی اندروید</li>
-                    <li>طراحی از روی PSD</li>
-                    <li>کار با sqlite</li>
+                    <li><c:out value="${item1.skills[0]}"/></li>
+                    <li><c:out value="${item1.skills[1]}"/></li>
+                    <li><c:out value="${item1.skills[2]}"/></li>
+                    <li><c:out value="${item1.skills[3]}"/></li>
                 </ul>
             </div>
             <div>
-                <p>روحیه کار تیمی بالا یکی از ملزومات کار ماست</p>
+                <p><c:out value="${item1.desc}"/></p>
             </div>
         </div>
         <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست استخدام&nbsp;&nbsp;&nbsp;<span><i
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>
+    </div>  
+    </c:forEach>
+    
+        
+   
 </div>
 
 <div id="employerResult" class="result w3-container w3-text-black w3-center w3-border w3-margin w3-card-2"
      style="display: none;">
     <b>نتایج جستجو</b>
     <hr class="w3-border-teal">
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+    
+    <c:forEach items="${employerSearchResultBeans}" var="item2">
+        <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+        <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item2.jobSeekerName}"/></b></p></div>
+        <div class="w3-right-align w3-padding">
+            <p><b><c:out value="${item2.degree}"/></b></p>
+            <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
+                    class="fa fa-expand"></i></span>
+                توانایی های من در این زمینه هاست
+
+                <ul class="w3-dropdown-content w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
+                    <li><c:out value="${item2.skills[0]}"/></li>
+                    <li><c:out value="${item2.skills[1]}"/></li>
+                    <li><c:out value="${item2.skills[2]}"/></li>
+                    <li><c:out value="${item2.skills[3]}"/></li>
+                </ul>
+            </div>
+            <div>
+                <p><c:out value="${item2.desc}"/></p>
+            </div>
+        </div>
+        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
+                class="fa fa-send"></i></span>
+
+        </button>
+    </div>
+    </c:forEach>
+    
+    
+    
+    
+    
+ <!--   <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
         <div class="w3-center w3-container w3-teal"><p><b>سعید ژیانی</b></p></div>
         <div class="w3-right-align w3-padding">
             <p><b>لیسانس</b></p>
@@ -1110,37 +1149,45 @@
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b>سعید ژیانی</b></p></div>
-        <div class="w3-right-align w3-padding">
-            <p><b>لیسانس</b></p>
-            <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
-                    class="fa fa-expand"></i></span>
-                توانایی های من در این زمینه هاست
-
-                <ul class="w3-dropdown-content w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
-                    <li>مدیریت پروژه</li>
-                    <li>برنامه نویسی اندروید</li>
-                    <li>طراحی از روی PSD</li>
-                    <li>کار با sqlite</li>
-                </ul>
-            </div>
-            <div>
-                <p>روحیه کار تیمی بالا یکی از ملزومات کار ماست</p>
-            </div>
-        </div>
-        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
-                class="fa fa-send"></i></span>
-
-        </button>
-    </div>
+    </div> -->
 </div>
 
 <div id="teamResult" class="result w3-container w3-text-black w3-center w3-border w3-margin w3-card-2"
      style="display: none;">
     <b>نتایج جستجو</b>
     <hr class="w3-border-teal">
+    
+    <c:forEach items="${outSourceTeamSearchResultBeans}" var="item3">
+        <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+        <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item3.teamTitle}"/></b></p></div>
+        <div class="w3-right-align w3-padding">
+            <ul class="w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
+                <li><c:out value="${item3.skills[0]}"/></li>
+                <li><c:out value="${item3.skills[1]}"/></li>
+            </ul>
+        </div>
+        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
+                class="fa fa-send"></i></span>
+
+        </button>
+    </div>
+    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
+        <div class="w3-center w3-container w3-teal"><p><b>گروه هوش مصنوعی شهید بهشتی</b></p></div>
+        <div class="w3-right-align w3-padding">
+            <ul class="w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
+                <li>ساخت چت بات</li>
+                <li>پژوهش بر روی زبان طبیعی</li>
+            </ul>
+        </div>
+        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
+                class="fa fa-send"></i></span>
+
+        </button>
+    </div>
+    </c:forEach>
+    
+    
+    <!--
     <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
         <div class="w3-center w3-container w3-teal"><p><b>گروه هوش مصنوعی شهید بهشتی</b></p></div>
         <div class="w3-right-align w3-padding">
@@ -1309,33 +1356,7 @@
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b>گروه هوش مصنوعی شهید بهشتی</b></p></div>
-        <div class="w3-right-align w3-padding">
-            <ul class="w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
-                <li>ساخت چت بات</li>
-                <li>پژوهش بر روی زبان طبیعی</li>
-            </ul>
-        </div>
-        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
-                class="fa fa-send"></i></span>
-
-        </button>
-    </div>
-    <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b>گروه هوش مصنوعی شهید بهشتی</b></p></div>
-        <div class="w3-right-align w3-padding">
-            <ul class="w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
-                <li>ساخت چت بات</li>
-                <li>پژوهش بر روی زبان طبیعی</li>
-            </ul>
-        </div>
-        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
-                class="fa fa-send"></i></span>
-
-        </button>
-    </div>
+    </div> -->
 </div>
 
 <footer class="w3-green w3-right-align w3-container">

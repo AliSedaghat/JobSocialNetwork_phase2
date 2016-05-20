@@ -1,4 +1,7 @@
+<jsp:useBean id="outSourceTeamInformationBean" class="viewmodel.OutSourceTeamInformationBean" scope="request"/>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,10 +43,10 @@
             <div class="w3-text-black w3-card-2 w3-rightbar w3-border-teal w3-right-align w3-padding">
                 <b>مشخصات</b>
                 <hr class="w3-border-teal">
-                <p><b>گروه آزمایشگاه هوش مصنوعی دانشگاه شهید بهشتی</b></p>
+                <p><b>${outSourceTeamInformationBean.teamName}</b></p>
                 <p class="w3-right-align">شما می‌توانید از طریق شماره تلفن و ایمیل زیر با ما در تماس باشید</p>
-                <p><b>021-12345678</b></p>
-                <p><b>sbu.arin@gmail.com</b></p>
+                <p><b>${outSourceTeamInformationBean.phoneNum}</b></p>
+                <p><b>${outSourceTeamInformationBean.email}</b></p>
             </div>
         </div>
         <div id="googleMap" class="w3-half w3-left" style="width:500px;height:380px;"></div>
@@ -61,7 +64,7 @@
                     <td class="w3-center"><b>کارفرما</b></td>
                     <td class="w3-center"><b>عنوان پروژه</b></td>
                 </tr>
-                <tr>
+                <!--<tr>
                     <td class="w3-center">1393/04/01</td>
                     <td class="w3-center">1394/06/31</td>
                     <td class="w3-center">شرکت پیله</td>
@@ -78,7 +81,16 @@
                     <td class="w3-center">1394/06/31</td>
                     <td class="w3-center">شرکت پیله</td>
                     <td class="w3-center">ساخت چت بات</td>
-                </tr>
+                </tr>-->
+                <c:forEach items="${outSourceTeamResumeBeans}" var="item">
+                    <tr>
+                        <td class="w3-center"><c:out value="${item.tillDate}" /></td>
+                        <td class="w3-center"><c:out value="${item.fromDate}" /></td>
+                        <td class="w3-center"><c:out value="${item.employer}" /></td>
+                        <td class="w3-center"><c:out value="${item.projectTitle}" /></td>
+                    </tr>
+                </c:forEach>
+                
             </table>
         </div>
     </div>
