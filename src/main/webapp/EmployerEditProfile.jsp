@@ -103,7 +103,7 @@
                         <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="description" name="description" type="text">
                     </label>
                 </div>
-                <button class="w3-btn w3-btn-block w3-green" onclick="submitResume()">ثبت روزمه</button>
+                <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
             </div>                
         </div>
     </div>
@@ -262,7 +262,7 @@
         <div class="w3-container">
             <div class="w3-section">
                 <form class="w3-form">
-                    <input class="w3-input w3-border-teal w3-center" type="text" placeholder="عنوان شغل">
+                    <input class="w3-input w3-border-teal w3-center" type="text" name="jobTitle" placeholder="عنوان شغل">
                     <div class="w3-row">
                         <select class="w3-select w3-center w3-half" style="margin-top: 1.6%" name="sex">
                             <option value="" disabled selected>جنسیت</option>
