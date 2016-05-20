@@ -5,8 +5,14 @@
  */
 package controllers;
 
+import databasemodels.Employer;
+import databasemodels.Employerjobfield;
+import databasemodels.Employerresume;
+import entitymanager.EmployerManagerImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +38,31 @@ public class AddEmployerResumeController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        final int accountId = (int) request.getSession(true).getAttribute("accountId");
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            final Date fromDate = sdf.parse(request.getParameter("fromDate"));
+            final Date toDate = sdf.parse(request.getParameter("toDate"));
+            final String title = request.getParameter("title");
+            final String description = request.getParameter("description");
+            
+            final EmployerManagerImpl manager = new EmployerManagerImpl();
+            final Employer employer = manager.getbyAccountId(accountId);
+            final Employerresume resume = new Employerresume();
+            
+            resume.setEmployer(employer);
+            resume.setStartdate(fromDate);
+            resume.setEnddate(toDate);
+            resume.setTitle(title);
+            resume.setDescription(description);
+            
+            employer.getEmployerresumeCollection().add(resume);
+            
+            manager.createOrUpdate(employer);
+        } catch (ParseException ex) {
+            
+        }
+        
     }
 
 }
