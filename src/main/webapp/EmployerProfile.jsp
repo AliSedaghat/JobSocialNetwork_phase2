@@ -1,9 +1,3 @@
-<%-- 
-    Document   : EmployerProfile
-    Created on : May 11, 2016, 9:50:34 PM
-    Author     : ali
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +9,18 @@
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
         function initialize() {
+            var myCenter = new google.maps.LatLng(35.7991, 51.3947);
             var mapProp = {
-                center: new google.maps.LatLng(35.7991, 51.3947),
-                zoom: 5,
+                center: myCenter,
+                zoom: 20,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker=new google.maps.Marker({
+                position:myCenter
+            });
+
+            marker.setMap(map);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
@@ -36,6 +36,18 @@
             </button>
             <button class="w3-btn w3-blue-grey" type="button" onclick="window.location.assign('index.html')">خروج
             </button>
+            <button class="w3-btn w3-blue-grey" type="button" onclick="{
+
+                    if(this.value == 1){
+                        this.children[1].innerHTML = 'دنبال کردن آگهی‌های این صفحه';
+                        this.value = 0;
+                    }
+                    else {
+                        this.children[1].innerHTML = 'دنبال نکردن آگهی‌های این صفحه';
+                        this.value = 1;
+                    }
+            }" value="1"><span class="fa fa-share-square-o"></span>&nbsp;<span>دنبال کردن آگهی‌های این صفحه</span></button>
+
             <br>
             <br>
             <div class="w3-text-black w3-card-2 w3-rightbar w3-border-teal w3-right-align w3-padding">

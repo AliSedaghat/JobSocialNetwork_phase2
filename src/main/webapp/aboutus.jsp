@@ -1,9 +1,3 @@
-<%-- 
-    Document   : aboutus
-    Created on : May 11, 2016, 9:57:55 PM
-    Author     : ali
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +8,7 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
+
     <header class="w3-card-2">
         <ul class="w3-navbar w3-green">
             <li class="w3-right w3-margin-8"><a class="w3-btn w3-green w3-border w3-border-white w3-hover-white w3-round-xlarge" onclick="document.getElementById('registerModal').style.display='block'">ثبت نام</a></li>
@@ -22,19 +17,20 @@
         </ul>
     </header>
 
-    <div class="w3-card-4 w3-round-xxlarge w3-border-bottom w3-border-teal w3-container w3-section w3-margin w3-third w3-right w3-right-align">
-        <div class="w3-padding w3-large"><p>درباره ما</p></div>
-        <div class="w3-padding w3-medium"><p>افرادی که دنبال کار می گردند، در صورت وجود مکانی برای اطلاع از شرایط استخدام و اطلاع از رشته های مورد نیاز و زمان و مکان ثبت نام و دیگر موارد، می توانند شانس خود را برخورداری از یک شغل مناسب امتحان کنند.
+    <div class="w3-row w3-container w3-section">
+        <div class="w3-card-4 w3-round-xxlarge w3-border-bottom w3-border-teal w3-container w3-margin w3-third w3-right w3-right-align">
+            <div class="w3-padding w3-large"><p>درباره ما</p></div>
+            <div class="w3-padding w3-medium"><p>افرادی که دنبال کار می گردند، در صورت وجود مکانی برای اطلاع از شرایط استخدام و اطلاع از رشته های مورد نیاز و زمان و مکان ثبت نام و دیگر موارد، می توانند شانس خود را برخورداری از یک شغل مناسب امتحان کنند.
 
-            این سایت سعی می کند بعنوان مکانی برای گردآوری آگهی های استخدام و نمایش شرایط ثبت نام و استخدام برای افراد جویای کار، کمبود موجود در اطلاع رسانی بموقع توسط مراجع ذیربط را پر کند.
+                این سایت سعی می کند بعنوان مکانی برای گردآوری آگهی های استخدام و نمایش شرایط ثبت نام و استخدام برای افراد جویای کار، کمبود موجود در اطلاع رسانی بموقع توسط مراجع ذیربط را پر کند.
 
-            آگهی های ارائه شده در این سایت با توجه به اعلام نیاز کارفرمایان و آگهی های مختلف درج شده
+                آگهی های ارائه شده در این سایت با توجه به اعلام نیاز کارفرمایان و آگهی های مختلف درج شده
 
-            در رسانه های نوشتاری و غیره ارائه شده اند و مدیریت سایت استخدام هیچ گونه مسئولیتی در مورد محتویات آنها
+                در رسانه های نوشتاری و غیره ارائه شده اند و مدیریت سایت استخدام هیچ گونه مسئولیتی در مورد محتویات آنها
 
-            و مراحل بعدی ندارد. خواهشمند است در هنگام تماس و مراجعه دقت های لازم در مواردی همچون انطباق فعالیت آگهی دهنده با موازین قانونی بعمل آید.</p></div>
+                و مراحل بعدی ندارد. خواهشمند است در هنگام تماس و مراجعه دقت های لازم در مواردی همچون انطباق فعالیت آگهی دهنده با موازین قانونی بعمل آید.</p></div>
+        </div>
     </div>
-
     <div id="registerModal" class="w3-modal">
         <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
             <div class="w3-container">
@@ -114,13 +110,14 @@
         </div>
     </div>
 
-    <footer class="w3-green w3-right-align w3-container w3-bottom">
+
+    <footer class="w3-green w3-right-align w3-container">
         <div class="w3-row">
             <ul class="w3-third w3-margin w3-right" style="list-style-type: none;">
                 <li><a class="w3-green w3-btn w3-hover-text-amber" href="index.html">خانه</a></li>
                 <li><a class="w3-green w3-btn w3-hover-text-amber" onclick="document.getElementById('registerModal').style.display='block'">ثبت نام</a></li>
                 <li><a class="w3-green w3-btn w3-hover-text-amber" onclick="document.getElementById('loginModal').style.display='block'">ورود</a></li>
-                <li><a class="w3-green w3-btn w3-hover-text-amber">درباره ما</a></li>
+                <li><a class="w3-green w3-btn w3-hover-text-amber" href="aboutus.html">درباره ما</a></li>
             </ul>
             <div class="w3-quarter w3-right w3-margin"><p>تمامي آگهی های اين سایت، توسط افراد حقیقی و حقوقی درج می شود و فعاليت‌هاي اين سايت تابع قوانين و مقررات جمهوري اسلامي ايران است</p></div>
         </div>
@@ -128,5 +125,6 @@
             <p class="w3-center">تمامی حقوق این وبسایت متعلق به دانشگاه شهید بهشتی میباشد و استفاده از مطالب همراه با ذکر منبع بلا مانع است</p>
         </div>
     </footer>
+
 </body>
 </html>

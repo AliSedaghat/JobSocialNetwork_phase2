@@ -1,9 +1,3 @@
-<%-- 
-    Document   : teamProfile
-    Created on : May 11, 2016, 9:56:50 PM
-    Author     : ali
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +9,18 @@
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
         function initialize() {
+            var myCenter = new google.maps.LatLng(35.7991, 51.3947);
             var mapProp = {
-                center: new google.maps.LatLng(35.7991, 51.3947),
-                zoom: 5,
+                center: myCenter,
+                zoom: 10,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker=new google.maps.Marker({
+                position:myCenter
+            });
+
+            marker.setMap(map);
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>

@@ -179,41 +179,5 @@
         window.onload = repeat();
     </script>
 
-<script>
-    function tempRedirect(emailId, passwordId){
-        var email = document.getElementById(emailId).value;
-        var password = document.getElementById(passwordId).value;
-
-        if (email == "karjo@gmail.com"){
-            if(password == "123"){
-                window.location.assign("jobFinderProfile.html");
-            }
-            else{
-                document.getElementById('errorPanel').style.display = 'block';
-            }
-        }
-        else if(email == "karfarma@gmail.com"){
-            if(password == "456"){
-                window.location.assign("employerProfile.html");
-            }
-            else{
-                document.getElementById('errorPanel').style.display = 'block';
-
-            }
-        }
-        else if(email == "team@gmail.com"){
-            if(password == "789"){
-                window.location.assign("teamProfile.html");
-            }
-            else{
-                document.getElementById('errorPanel').style.display = 'block';
-
-            }
-        }
-        else{
-            document.getElementById('errorPanel').style.display = 'block';
-        }
-    }
-</script>
 </body>
 </html>
