@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import dao.EmployerDAOImpl;
+import databasemodels.Employer;
 
 /**
  *
@@ -23,6 +24,16 @@ public class EmployerManagerImpl implements EmployerManager{
     @Transactional
     public Integer getCountAll() {
         return employerDAO.getCountAll();
+    }
+
+    @Override
+    public void createOrUpdate(Employer employer) {
+        employerDAO.createOrUpdate(employer);
+    }
+
+    @Override
+    public Employer getbyAccountId(Integer accountId) {
+        return employerDAO.getByAccountId(accountId);
     }
     
 }

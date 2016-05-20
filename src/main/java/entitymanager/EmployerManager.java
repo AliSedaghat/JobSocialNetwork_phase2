@@ -5,10 +5,14 @@
  */
 package entitymanager;
 
+import databasemodels.Employer;
+
 /**
  *
  * @author SAEED
  */
 public interface EmployerManager {
     public Integer getCountAll();
+    public void createOrUpdate(Employer employer);
+    public Employer getbyAccountId(Integer accountId);
 }
