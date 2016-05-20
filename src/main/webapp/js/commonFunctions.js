@@ -1,6 +1,8 @@
 /**
- * Created by SAEED on 2016-04-08.
- */
+    * Created by SAEED
+    * for JobSocialNetwork
+    * on 2016-04-08, 14:16.
+    */
 function createTag(tagId, tagAreaId) {
     var text = document.getElementById(tagId).value;
     document.getElementById(tagId).value = '';
@@ -16,4 +18,20 @@ function createTag(tagId, tagAreaId) {
     span.innerHTML = '  x';
     div.appendChild(span);
     tagDiv.appendChild(div);
+}
+
+function cityAndRegionSelection(Shahrestanha, regionSelectId) {
+    var _Shahrestan = document.getElementById(regionSelectId);
+    _Shahrestan.options.length = 0;
+    if(Shahrestanha !== "") {
+        Shahrestanha = 'شهر را انتخاب کنید,'+ Shahrestanha;
+        var arr = Shahrestanha.split(",");
+        for(var i = 0; i < arr.length; i++) {
+            if(arr[i] !== "") {
+                _Shahrestan.options[_Shahrestan.options.length]=new Option(arr[i],arr[i]);
+            }
+        }
+        _Shahrestan.options[0].selected = true;
+        _Shahrestan.options[0].disabled = true;
+    }
 }
