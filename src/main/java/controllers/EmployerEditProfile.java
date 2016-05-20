@@ -5,18 +5,26 @@
  */
 package controllers;
 
+import databasemodels.Account;
+import databasemodels.Employer;
+import entitymanager.EmployerManagerImpl;
+import filemanagement.FileManager;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author SAEED
  */
-@WebServlet(name = "EmployerEditProfile", urlPatterns = {"/EmployerEditProfileController"})
+@MultipartConfig 
+@WebServlet(name = "EmployerEditProfile", urlPatterns = {"/EmployerEditProfilePrimaryInfoController"})
 public class EmployerEditProfile extends HttpServlet {
 
     /**
@@ -30,10 +38,35 @@ public class EmployerEditProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         request.setCharacterEncoding("utf-8");
-        String name = request.getParameter("name");
-        String region = request.getParameter("region");
-        String city = request.getParameter("city");
+        final int accountId = (int) request.getSession().getAttribute("accountId");
+        final Part imageFile = request.getPart("imageFile");
+        final InputStream stream = imageFile.getInputStream();
+        final String imageAddress = FileManager.saveFile(imageFile.getSubmittedFileName(), stream);
+        if(imageAddress.equals("")){
+           // save image file operation is failed 
+        }
+        final String name = request.getParameter("name");
+        final String phone = request.getParameter("phone");
+        final String email = request.getParameter("email");
+        final String region = request.getParameter("region");
+        final String city = request.getParameter("city");
+        final String remainAddress = request.getParameter("remainParameter");
+        final String summury = request.getParameter("summury");
+        EmployerManagerImpl manager = new EmployerManagerImpl();
+        
+        Employer employer = manager.getbyAccountId(accountId);
+        employer.setName(name);
+        employer.setPhone(phone);
+        employer.setEmail(email);
+        employer.setRegion(region);
+        employer.setCity(city);
+        employer.setRemainaddress(remainAddress);
+        employer.setAccount(new Account(accountId));
+        employer.setImageaddress(imageAddress);
+        employer.setSummury(summury);
+        manager.createOrUpdate(employer);
     }
 
 }
