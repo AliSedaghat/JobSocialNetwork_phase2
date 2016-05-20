@@ -21,16 +21,19 @@ function createTag(tagInputId, tagAreaId) {
 }
 
 function addFieldTag(tagInputId, tagAreaId){
-    $.ajax({
-        url: "/JobSocialNetwork/AddFieldTagController",
-        type: 'POST',
-        data: {
-            tagText : $('#' + tagInputId).val()
-        },
-        success: function (data, textStatus, jqXHR) {
-            createTag(tagInputId, tagAreaId);
-        }
-    });
+    if($('#'+tagInputId).val() !== ""){
+        $.ajax({
+            url: "/JobSocialNetwork/AddFieldTagController",
+            type: 'POST',
+            data: {
+                tagText : $('#' + tagInputId).val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                createTag(tagInputId, tagAreaId);
+            }
+        });
+    }
+    
 }
 
 function cityAndRegionSelection(id, regionSelectId) {
