@@ -30,6 +30,9 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
                 .getNamedQuery("Employer.count").list().get(0);
     }
     
-    
+    public Employer getByAccountId(Integer accountId){
+        return  (Employer) factory.getCurrentSession()
+                .getNamedQuery("Employer.findByAccountId").list().get(0);
+    }
     
 }
