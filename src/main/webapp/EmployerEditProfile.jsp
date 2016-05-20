@@ -133,7 +133,7 @@
             <p class="w3-right-align"><b>اطلاعات پایه</b></p>
             <hr class="w3-border-light-blue">
 
-            <form class="w3-right-align w3-form" action="/JobSocialNetwork/EmployerEditProfileController" method="post" >
+            <form class="w3-right-align w3-form" action="/JobSocialNetwork/EmployerEditProfileController" method="post" enctype="multipart/form-data">
                 <div class="w3-section">
                     
                     <label class="w3-right w3-right-align"><b>یک عکس انتخاب کنید</b>
