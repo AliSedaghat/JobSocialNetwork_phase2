@@ -22,5 +22,6 @@ public interface GenericDAO<T, PK extends Serializable> {
     public void update(T o);
     
     public void delete(T o);
-     
+    
+    public void createOrUpdate(T o);
 }

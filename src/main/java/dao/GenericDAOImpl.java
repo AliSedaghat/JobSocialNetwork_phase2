@@ -51,6 +51,11 @@ public abstract class GenericDAOImpl<T, PK extends Serializable>
         factory.getCurrentSession().delete(o);
     }
     
+    @Override
+    public void createOrUpdate(T o){
+        factory.getCurrentSession().saveOrUpdate(o);
+    }
+    
     public abstract List<T> getAll();
     
     public abstract Integer getCountAll();
