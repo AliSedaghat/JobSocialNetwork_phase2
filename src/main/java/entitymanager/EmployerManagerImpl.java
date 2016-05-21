@@ -27,13 +27,23 @@ public class EmployerManagerImpl implements EmployerManager{
     }
 
     @Override
+    @Transactional
     public void createOrUpdate(Employer employer) {
         employerDAO.createOrUpdate(employer);
     }
 
     @Override
+    @Transactional
     public Employer getbyAccountId(Integer accountId) {
         return employerDAO.getByAccountId(accountId);
     }
+    
+    @Override
+    @Transactional
+    public Employer get(Integer id) {
+        return employerDAO.read(id);
+    }
+    
+    
     
 }

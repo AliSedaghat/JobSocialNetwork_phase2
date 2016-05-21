@@ -640,9 +640,9 @@
             </button>
         </div> -->
         
-        <c:forEach items="${jobSeekerSearchResultBeans}" var="item1">
+        <c:forEach items="${employerSearchResultBeans}" var="item1">
         <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-            <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item1.jobTitle}"/></b></p></div>
+            <div class="w3-center w3-container w3-teal"><p><<a href="/JobSocialNetwork/EmployerProfileController?senderId=${item1.senderId}"><b><c:out value="${item1.jobTitle}"/></b></a></p></div>
                 <div class="w3-right-align w3-padding">
                     <p>ما برای این شغل به&nbsp;<b><c:out value="${item1.numOfPersons}"/></b>&nbsp;نفر&nbsp;<b><c:out value="${item1.sex}"/></b>&nbsp;نیاز داریم</p>
                     <p>نحوه مشارکت ما به صورت&nbsp;<b><c:out value="${item1.kindOfWork}"/></b>&nbsp;با حقوق&nbsp;<b><c:out value="${item1.minWage}"/> تومان</b>&nbsp;خواهد بود</p>

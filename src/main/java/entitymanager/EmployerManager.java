@@ -15,4 +15,5 @@ public interface EmployerManager {
     public Integer getCountAll();
     public void createOrUpdate(Employer employer);
     public Employer getbyAccountId(Integer accountId);
+    public Employer get(Integer id);
 }
