@@ -25,53 +25,52 @@
     <div class="w3-half w3-left w3-margin-top w3-margin-bottom">
         <div class="w3-container">
             <p class="w3-right-align"><b>رزومه</b></p><hr class="w3-border-light-blue">
-            <form class="w3-form">
-                <label class="w3-right"><b>توانایی‌ها</b></label><br><br>
-                <div id="tagArea1">
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                </div><br>
+            
+            <label class="w3-right"><b>توانایی‌ها</b></label><br><br>
+            <div id="tagArea1">
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
+            </div><br>
 
-                <div class="w3-row">
-                    <div class="w3-btn w3-hover-teal w3-white w3-right fa fa-arrow-right w3-col s4 m2 l2 w3-xlarge" onclick="createTag('tagInput1','tagArea1')"></div>
-                    <label><input id="tagInput1" type="text" class="w3-input w3-border-teal w3-left w3-col s8 m10 l10 w3-small"></label>
-                </div>
+            <div class="w3-row">
+            <div class="w3-btn w3-hover-teal w3-white w3-right fa fa-arrow-right w3-col s4 m2 l2 w3-xlarge"
+                 onclick="addTeamFieldTag('tagInput1','tagArea1')"></div>
+            <label><input id="tagInput1" type="text"
+                          class="w3-input w3-border-teal w3-left w3-col s8 m10 l10 w3-small"></label>
+            </div>
 
-                <label class="w3-right"><b>سوابق</b></label><br>
-                <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
-                    <div class="w3-third w3-padding">
-                        <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${outSourceTeamResumeBean.fromDate}">
-                        </label>
-                        <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${outSourceTeamResumeBean.tillDate}">
-                        </label>
-                    </div>
-                    <div class="w3-twothird w3-padding">
-                        <label class="w3-validate">عنوان پروژه
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${outSourceTeamResumeBean.projectTitle}">
-                        </label>
-                        <label class="w3-validate">کارفرما
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${outSourceTeamResumeBean.employer}">
-                        </label>
-                    </div>
+            <label class="w3-right"><b>سوابق</b></label><br>
+            <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
+                <div class="w3-third w3-padding">
+                    <label class="w3-validate">از تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="fromDate" name="fromDate" type="date" value="${outSourceTeamResumeBean.fromDate}">
+                    </label>
+                    <label class="w3-validate">تا تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="toDate" name="toDate" type="date" value="${outSourceTeamResumeBean.tillDate}">
+                    </label>
                 </div>
-                <div class="w3-btn-floating w3-card-2 w3-teal w3-right">+</div><br><br><br>
-                
-                <button class="w3-btn w3-btn-block w3-green">ثبت روزمه</button>
-            </form>
+                <div class="w3-twothird w3-padding">
+                    <label class="w3-validate">عنوان پروژه
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="title" name="title" type="text" value="${outSourceTeamResumeBean.projectTitle}">
+                    </label>
+                    <label class="w3-validate">کارفرما
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="description" name="description" type="text" value="${outSourceTeamResumeBean.employer}">
+                    </label>
+                </div>
+                <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
+            </div>
         </div>
     </div>
 
@@ -192,6 +191,7 @@
 </footer>
 
 <script type="text/javascript" src="js/commonFunctions.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 
 </body>
 </html>
