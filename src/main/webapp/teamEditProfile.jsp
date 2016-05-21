@@ -69,10 +69,7 @@
                     </div>
                 </div>
                 <div class="w3-btn-floating w3-card-2 w3-teal w3-right">+</div><br><br><br>
-                <label class="w3-right"><b>سایر توضیحات</b></label>
-                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" 
-                          placeholder="یک پاراگراف در مورد خود بنویسید" value="${outSourceTeamResumeBean.otherDesc}"></textarea>
-
+                
                 <button class="w3-btn w3-btn-block w3-green">ثبت روزمه</button>
             </form>
         </div>
@@ -80,33 +77,39 @@
 
     <div class="w3-half w3-right w3-border-left w3-border-blue w3-margin-top w3-margin-bottom">
         <div class="w3-container w3-row">
-            <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right" alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
-                <form class="w3-form">
-                    <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="رمز فعلی" value="${passwordChangeBean.currentPass}">
-                    <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="رمز جدید">
-                    <input class="w3-input w3-border-teal w3-right-align" type="text" placeholder="تکرار رمز">
+                <form class="w3-form" method="post" action="/ChangePasswordController">
+                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
+                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="newPassword" placeholder="رمز جدید">
+                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="repeatPassword" placeholder="تکرار رمز">
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
                 </form>
             </div>
+            <img src="images/img_avatar.png" style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
+                 alt="عکس کاربر" id="userImage">
         </div>
         <div class="w3-container">
             <p class="w3-right-align"><b>اطلاعات پایه</b></p><hr class="w3-border-light-blue">
 
-            <form class="w3-right-align w3-form">
-
+            <form class="w3-right-align w3-form" method="post" action="/JobSocialNetwork/TeamEditProfilePrimaryInfoController" enctype="multipart/form-data">
                 <div class="w3-section">
+                    
+                    <label class="w3-right w3-right-align"><b>یک عکس انتخاب کنید</b>
+                        <input class="w3-left" name="imageFile" type="file" onchange="showImage(this, 'userImage')">
+                    </label>
+                    <br/><br/>
+                    
                     <label class="w3-right"><b>نام گروه</b></label>
-                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" 
+                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="name" type="text" 
                            placeholder="نام گروه خود را وارد کنید" value="${outSourceTeamInformationBean.teamName}">
 
                     <label><b class="w3-right">شماره تلفن</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" 
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="phone" type="tel" 
                                placeholder="تلفن خود را وارد کنید" value="${outSourceTeamInformationBean.phoneNum}">
                     </label>
 
                     <label><b class="w3-right">ایمیل</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="email"
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="email" type="email"
                                value="${outSourceTeamInformationBean.email}">
                     </label>
 
@@ -114,57 +117,59 @@
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" placeholder="آدرس را وارد کنید" value="${outSourceTeamInformationBean.rmainAddr}"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید">${outSourceTeamInformationBean.rmainAddr}</textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">شهر
-                                <select id="Shahrestan" class="w3-select" >
+                                <select id="Shahrestan" class="w3-select" name="city">
                                     <option value="" disabled selected>شهر را انتخاب کنید</option>
                                 </select>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">استان
-                                <select onchange="cityAndRegionSelection(this.value, 'Shahrestan')" class="w3-select" >
-                                    <option value="" disabled selected>استان را انتخاب کنید</option>
-                                    <option value="آذرشهر ,اسکو ,اهر ,بستان‌آباد ,بناب ,تبریز ,جلفا ,چاراویماق ,سراب ,شبستر ,عجب‌شیر ,کلیبر ,مراغه ,مرند ,ملکان ,میانه ,ورزقان ,هریس ,هشترود">آذربایجان شرقی</option>
-                                    <option value="ارومیه ,اشنویه ,بوکان ,پیرانشهر ,تکاب ,چالدران ,خوی ,سردشت ,سلماس ,شاهین‌دژ ,ماکو ,مهاباد ,میاندوآب ,نقده">آذربایجان غربی</option>
-                                    <option value="اردبیل ,بیله‌سوار ,پارس‌آباد ,خلخال ,کوثر ,گِرمی ,مِشگین‌شهر ,نَمین ,نیر">اردبیل</option>
-                                    <option value="آران و بیدگل ,اردستان ,اصفهان ,برخوار و میمه ,تیران و کرون ,چادگان ,خمینی‌شهر ,خوانسار ,سمیرم ,شهرضا ,سمیرم سفلی ,فریدن ,فریدون‌شهر ,فلاورجان ,کاشان ,گلپایگان ,لنجان ,مبارکه ,نائین ,نجف‌آباد ,نطنز">اصفهان</option>
-                                    <option value="آبدانان ,ایلام ,ایوان ,دره‌شهر ,دهلران ,شیروان و چرداول ,مهران">ایلام</option>
-                                    <option value="بوشهر ,تنگستان ,جم ,دشتستان ,دشتی,دیر ,دیلم ,کنگان ,گناوه">بوشهر</option>
-                                    <option value="اسلام‌شهر ,پاکدشت ,تهران ,دماوند ,رباط‌کریم ,ری ,ساوجبلاغ ,شمیرانات ,شهریار ,فیروزکوه ,کرج ,نظرآباد ,ورامین">تهران</option>
-                                    <option value="اردل ,بروجن ,شهرکرد ,فارسان ,کوهرنگ ,لردگان">چهارمحال و بختیاری</option>
-                                    <option value="بیرجند ,درمیان ,سرایان ,سربیشه ,فردوس ,قائنات,نهبندان">خراسان جنوبی</option>
-                                    <option value="بردسکن ,تایباد ,تربت جام ,تربت حیدریه ,چناران ,خلیل‌آباد ,خواف ,درگز ,رشتخوار ,سبزوار ,سرخس ,فریمان ,قوچان ,کاشمر ,کلات ,گناباد ,مشهد ,مه ولات ,نیشابور">خراسان رضوی</option>
-                                    <option value="اسفراین ,بجنورد ,جاجرم ,شیروان ,فاروج ,مانه و سملقان">خراسان شمالی</option>
-                                    <option value="آبادان ,امیدیه ,اندیمشک ,اهواز ,ایذه ,باغ‌ملک ,بندر ماهشهر ,بهبهان ,خرمشهر ,دزفول ,دشت آزادگان ,رامشیر ,رامهرمز ,شادگان ,شوش ,شوشتر ,گتوند ,لالی ,مسجد سلیمان,هندیجان ">خوزستان</option>
-                                    <option value="ابهر ,ایجرود ,خدابنده ,خرمدره ,زنجان ,طارم ,ماه‌نشان">زنجان</option>
-                                    <option value="دامغان ,سمنان ,شاهرود ,گرمسار ,مهدی‌شهر">سمنان</option>
-                                    <option value="ایرانشهر ,چابهار ,خاش ,دلگان ,زابل ,زاهدان ,زهک ,سراوان ,سرباز ,کنارک ,نیک‌شهر">سیستان و بلوچستان</option>
-                                    <option value="آباده ,ارسنجان ,استهبان ,اقلید ,بوانات ,پاسارگاد ,جهرم ,خرم‌بید ,خنج ,داراب ,زرین‌دشت ,سپیدان ,شیراز ,فراشبند ,فسا ,فیروزآباد ,قیر و کارزین ,کازرون ,لارستان ,لامِرد ,مرودشت ,ممسنی ,مهر ,نی‌ریز">فارس</option>
-                                    <option value="آبیک ,البرز ,بوئین‌زهرا ,تاکستان ,قزوین">قزوین</option>
-                                    <option value="قم">قم</option>
-                                    <option value="بانه ,بیجار ,دیواندره ,سروآباد ,سقز ,سنندج ,قروه ,کامیاران ,مریوان">کردستان</option>
-                                    <option value="بافت ,بردسیر ,بم ,جیرفت ,راور ,رفسنجان ,رودبار جنوب ,زرند ,سیرجان ,شهر بابک ,عنبرآباد ,قلعه گنج ,کرمان ,کوهبنان ,کهنوج ,منوجان">کرمان</option>
-                                    <option value="اسلام‌آباد غرب ,پاوه ,ثلاث باباجانی ,جوانرود ,دالاهو ,روانسر ,سرپل ذهاب ,سنقر ,صحنه ,قصر شیرین ,کرمانشاه ,کنگاور ,گیلان غرب ,هرسین">کرمانشاه</option>
-                                    <option value="بویراحمد ,بهمئی ,دنا ,کهگیلویه ,گچساران">کهگیلویه و بویراحمد</option>
-                                    <option value="آزادشهر ,آق‌قلا ,بندر گز ,ترکمن ,رامیان ,علی‌آباد ,کردکوی ,کلاله ,گرگان ,گنبد کاووس ,مراوه‌تپه ,مینودشت">گلستان</option>
-                                    <option value="آستارا ,آستانه اشرفیه ,اَملَش ,بندر انزلی ,رشت ,رضوانشهر ,رودبار ,رودسر ,سیاهکل ,شَفت ,صومعه‌سرا ,طوالش ,فومَن ,لاهیجان ,لنگرود ,ماسال">گیلان</option>
-                                    <option value="ازنا ,الیگودرز ,بروجرد ,پل‌دختر ,خرم‌آباد ,دورود ,دلفان ,سلسله ,کوهدشت">لرستان</option>
-                                    <option value="آمل ,بابل ,بابلسر ,بهشهر ,تنکابن ,جویبار ,چالوس ,رامسر ,ساری ,سوادکوه ,قائم‌شهر ,گلوگاه ,محمودآباد ,نکا ,نور ,نوشهر">مازندران</option>
-                                    <option value="آشتیان ,اراک ,تفرش ,خمین ,دلیجان ,زرندیه ,ساوه ,شازند ,کمیجان ,محلات">مرکزی</option>
-                                    <option value="ابوموسی ,بستک ,بندر عباس ,بندر لنگه ,جاسک ,حاجی‌آباد ,شهرستان خمیر ,رودان  ,قشم ,گاوبندی ,میناب">هرمزگان</option>
-                                    <option value="اسدآباد ,بهار ,تویسرکان ,رزن ,کبودرآهنگ ,ملایر ,نهاوند ,همدان">همدان</option>
-                                    <option value="ابرکوه ,اردکان ,بافق ,تفت ,خاتم ,صدوق ,طبس ,مهریز ,مِیبُد ,یزد">یزد</option>
+                                <select id="region" onchange="cityAndRegionSelection(this.id ,'Shahrestan')" name="region" class="w3-select" >
+                                    <option data-cities="" value="" disabled selected>استان را انتخاب کنید</option>
+                                    <option data-cities="آذرشهر ,اسکو ,اهر ,بستان‌آباد ,بناب ,تبریز ,جلفا ,چاراویماق ,سراب ,شبستر ,عجب‌شیر ,کلیبر ,مراغه ,مرند ,ملکان ,میانه ,ورزقان ,هریس ,هشترود" value="آذربایجان شرقی">آذربایجان شرقی</option>
+                                    <option data-cities="ارومیه ,اشنویه ,بوکان ,پیرانشهر ,تکاب ,چالدران ,خوی ,سردشت ,سلماس ,شاهین‌دژ ,ماکو ,مهاباد ,میاندوآب ,نقده" value="آذربایجان غربی">آذربایجان غربی</option>
+                                    <option data-cities="اردبیل ,بیله‌سوار ,پارس‌آباد ,خلخال ,کوثر ,گِرمی ,مِشگین‌شهر ,نَمین ,نیر" value="اردبیل">اردبیل</option>
+                                    <option data-cities="آران و بیدگل ,اردستان ,اصفهان ,برخوار و میمه ,تیران و کرون ,چادگان ,خمینی‌شهر ,خوانسار ,سمیرم ,شهرضا ,سمیرم سفلی ,فریدن ,فریدون‌شهر ,فلاورجان ,کاشان ,گلپایگان ,لنجان ,مبارکه ,نائین ,نجف‌آباد ,نطنز" value="اصفهان">اصفهان</option>
+                                    <option data-cities="آبدانان ,ایلام ,ایوان ,دره‌شهر ,دهلران ,شیروان و چرداول ,مهران" value="ایلام">ایلام</option>
+                                    <option data-cities="بوشهر ,تنگستان ,جم ,دشتستان ,دشتی,دیر ,دیلم ,کنگان ,گناوه" value="بوشهر">بوشهر</option>
+                                    <option data-cities="اسلام‌شهر ,پاکدشت ,تهران ,دماوند ,رباط‌کریم ,ری ,ساوجبلاغ ,شمیرانات ,شهریار ,فیروزکوه ,کرج ,نظرآباد ,ورامین" value="تهران">تهران</option>
+                                    <option data-cities="اردل ,بروجن ,شهرکرد ,فارسان ,کوهرنگ ,لردگان" value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                                    <option data-cities="بیرجند ,درمیان ,سرایان ,سربیشه ,فردوس ,قائنات,نهبندان" value="خراسان جنوبی">خراسان جنوبی</option>
+                                    <option data-cities="بردسکن ,تایباد ,تربت جام ,تربت حیدریه ,چناران ,خلیل‌آباد ,خواف ,درگز ,رشتخوار ,سبزوار ,سرخس ,فریمان ,قوچان ,کاشمر ,کلات ,گناباد ,مشهد ,مه ولات ,نیشابور" value="خراسان رضوی">خراسان رضوی</option>
+                                    <option data-cities="اسفراین ,بجنورد ,جاجرم ,شیروان ,فاروج ,مانه و سملقان" value="خراسان شمالی">خراسان شمالی</option>
+                                    <option data-cities="آبادان ,امیدیه ,اندیمشک ,اهواز ,ایذه ,باغ‌ملک ,بندر ماهشهر ,بهبهان ,خرمشهر ,دزفول ,دشت آزادگان ,رامشیر ,رامهرمز ,شادگان ,شوش ,شوشتر ,گتوند ,لالی ,مسجد سلیمان,هندیجان " value="خوزستان">خوزستان</option>
+                                    <option data-cities="ابهر ,ایجرود ,خدابنده ,خرمدره ,زنجان ,طارم ,ماه‌نشان" value="زنجان">زنجان</option>
+                                    <option data-cities="دامغان ,سمنان ,شاهرود ,گرمسار ,مهدی‌شهر" value="سمنان">سمنان</option>
+                                    <option data-cities="ایرانشهر ,چابهار ,خاش ,دلگان ,زابل ,زاهدان ,زهک ,سراوان ,سرباز ,کنارک ,نیک‌شهر" value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                                    <option data-cities="آباده ,ارسنجان ,استهبان ,اقلید ,بوانات ,پاسارگاد ,جهرم ,خرم‌بید ,خنج ,داراب ,زرین‌دشت ,سپیدان ,شیراز ,فراشبند ,فسا ,فیروزآباد ,قیر و کارزین ,کازرون ,لارستان ,لامِرد ,مرودشت ,ممسنی ,مهر ,نی‌ریز" value="فارس">فارس</option>
+                                    <option data-cities="آبیک ,البرز ,بوئین‌زهرا ,تاکستان ,قزوین" value="قزوین">قزوین</option>
+                                    <option data-cities="قم" value="قم">قم</option>
+                                    <option data-cities="بانه ,بیجار ,دیواندره ,سروآباد ,سقز ,سنندج ,قروه ,کامیاران ,مریوان" value="کردستان">کردستان</option>
+                                    <option data-cities="بافت ,بردسیر ,بم ,جیرفت ,راور ,رفسنجان ,رودبار جنوب ,زرند ,سیرجان ,شهر بابک ,عنبرآباد ,قلعه گنج ,کرمان ,کوهبنان ,کهنوج ,منوجان" value="کرمان">کرمان</option>
+                                    <option data-cities="اسلام‌آباد غرب ,پاوه ,ثلاث باباجانی ,جوانرود ,دالاهو ,روانسر ,سرپل ذهاب ,سنقر ,صحنه ,قصر شیرین ,کرمانشاه ,کنگاور ,گیلان غرب ,هرسین" value="کرمانشاه">کرمانشاه</option>
+                                    <option data-cities="بویراحمد ,بهمئی ,دنا ,کهگیلویه ,گچساران" value="کهگیلویه و بویراحمد">کهگیلویه و بویراحمد</option>
+                                    <option data-cities="آزادشهر ,آق‌قلا ,بندر گز ,ترکمن ,رامیان ,علی‌آباد ,کردکوی ,کلاله ,گرگان ,گنبد کاووس ,مراوه‌تپه ,مینودشت">گلستان</option>
+                                    <option data-cities="آستارا ,آستانه اشرفیه ,اَملَش ,بندر انزلی ,رشت ,رضوانشهر ,رودبار ,رودسر ,سیاهکل ,شَفت ,صومعه‌سرا ,طوالش ,فومَن ,لاهیجان ,لنگرود ,ماسال" value="گیلان">گیلان</option>
+                                    <option data-cities="ازنا ,الیگودرز ,بروجرد ,پل‌دختر ,خرم‌آباد ,دورود ,دلفان ,سلسله ,کوهدشت" value="لرستان">لرستان</option>
+                                    <option data-cities="آمل ,بابل ,بابلسر ,بهشهر ,تنکابن ,جویبار ,چالوس ,رامسر ,ساری ,سوادکوه ,قائم‌شهر ,گلوگاه ,محمودآباد ,نکا ,نور ,نوشهر" value="مازندران">مازندران</option>
+                                    <option data-cities="آشتیان ,اراک ,تفرش ,خمین ,دلیجان ,زرندیه ,ساوه ,شازند ,کمیجان ,محلات" value="مرکزی">مرکزی</option>
+                                    <option data-cities="ابوموسی ,بستک ,بندر عباس ,بندر لنگه ,جاسک ,حاجی‌آباد ,شهرستان خمیر ,رودان  ,قشم ,گاوبندی ,میناب" value="هرمزگان">هرمزگان</option>
+                                    <option data-cities="اسدآباد ,بهار ,تویسرکان ,رزن ,کبودرآهنگ ,ملایر ,نهاوند ,همدان" value="همدان">همدان</option>
+                                    <option data-cities="ابرکوه ,اردکان ,بافق ,تفت ,خاتم ,صدوق ,طبس ,مهریز ,مِیبُد ,یزد" value="یزد">یزد</option>
                                 </select>
                             </label>
                         </div>
                     </div>
+                    <label class="w3-right"><b>سایر توضیحات</b></label>
+                    <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" 
+                          placeholder="یک پاراگراف در مورد خود بنویسید" name="summury">${outSourceTeamResumeBean.otherDesc}</textarea>
 
-
-                    <button class="w3-btn w3-btn-block w3-green">ثبت ویرایش</button>
+                    <button class="w3-btn w3-btn-block w3-green" type="submit">ثبت ویرایش</button>
                 </div>
             </form>
         </div>
