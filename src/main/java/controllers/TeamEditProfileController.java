@@ -5,15 +5,11 @@
  */
 package controllers;
 
-import databasemodels.Account;
-import databasemodels.Employer;
 import databasemodels.Team;
-import entitymanager.EmployerManagerImpl;
 import entitymanager.TeamManagerImpl;
 import filemanagement.FileManager;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,9 +59,8 @@ public class TeamEditProfileController extends HttpServlet {
         team.setRegion(region);
         team.setCity(city);
         team.setRemialaddress(remainAddress);
-        team.setAccount(new Account(accountId));
         team.setImageaddress(imageAddress);
         team.setSummury(summury);
-        //manager.createOrUpdate(team);
+        manager.createOrUpdate(team);
     }
 }
