@@ -7,6 +7,7 @@
 package controllers;
 
 import databasemodels.Account;
+import databasemodels.Jobseeker;
 import entitymanager.AccountManagerImpl;
 import entitymanager.JobseekerManagerImpl;
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class JobSeekerProfileController extends HttpServlet {
         Account account = manager.get(accountId);
         String kind = account.getKind();
         JobseekerManagerImpl mng = new JobseekerManagerImpl();
-        
+        Jobseeker jobseeker = mng.get(accountId);
         
     }  
 }

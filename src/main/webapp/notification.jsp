@@ -46,7 +46,7 @@
         </li>
         </c:forEach>
         
-        <c:forEach items="${TeamNotificationBeans}" var="item2">
+        <c:forEach items="${TeamNotificationBeans}" var="item3">
             <li class="w3-padding-16 w3-container">
             <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
