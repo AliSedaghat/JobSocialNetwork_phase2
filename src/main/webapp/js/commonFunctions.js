@@ -52,6 +52,22 @@ function addTeamFieldTag(tagInputId, tagAreaId){
     
 }
 
+function addJobseekerFieldTag(tagInputId, tagAreaId){
+    if($('#'+tagInputId).val() !== ""){
+        $.ajax({
+            url: "/JobSocialNetwork/AddJobseekerFieldTagController",
+            type: 'POST',
+            data: {
+                tagText : $('#' + tagInputId).val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                createTag(tagInputId, tagAreaId);
+            }
+        });
+    }
+    
+}
+
 function cityAndRegionSelection(id, regionSelectId) {
     var sel = document.getElementById(id);
     var selected = sel.options[sel.selectedIndex];

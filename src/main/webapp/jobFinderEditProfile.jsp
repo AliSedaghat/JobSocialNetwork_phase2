@@ -27,78 +27,45 @@
         <div class="w3-half w3-left w3-margin-top w3-margin-bottom">
         <div class="w3-container">
             <p class="w3-right-align"><b>رزومه</b></p><hr class="w3-border-light-blue">
-            <form class="w3-form">
-                <label><b class="w3-right">میزان تحصیلات</b>
-                    <select class="w3-select" name="option">
-                        <option value="" disabled selected>میزان تحصیلات خود را انتخاب کنید</option>
-                        <option value="1">بی سواد</option>
-                        <option value="2"> ابتدایی</option>
-                        <option value="3">راهنمایی</option>
-                        <option value="4">دیپلم</option>
-                        <option value="5">فوق دیپلم</option>
-                        <option value="6">لیسانس</option>
-                        <option value="7">فوق لیسانس</option>
-                        <option value="8">دکتری</option>
-                    </select>
-                </label>
-                <br>
-                <br>
-
-                <label class="w3-right"><b>توانایی‌ها</b></label><br><br>
-                <div id="tagArea1">
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span class="w3-closebtn w3-small">&nbsp;&nbsp;x</span></div>
-                </div><br>
-
-                <div class="w3-row">
-                    <div class="w3-btn w3-hover-teal w3-white w3-right fa fa-arrow-right w3-col s4 m2 l2 w3-xlarge" onclick="createTag('tagInput1','tagArea1')"></div>
-                    <label><input id="tagInput1" type="text" class="w3-input w3-border-teal w3-left w3-col s8 m10 l10 w3-small"></label>
+            
+            <label class="w3-right"><b>توانایی‌ها</b></label><br><br>
+            <div id="tagArea1">
+                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span
+                        class="w3-closebtn w3-small"
+                        onclick="this.parentElement.style.display='none'">&nbsp;&nbsp;x</span>
                 </div>
+            </div><br>
 
-                <label class="w3-right"><b>سوابق</b></label><br>
-                <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
-                    <div class="w3-third w3-padding">
-                        <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.fromDate}">
-                        </label>
-                        <label class="w3-validate">تاریخ
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.tillDate}">
-                        </label>
-                    </div>
-                    <div class="w3-twothird w3-padding">
-                        <label class="w3-validate">محل کار
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.workPlace}">
-                        </label>
-                        <label class="w3-validate">مسئولیت
-                            <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.responsibility}">
-                        </label>
-                    </div>
+            <div class="w3-row">
+                <div class="w3-btn w3-hover-teal w3-white w3-right fa fa-arrow-right w3-col s4 m2 l2 w3-xlarge" onclick="addJobseekerFieldTag('tagInput1','tagArea1')"></div>
+                <label><input id="tagInput1" type="text" class="w3-input w3-border-teal w3-left w3-col s8 m10 l10 w3-small"></label>
+            </div>
+
+            <label class="w3-right"><b>سوابق</b></label><br>
+            <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
+                <div class="w3-third w3-padding">
+                    <label class="w3-validate">از تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="fromDate" name="fromDate" type="date">
+                    </label>
+                    <label class="w3-validate">تا تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="toDate" name="toDate" type="date">
+                    </label>
                 </div>
-                <div class="w3-btn-floating w3-card-2 w3-teal w3-right">+</div><br><br><br>
-                <label class="w3-right"><b>سایر توضیحات</b></label>
-                <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align"
-                          placeholder="یک پاراگراف در مورد خود بنویسید" value="${jobSeekerResumeBean.otherDesc}"></textarea>
-
-                <button class="w3-btn w3-btn-block w3-green">ثبت روزمه</button>
-            </form>
+                <div class="w3-twothird w3-padding">
+                    <label class="w3-validate">محل کار
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="location" name="location" type="text">
+                    </label>
+                    <label class="w3-validate">مسئولیت
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="responsibility" name="responsibility" type="text">
+                    </label>
+                </div>
+                <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
+            </div> 
         </div>
     </div>
 
         <div class="w3-half w3-right w3-border-left w3-border-blue w3-margin-top w3-margin-bottom">
         <div class="w3-container w3-row">
-            <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right" alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
                 <form class="w3-form" method="post" action="/ChangePasswordController">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
@@ -107,26 +74,33 @@
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
                 </form>
             </div>
+            <img src="images/img_avatar.png" style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
+                 alt="عکس کاربر" id="userImage">
+            
         </div>
         <div class="w3-container">
             <p class="w3-right-align"><b>اطلاعات پایه</b></p><hr class="w3-border-light-blue">
 
-            <form class="w3-right-align w3-form">
+            <form class="w3-right-align w3-form" method="post" action="/JobSocialNetwork/JobseekerEditProfilePrimaryInfoController" enctype="multipart/form-data">
                 <div class="w3-row w3-container">
+                    <label class="w3-right w3-right-align"><b>یک عکس انتخاب کنید</b>
+                        <input class="w3-left" name="imageFile" type="file" onchange="showImage(this, 'userImage')">
+                    </label>
+                    <br/><br/>
                     <div class="w3-half w3-right">
                         <label class="w3-validate">مرد
-                            <input type="radio" name="gender" value="male" class="w3-radio" checked><br>
+                            <input type="radio" name="sex" value="مرد" class="w3-radio" checked><br>
                         </label>
                         <label class="w3-validate">زن
-                            <input type="radio" name="gender" value="female" class="w3-radio">
+                            <input type="radio" name="sex" value="زن" class="w3-radio">
                         </label>
                     </div>
                     <div class="w3-half w3-left">
                         <label><b class="w3-right">نمابش اطلاعات برای</b>
-                            <select class="w3-select" name="dataPrivacy">
+                            <select class="w3-select" name="showPrivacy">
                                 <option value="" disabled selected>چه کسانی اطلاعات شما را ببینند؟</option>
-                                <option value="1">همه</option>
-                                <option value="2">کارفرمایانی که برایشان درخواست استخدام فرستاده‌ام</option>
+                                <option value="all">همه</option>
+                                <option value="contact">کارفرمایانی که برایشان درخواست استخدام فرستاده‌ام</option>
                             </select>
                         </label>
                     </div>
@@ -134,75 +108,97 @@
 
                 <div class="w3-section">
                     <label class="w3-right"><b>نام و نام خانوادگی*</b></label>
-                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" 
+                    <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="name" type="text" 
                            placeholder="نام و نام خانوادگی خود را وارد کنید" value="${jobSeekerInformationBean.nameAndFamilyName}">
 
                     <label><b class="w3-right">تاریخ تولد</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="date"
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="birthday" type="date"
                                value="${jobSeekerInformationBean.birthDate}">
                     </label>
 
                     <label><b class="w3-right">شماره تلفن</b>
-                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="tel" 
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="phone" type="tel" 
                                placeholder="تلفن خود را وارد کنید" value="${jobSeekerInformationBean.phoneNum}">
                     </label>
-
+                    
+                    <label><b class="w3-right">ایمیل</b>
+                        <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="email" type="email"
+                               placeholder="ایمیل خود را وارد کنید">
+                    </label>
+                    
                     <label class="w3-right"><b>آدرس</b></label><br>
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" style="resize: vertical;" 
-                                          placeholder="آدرس را وارد کنید" value="${jobSeekerInformationBean.remainAddr}"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">شهر
-                                <select id="Shahrestan" class="w3-select" >
+                                <select id="Shahrestan" class="w3-select" name="city">
                                     <option value="" disabled selected>شهر را انتخاب کنید</option>
                                 </select>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">استان
-                                <select onchange="cityAndRegionSelection(this.value, 'Shahrestan')" class="w3-select" >
-                                    <option value="" disabled selected>استان را انتخاب کنید</option>
-                                    <option value="آذرشهر ,اسکو ,اهر ,بستان‌آباد ,بناب ,تبریز ,جلفا ,چاراویماق ,سراب ,شبستر ,عجب‌شیر ,کلیبر ,مراغه ,مرند ,ملکان ,میانه ,ورزقان ,هریس ,هشترود">آذربایجان شرقی</option>
-                                    <option value="ارومیه ,اشنویه ,بوکان ,پیرانشهر ,تکاب ,چالدران ,خوی ,سردشت ,سلماس ,شاهین‌دژ ,ماکو ,مهاباد ,میاندوآب ,نقده">آذربایجان غربی</option>
-                                    <option value="اردبیل ,بیله‌سوار ,پارس‌آباد ,خلخال ,کوثر ,گِرمی ,مِشگین‌شهر ,نَمین ,نیر">اردبیل</option>
-                                    <option value="آران و بیدگل ,اردستان ,اصفهان ,برخوار و میمه ,تیران و کرون ,چادگان ,خمینی‌شهر ,خوانسار ,سمیرم ,شهرضا ,سمیرم سفلی ,فریدن ,فریدون‌شهر ,فلاورجان ,کاشان ,گلپایگان ,لنجان ,مبارکه ,نائین ,نجف‌آباد ,نطنز">اصفهان</option>
-                                    <option value="آبدانان ,ایلام ,ایوان ,دره‌شهر ,دهلران ,شیروان و چرداول ,مهران">ایلام</option>
-                                    <option value="بوشهر ,تنگستان ,جم ,دشتستان ,دشتی,دیر ,دیلم ,کنگان ,گناوه">بوشهر</option>
-                                    <option value="اسلام‌شهر ,پاکدشت ,تهران ,دماوند ,رباط‌کریم ,ری ,ساوجبلاغ ,شمیرانات ,شهریار ,فیروزکوه ,کرج ,نظرآباد ,ورامین">تهران</option>
-                                    <option value="اردل ,بروجن ,شهرکرد ,فارسان ,کوهرنگ ,لردگان">چهارمحال و بختیاری</option>
-                                    <option value="بیرجند ,درمیان ,سرایان ,سربیشه ,فردوس ,قائنات,نهبندان">خراسان جنوبی</option>
-                                    <option value="بردسکن ,تایباد ,تربت جام ,تربت حیدریه ,چناران ,خلیل‌آباد ,خواف ,درگز ,رشتخوار ,سبزوار ,سرخس ,فریمان ,قوچان ,کاشمر ,کلات ,گناباد ,مشهد ,مه ولات ,نیشابور">خراسان رضوی</option>
-                                    <option value="اسفراین ,بجنورد ,جاجرم ,شیروان ,فاروج ,مانه و سملقان">خراسان شمالی</option>
-                                    <option value="آبادان ,امیدیه ,اندیمشک ,اهواز ,ایذه ,باغ‌ملک ,بندر ماهشهر ,بهبهان ,خرمشهر ,دزفول ,دشت آزادگان ,رامشیر ,رامهرمز ,شادگان ,شوش ,شوشتر ,گتوند ,لالی ,مسجد سلیمان,هندیجان ">خوزستان</option>
-                                    <option value="ابهر ,ایجرود ,خدابنده ,خرمدره ,زنجان ,طارم ,ماه‌نشان">زنجان</option>
-                                    <option value="دامغان ,سمنان ,شاهرود ,گرمسار ,مهدی‌شهر">سمنان</option>
-                                    <option value="ایرانشهر ,چابهار ,خاش ,دلگان ,زابل ,زاهدان ,زهک ,سراوان ,سرباز ,کنارک ,نیک‌شهر">سیستان و بلوچستان</option>
-                                    <option value="آباده ,ارسنجان ,استهبان ,اقلید ,بوانات ,پاسارگاد ,جهرم ,خرم‌بید ,خنج ,داراب ,زرین‌دشت ,سپیدان ,شیراز ,فراشبند ,فسا ,فیروزآباد ,قیر و کارزین ,کازرون ,لارستان ,لامِرد ,مرودشت ,ممسنی ,مهر ,نی‌ریز">فارس</option>
-                                    <option value="آبیک ,البرز ,بوئین‌زهرا ,تاکستان ,قزوین">قزوین</option>
-                                    <option value="قم">قم</option>
-                                    <option value="بانه ,بیجار ,دیواندره ,سروآباد ,سقز ,سنندج ,قروه ,کامیاران ,مریوان">کردستان</option>
-                                    <option value="بافت ,بردسیر ,بم ,جیرفت ,راور ,رفسنجان ,رودبار جنوب ,زرند ,سیرجان ,شهر بابک ,عنبرآباد ,قلعه گنج ,کرمان ,کوهبنان ,کهنوج ,منوجان">کرمان</option>
-                                    <option value="اسلام‌آباد غرب ,پاوه ,ثلاث باباجانی ,جوانرود ,دالاهو ,روانسر ,سرپل ذهاب ,سنقر ,صحنه ,قصر شیرین ,کرمانشاه ,کنگاور ,گیلان غرب ,هرسین">کرمانشاه</option>
-                                    <option value="بویراحمد ,بهمئی ,دنا ,کهگیلویه ,گچساران">کهگیلویه و بویراحمد</option>
-                                    <option value="آزادشهر ,آق‌قلا ,بندر گز ,ترکمن ,رامیان ,علی‌آباد ,کردکوی ,کلاله ,گرگان ,گنبد کاووس ,مراوه‌تپه ,مینودشت">گلستان</option>
-                                    <option value="آستارا ,آستانه اشرفیه ,اَملَش ,بندر انزلی ,رشت ,رضوانشهر ,رودبار ,رودسر ,سیاهکل ,شَفت ,صومعه‌سرا ,طوالش ,فومَن ,لاهیجان ,لنگرود ,ماسال">گیلان</option>
-                                    <option value="ازنا ,الیگودرز ,بروجرد ,پل‌دختر ,خرم‌آباد ,دورود ,دلفان ,سلسله ,کوهدشت">لرستان</option>
-                                    <option value="آمل ,بابل ,بابلسر ,بهشهر ,تنکابن ,جویبار ,چالوس ,رامسر ,ساری ,سوادکوه ,قائم‌شهر ,گلوگاه ,محمودآباد ,نکا ,نور ,نوشهر">مازندران</option>
-                                    <option value="آشتیان ,اراک ,تفرش ,خمین ,دلیجان ,زرندیه ,ساوه ,شازند ,کمیجان ,محلات">مرکزی</option>
-                                    <option value="ابوموسی ,بستک ,بندر عباس ,بندر لنگه ,جاسک ,حاجی‌آباد ,شهرستان خمیر ,رودان  ,قشم ,گاوبندی ,میناب">هرمزگان</option>
-                                    <option value="اسدآباد ,بهار ,تویسرکان ,رزن ,کبودرآهنگ ,ملایر ,نهاوند ,همدان">همدان</option>
-                                    <option value="ابرکوه ,اردکان ,بافق ,تفت ,خاتم ,صدوق ,طبس ,مهریز ,مِیبُد ,یزد">یزد</option>
+                                <select id='region' onchange="cityAndRegionSelection(this.id ,'Shahrestan')" name="region" class="w3-select" >
+                                    <option data-cities="" value="" disabled selected>استان را انتخاب کنید</option>
+                                    <option data-cities="آذرشهر ,اسکو ,اهر ,بستان‌آباد ,بناب ,تبریز ,جلفا ,چاراویماق ,سراب ,شبستر ,عجب‌شیر ,کلیبر ,مراغه ,مرند ,ملکان ,میانه ,ورزقان ,هریس ,هشترود" value="آذربایجان شرقی">آذربایجان شرقی</option>
+                                    <option data-cities="ارومیه ,اشنویه ,بوکان ,پیرانشهر ,تکاب ,چالدران ,خوی ,سردشت ,سلماس ,شاهین‌دژ ,ماکو ,مهاباد ,میاندوآب ,نقده" value="آذربایجان غربی">آذربایجان غربی</option>
+                                    <option data-cities="اردبیل ,بیله‌سوار ,پارس‌آباد ,خلخال ,کوثر ,گِرمی ,مِشگین‌شهر ,نَمین ,نیر" value="اردبیل">اردبیل</option>
+                                    <option data-cities="آران و بیدگل ,اردستان ,اصفهان ,برخوار و میمه ,تیران و کرون ,چادگان ,خمینی‌شهر ,خوانسار ,سمیرم ,شهرضا ,سمیرم سفلی ,فریدن ,فریدون‌شهر ,فلاورجان ,کاشان ,گلپایگان ,لنجان ,مبارکه ,نائین ,نجف‌آباد ,نطنز" value="اصفهان">اصفهان</option>
+                                    <option data-cities="آبدانان ,ایلام ,ایوان ,دره‌شهر ,دهلران ,شیروان و چرداول ,مهران" value="ایلام">ایلام</option>
+                                    <option data-cities="بوشهر ,تنگستان ,جم ,دشتستان ,دشتی,دیر ,دیلم ,کنگان ,گناوه" value="بوشهر">بوشهر</option>
+                                    <option data-cities="اسلام‌شهر ,پاکدشت ,تهران ,دماوند ,رباط‌کریم ,ری ,ساوجبلاغ ,شمیرانات ,شهریار ,فیروزکوه ,کرج ,نظرآباد ,ورامین" value="تهران">تهران</option>
+                                    <option data-cities="اردل ,بروجن ,شهرکرد ,فارسان ,کوهرنگ ,لردگان" value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                                    <option data-cities="بیرجند ,درمیان ,سرایان ,سربیشه ,فردوس ,قائنات,نهبندان" value="خراسان جنوبی">خراسان جنوبی</option>
+                                    <option data-cities="بردسکن ,تایباد ,تربت جام ,تربت حیدریه ,چناران ,خلیل‌آباد ,خواف ,درگز ,رشتخوار ,سبزوار ,سرخس ,فریمان ,قوچان ,کاشمر ,کلات ,گناباد ,مشهد ,مه ولات ,نیشابور" value="خراسان رضوی">خراسان رضوی</option>
+                                    <option data-cities="اسفراین ,بجنورد ,جاجرم ,شیروان ,فاروج ,مانه و سملقان" value="خراسان شمالی">خراسان شمالی</option>
+                                    <option data-cities="آبادان ,امیدیه ,اندیمشک ,اهواز ,ایذه ,باغ‌ملک ,بندر ماهشهر ,بهبهان ,خرمشهر ,دزفول ,دشت آزادگان ,رامشیر ,رامهرمز ,شادگان ,شوش ,شوشتر ,گتوند ,لالی ,مسجد سلیمان,هندیجان " value="خوزستان">خوزستان</option>
+                                    <option data-cities="ابهر ,ایجرود ,خدابنده ,خرمدره ,زنجان ,طارم ,ماه‌نشان" value="زنجان">زنجان</option>
+                                    <option data-cities="دامغان ,سمنان ,شاهرود ,گرمسار ,مهدی‌شهر" value="سمنان">سمنان</option>
+                                    <option data-cities="ایرانشهر ,چابهار ,خاش ,دلگان ,زابل ,زاهدان ,زهک ,سراوان ,سرباز ,کنارک ,نیک‌شهر" value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                                    <option data-cities="آباده ,ارسنجان ,استهبان ,اقلید ,بوانات ,پاسارگاد ,جهرم ,خرم‌بید ,خنج ,داراب ,زرین‌دشت ,سپیدان ,شیراز ,فراشبند ,فسا ,فیروزآباد ,قیر و کارزین ,کازرون ,لارستان ,لامِرد ,مرودشت ,ممسنی ,مهر ,نی‌ریز" value="فارس">فارس</option>
+                                    <option data-cities="آبیک ,البرز ,بوئین‌زهرا ,تاکستان ,قزوین" value="قزوین">قزوین</option>
+                                    <option data-cities="قم" value="قم">قم</option>
+                                    <option data-cities="بانه ,بیجار ,دیواندره ,سروآباد ,سقز ,سنندج ,قروه ,کامیاران ,مریوان" value="کردستان">کردستان</option>
+                                    <option data-cities="بافت ,بردسیر ,بم ,جیرفت ,راور ,رفسنجان ,رودبار جنوب ,زرند ,سیرجان ,شهر بابک ,عنبرآباد ,قلعه گنج ,کرمان ,کوهبنان ,کهنوج ,منوجان" value="کرمان">کرمان</option>
+                                    <option data-cities="اسلام‌آباد غرب ,پاوه ,ثلاث باباجانی ,جوانرود ,دالاهو ,روانسر ,سرپل ذهاب ,سنقر ,صحنه ,قصر شیرین ,کرمانشاه ,کنگاور ,گیلان غرب ,هرسین" value="کرمانشاه">کرمانشاه</option>
+                                    <option data-cities="بویراحمد ,بهمئی ,دنا ,کهگیلویه ,گچساران" value="کهگیلویه و بویراحمد">کهگیلویه و بویراحمد</option>
+                                    <option data-cities="آزادشهر ,آق‌قلا ,بندر گز ,ترکمن ,رامیان ,علی‌آباد ,کردکوی ,کلاله ,گرگان ,گنبد کاووس ,مراوه‌تپه ,مینودشت">گلستان</option>
+                                    <option data-cities="آستارا ,آستانه اشرفیه ,اَملَش ,بندر انزلی ,رشت ,رضوانشهر ,رودبار ,رودسر ,سیاهکل ,شَفت ,صومعه‌سرا ,طوالش ,فومَن ,لاهیجان ,لنگرود ,ماسال" value="گیلان">گیلان</option>
+                                    <option data-cities="ازنا ,الیگودرز ,بروجرد ,پل‌دختر ,خرم‌آباد ,دورود ,دلفان ,سلسله ,کوهدشت" value="لرستان">لرستان</option>
+                                    <option data-cities="آمل ,بابل ,بابلسر ,بهشهر ,تنکابن ,جویبار ,چالوس ,رامسر ,ساری ,سوادکوه ,قائم‌شهر ,گلوگاه ,محمودآباد ,نکا ,نور ,نوشهر" value="مازندران">مازندران</option>
+                                    <option data-cities="آشتیان ,اراک ,تفرش ,خمین ,دلیجان ,زرندیه ,ساوه ,شازند ,کمیجان ,محلات" value="مرکزی">مرکزی</option>
+                                    <option data-cities="ابوموسی ,بستک ,بندر عباس ,بندر لنگه ,جاسک ,حاجی‌آباد ,شهرستان خمیر ,رودان  ,قشم ,گاوبندی ,میناب" value="هرمزگان">هرمزگان</option>
+                                    <option data-cities="اسدآباد ,بهار ,تویسرکان ,رزن ,کبودرآهنگ ,ملایر ,نهاوند ,همدان" value="همدان">همدان</option>
+                                    <option data-cities="ابرکوه ,اردکان ,بافق ,تفت ,خاتم ,صدوق ,طبس ,مهریز ,مِیبُد ,یزد" value="یزد">یزد</option>
                                 </select>
                             </label>
                         </div>
                     </div>
-
-
-                    <button class="w3-btn w3-btn-block w3-green">ثبت ویرایش</button>
+                    
+                    <label><b class="w3-right">میزان تحصیلات</b>
+                    <select class="w3-select" name="option">
+                        <option value="" disabled selected>میزان تحصیلات خود را انتخاب کنید</option>
+                        <option value="بی سواد">بی سواد</option>
+                        <option value="ابتدایی">ابتدایی</option>
+                        <option value="راهنمایی">راهنمایی</option>
+                        <option value="دیپلم">دیپلم</option>
+                        <option value="فوق دیپلم">فوق دیپلم</option>
+                        <option value="لیسانس">لیسانس</option>
+                        <option value="فوق لیسانس">فوق لیسانس</option>
+                        <option value="دکتری">دکتری</option>
+                    </select>
+                    </label>
+                    <br>
+                    <br>
+                    
+                    <label class="w3-right"><b>سایر توضیحات</b></label>
+                        <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align"
+                                  placeholder="یک پاراگراف در مورد شرکت خود بنویسید" name="summury"></textarea>
+                    <button class="w3-btn w3-btn-block w3-green" type="submit">ثبت ویرایش</button>
                 </div>
             </form>
         </div>
@@ -224,7 +220,24 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src="js/commonFunctions.js"></script>
-
+<script type="text/javascript" src="js/commonFunctions.js"></script>
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    function submitResume(){
+        $.ajax({
+            url: "/JobSocialNetwork/AddJobseekerResumeController",
+            type: 'POST',
+            data: {
+                fromDate : $('#fromDate').val(),
+                toDate : $('#toDate').val(),
+                location : $('#location').val(),
+                responsibility : $('#responsibility').val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                
+            }
+        });
+    }
+</script>
 </body>
 </html>
