@@ -25,19 +25,20 @@
         
         
         <c:forEach items="${jobSeekerNotificationBeans}" var="item1">
-            <a href="/JobSocialNetwork/JobSeekerProfileController?senderId=${item1.senderId}">رفتن به صفحه کارجو</a>
+            <a href="/JobSocialNetwork/JobSeekerProfileController?senderId=${item1.senderId}">
             <li class="w3-padding-16 w3-container">
                 <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
                 <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
                 <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست استخدام بابت آگهی&nbsp;<b><c:out value="${item1.jobTitle}" /></b></span></div>
-                <span class="w3-xlarge">سعید ژیانی</span><br>
+                <span class="w3-xlarge">${item1.jobSeekerName}</span><br>
                 <span>کارجو</span>
             </li>
+            </a>
         </c:forEach>
             
         <c:forEach items="${employerNotificationBeans}" var="item2">
-            <a href="/JobSocialNetwork/EmployerProfileController?senderId=${item2.senderId}">رفتن به صفحه کارفرما</a>
+            <a href="/JobSocialNetwork/EmployerProfileController?senderId=${item2.senderId}">
             <li class="w3-padding-16 w3-container">
             <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
@@ -45,11 +46,12 @@
             <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست همکاری برای شغل&nbsp;<b><c:out value="${item2.jobTitle}" /></b></span></div>
             <span class="w3-xlarge"><c:out value="${item2.employerName}" /></span><br>
             <span>کارفرما</span>
-        </li>
+            </li>
+            </a>
         </c:forEach>
         
         <c:forEach items="${TeamNotificationBeans}" var="item3">
-            <a href="/JobSocialNetwork/TeamProfileController?senderId=${item3.senderId}">رفتن به صفحه تیم</a>
+            <a href="/JobSocialNetwork/TeamProfileController?senderId=${item3.senderId}">
             <li class="w3-padding-16 w3-container">
             <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
@@ -57,72 +59,10 @@
             <div class="w3-center w3-half w3-right w3-margin-top "><span>درخواست همکاری برای شغل&nbsp;<b><c:out value="${item3.jobTitle}" /></b></span></div>
             <span class="w3-xlarge"><c:out value="${item3.teamName}" /></span><br>
             <span>تیم برون سپاری</span>
-        </li>
+            </li>
+            </a>
         </c:forEach>
-        <!--<li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">شرکت پیله</span><br>
-            <span>کارفرما</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top "><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">تیم هوش مصنوعی دانشگاه بهشتی</span><br>
-            <span>تیم برون سپاری</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست استخدام بابت آگهی&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">سعید ژیانی</span><br>
-            <span>کارجو</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">شرکت پیله</span><br>
-            <span>کارفرما</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top "><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">تیم هوش مصنوعی دانشگاه بهشتی</span><br>
-            <span>تیم برون سپاری</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست استخدام بابت آگهی&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">سعید ژیانی</span><br>
-            <span>کارجو</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top"><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">شرکت پیله</span><br>
-            <span>کارفرما</span>
-        </li>
-        <li class="w3-padding-16 w3-container">
-            <span onclick="this.parentElement.style.display='none'"
-                  class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
-            <img src="images/img_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <div class="w3-center w3-half w3-right w3-margin-top "><span>درخواست همکاری برای شغل&nbsp;<b>برنامه نویس</b></span></div>
-            <span class="w3-xlarge">تیم هوش مصنوعی دانشگاه بهشتی</span><br>
-            <span>تیم برون سپاری</span>
-        </li> -->
+        
     </ul>
 
 </div>
