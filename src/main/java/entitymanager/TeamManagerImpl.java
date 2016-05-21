@@ -30,5 +30,10 @@ public class TeamManagerImpl implements TeamManager{
     public Team getbyAccountId(Integer accountId) {
         return teamDAO.getByAccountId(accountId);
     }
+
+    @Override
+    public void createOrUpdate(Team team) {
+        teamDAO.createOrUpdate(team);
+    }
     
 }
