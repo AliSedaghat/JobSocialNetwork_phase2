@@ -110,7 +110,7 @@ public class Jobseeker implements Serializable {
     @Column(name = "showprivacy")
     private Integer showprivacy;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Account account;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker")
     private Collection<Jobseekerresume> jobseekerresumeCollection;

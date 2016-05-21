@@ -62,12 +62,12 @@ public class Job implements Serializable {
     @Size(max = 100)
     @Column(name = "otherrequirment")
     private String otherrequirment;
-    @OneToMany(mappedBy = "job")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "job")
     private Collection<Notification> notificationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "job")
     private Collection<Jobskills> jobskillsCollection;
     @JoinColumn(name = "employer", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Employer employer1;
 
     public Job() {

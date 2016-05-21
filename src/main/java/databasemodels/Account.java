@@ -61,9 +61,9 @@ public class Account implements Serializable {
     private String kind;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
     private Collection<Team> teamCollection;
-    @OneToMany(mappedBy = "receiver")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
     private Collection<Notification> notificationCollection;
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
     private Collection<Notification> notificationCollection1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
     private Collection<Jobseeker> jobseekerCollection;

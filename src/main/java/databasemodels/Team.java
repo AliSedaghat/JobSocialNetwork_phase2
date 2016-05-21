@@ -79,7 +79,7 @@ public class Team implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private Collection<Teamresume> teamresumeCollection;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Account account;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private Collection<Teamskills> teamskillsCollection;

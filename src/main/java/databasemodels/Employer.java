@@ -90,10 +90,10 @@ public class Employer implements Serializable {
     private String imageaddress;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer1")
     private Collection<Employerjobfield> employerjobfieldCollection;
-    @OneToMany(mappedBy = "employer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer")
     private Collection<Employerresume> employerresumeCollection;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Account account;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer1")
     private Collection<Job> jobCollection;
