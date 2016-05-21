@@ -5,10 +5,9 @@
  */
 package controllers;
 
-import databasemodels.Employer;
-import databasemodels.Employerjobfield;
-import entitymanager.EmployerJobFieldManagerImpl;
-import entitymanager.EmployerManagerImpl;
+import databasemodels.Team;
+import databasemodels.Teamskills;
+import entitymanager.TeamManagerImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author SAEED
  */
-@WebServlet(name = "AddFieldTagController", urlPatterns = {"/AddFieldTagController"})
-public class AddFieldTagController extends HttpServlet {
+@WebServlet(name = "AddTeamFieldTagController", urlPatterns = {"/AddTeamFieldTagController"})
+public class AddTeamFieldTagController extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -39,17 +38,17 @@ public class AddFieldTagController extends HttpServlet {
         final String tagText = request.getParameter("tagText");
         if(tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
-            EmployerManagerImpl manager = new EmployerManagerImpl();
-            Employer employer = manager.getbyAccountId(accountId);
+            TeamManagerImpl manager = new TeamManagerImpl();
+            Team team = manager.getbyAccountId(accountId);
             
-            Employerjobfield employerjobfield = new Employerjobfield();
-            employerjobfield.setTitle(tagText);
-            employerjobfield.setEmployer1(employer);
+            Teamskills teamskills = new Teamskills();
+            teamskills.setTitle(tagText);
+            teamskills.setTeam(team);
             
-            employer.setEmployerjobfieldCollection(new ArrayList<Employerjobfield>());
-            employer.getEmployerjobfieldCollection().add(employerjobfield);
+            team.setTeamskillsCollection(new ArrayList<Teamskills>());
+            team.getTeamskillsCollection().add(teamskills);
             
-            manager.createOrUpdate(employer);
+            manager.createOrUpdate(team);
         }else{
             response.setStatus(422);
         }

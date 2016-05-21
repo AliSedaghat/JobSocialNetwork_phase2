@@ -2,7 +2,7 @@
     * Created by SAEED
     * for JobSocialNetwork
     * on 2016-04-08, 14:16.
-    */
+    */   
 function createTag(tagInputId, tagAreaId) {
     var text = document.getElementById(tagInputId).value;
     document.getElementById(tagInputId).value = '';
@@ -24,6 +24,22 @@ function addFieldTag(tagInputId, tagAreaId){
     if($('#'+tagInputId).val() !== ""){
         $.ajax({
             url: "/JobSocialNetwork/AddFieldTagController",
+            type: 'POST',
+            data: {
+                tagText : $('#' + tagInputId).val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                createTag(tagInputId, tagAreaId);
+            }
+        });
+    }
+    
+}
+
+function addTeamFieldTag(tagInputId, tagAreaId){
+    if($('#'+tagInputId).val() !== ""){
+        $.ajax({
+            url: "/JobSocialNetwork/AddTeamFieldTagController",
             type: 'POST',
             data: {
                 tagText : $('#' + tagInputId).val()

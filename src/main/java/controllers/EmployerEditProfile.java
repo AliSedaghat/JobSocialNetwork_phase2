@@ -63,7 +63,6 @@ public class EmployerEditProfile extends HttpServlet {
         employer.setRegion(region);
         employer.setCity(city);
         employer.setRemainaddress(remainAddress);
-        employer.setAccount(new Account(accountId));
         employer.setImageaddress(imageAddress);
         employer.setSummury(summury);
         manager.createOrUpdate(employer);
