@@ -66,7 +66,7 @@
                         <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="title" name="title" type="text" value="${outSourceTeamResumeBean.projectTitle}">
                     </label>
                     <label class="w3-validate">کارفرما
-                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="description" name="description" type="text" value="${outSourceTeamResumeBean.employer}">
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="employerName" name="employerName" type="text" value="${outSourceTeamResumeBean.employer}">
                     </label>
                 </div>
                 <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
@@ -192,6 +192,22 @@
 
 <script type="text/javascript" src="js/commonFunctions.js"></script>
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-
+<script type="text/javascript">
+    function submitResume(){
+        $.ajax({
+            url: "/JobSocialNetwork/AddTeamResumeController",
+            type: 'POST',
+            data: {
+                fromDate : $('#fromDate').val(),
+                toDate : $('#toDate').val(),
+                title : $('#title').val(),
+                employerName : $('#employerName').val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                
+            }
+        });
+    }
+</script>
 </body>
 </html>
