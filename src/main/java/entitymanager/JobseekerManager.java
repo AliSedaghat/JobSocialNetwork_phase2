@@ -16,4 +16,6 @@ public interface JobseekerManager {
     public Integer create(Jobseeker jobseeker);
     public Jobseeker get(Integer id);
     public void update(Jobseeker jobseeker);
+    public void createOrUpdate(Jobseeker jobseeker);
+    public Jobseeker getbyAccountId(Integer accountId);
 }

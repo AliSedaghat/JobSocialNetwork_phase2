@@ -43,5 +43,15 @@ public class JobseekerManagerImpl implements JobseekerManager{
     public Jobseeker get(Integer id) {
         return jobSeekerDAO.read(id);
     }
+
+    @Override
+    public void createOrUpdate(Jobseeker jobseeker) {
+        jobSeekerDAO.createOrUpdate(jobseeker);
+    }
+
+    @Override
+    public Jobseeker getbyAccountId(Integer accountId) {
+        return jobSeekerDAO.getByAccountId(accountId);
+    }
     
 }
