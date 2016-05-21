@@ -5,10 +5,13 @@
  */
 package entitymanager;
 
+import databasemodels.Team;
+
 /**
  *
  * @author SAEED
  */
 public interface TeamManager {
     public Integer getCountAll();
+    public Team getbyAccountId(Integer accountId);
 }

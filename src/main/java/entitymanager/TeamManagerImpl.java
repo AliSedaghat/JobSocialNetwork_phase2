@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import dao.TeamDAOImpl;
+import databasemodels.Team;
 
 /**
  *
@@ -23,6 +24,11 @@ public class TeamManagerImpl implements TeamManager{
     @Transactional
     public Integer getCountAll() {
         return teamDAO.getCountAll();
+    }
+
+    @Override
+    public Team getbyAccountId(Integer accountId) {
+        return teamDAO.getByAccountId(accountId);
     }
     
 }
