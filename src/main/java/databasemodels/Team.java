@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Team.findByRegion", query = "SELECT t FROM Team t WHERE t.region = :region"),
     @NamedQuery(name = "Team.findByCity", query = "SELECT t FROM Team t WHERE t.city = :city"),
     @NamedQuery(name = "Team.findByRemialaddress", query = "SELECT t FROM Team t WHERE t.remialaddress = :remialaddress"),
-    @NamedQuery(name = "Team.count", query = "SELECT COUNT(t.id) FROM Employer t"),
+    @NamedQuery(name = "Team.count", query = "SELECT COUNT(t.id) FROM Team t"),
+    @NamedQuery(name = "Team.findByAccountId", query = "SELECT t FROM Team t WHERE t.account = :accountId"),
     @NamedQuery(name = "Team.findBySummury", query = "SELECT t FROM Team t WHERE t.summury = :summury")})
 public class Team implements Serializable {
     private static final long serialVersionUID = 1L;
