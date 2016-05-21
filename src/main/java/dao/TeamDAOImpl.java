@@ -30,4 +30,9 @@ public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
                 .getNamedQuery("Team.count").list().get(0);
     }
     
+    public Team getByAccountId(Integer accountId){
+        return   (Team) factory.getCurrentSession()
+                .getNamedQuery("Team.findByAccountId")
+                    .setString("accountId", accountId.toString()).list().get(0);
+    }
 }

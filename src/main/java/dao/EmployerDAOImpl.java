@@ -32,7 +32,8 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
     
     public Employer getByAccountId(Integer accountId){
         return  (Employer) factory.getCurrentSession()
-                .getNamedQuery("Employer.findByAccountId").list().get(0);
+                .getNamedQuery("Employer.findByAccountId")
+                    .setString("accountId", accountId.toString()).list().get(0);
     }
     
 }

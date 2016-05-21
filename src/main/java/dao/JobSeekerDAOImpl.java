@@ -30,4 +30,9 @@ public class JobSeekerDAOImpl extends GenericDAOImpl<Jobseeker, Integer>{
                 .getNamedQuery("Jobseeker.count").list().get(0);
     }
     
+    public Jobseeker getByAccountId(Integer accountId){
+        return   (Jobseeker) factory.getCurrentSession()
+                .getNamedQuery("Jobseeker.findByAccountId")
+                    .setString("accountId", accountId.toString()).list().get(0);
+    }
 }
