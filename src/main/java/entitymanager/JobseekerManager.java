@@ -5,10 +5,15 @@
  */
 package entitymanager;
 
+import databasemodels.Jobseeker;
+
 /**
  *
  * @author SAEED
  */
 public interface JobseekerManager {
     public Integer getCountAll();
+    public Integer create(Jobseeker jobseeker);
+    public Jobseeker get(Integer id);
+    public void update(Jobseeker jobseeker);
 }
