@@ -5,10 +5,12 @@
  */
 package controllers;
 
+import databasemodels.Employer;
 import databasemodels.Employerjobfield;
 import entitymanager.EmployerJobFieldManagerImpl;
 import entitymanager.EmployerManagerImpl;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,13 +40,16 @@ public class AddFieldTagController extends HttpServlet {
         if(tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
             EmployerManagerImpl manager = new EmployerManagerImpl();
+            Employer employer = manager.getbyAccountId(accountId);
             
             Employerjobfield employerjobfield = new Employerjobfield();
             employerjobfield.setTitle(tagText);
-            employerjobfield.setEmployer1(manager.getbyAccountId(accountId));
+            employerjobfield.setEmployer1(employer);
             
-            EmployerJobFieldManagerImpl managerJob = new EmployerJobFieldManagerImpl();
-            managerJob.delete(employerjobfield);
+            employer.setEmployerjobfieldCollection(new ArrayList<Employerjobfield>());
+            employer.getEmployerjobfieldCollection().add(employerjobfield);
+            
+            manager.createOrUpdate(employer);
         }else{
             response.setStatus(422);
         }
