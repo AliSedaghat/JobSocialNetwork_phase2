@@ -15,6 +15,7 @@
     <class>databasemodels.Team</class>
     <class>databasemodels.Teamskills</class>
     <class>databasemodels.Jobskills</class>
+    <class>databasemodels.Employer_1</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jobsocialnetworkdb?zeroDateTimeBehavior=convertToNull"/>
