@@ -261,38 +261,36 @@
         </header>
         <div class="w3-container">
             <div class="w3-section">
-                <form class="w3-form">
-                    <input class="w3-input w3-border-teal w3-center" type="text" name="jobTitle" placeholder="عنوان شغل">
-                    <div class="w3-row">
-                        <select class="w3-select w3-center w3-half" style="margin-top: 1.6%" name="sex">
-                            <option value="" disabled selected>جنسیت</option>
-                            <option value="1">مرد</option>
-                            <option value="2">زن</option>
-                            <option value="3">مرد و زن</option>
-                        </select>
-                        <input class="w3-input w3-border-teal w3-center w3-half" type="number" placeholder="تعداد">
-                    </div>
-                    <div class="w3-row">
-                        <select class="w3-select w3-center w3-quarter" style="margin-top: 1.6%" name="dealKind">
-                            <option value="" disabled selected>نوع قرارداد</option>
-                            <option value="1">دائمی</option>
-                            <option value="2">فراردادی</option>
-                            <option value="3">پروژه‌ای</option>
-                            <option value="4">فصلی</option>
-                        </select>
-                        <input class="w3-input w3-border-teal w3-center w3-half" type="number" placeholder="حقوق">
-                        <b class="w3-quarter w3-center w3-margin-top">&nbsp;تومان</b>
-                    </div>
-                    <input class="w3-input w3-border-teal w3-center" type="text" placeholder="توانایی‌ها">
-                    <textarea class="w3-input w3-border-teal w3-center" style="resize:vertical;"
-                              placeholder="سایر توضیحات"></textarea>
-                    <br>
-                    <button class="w3-btn w3-green w3-right" type="submit">ثبت</button>
-                    <button class="w3-btn w3-red w3-left" type="button"
-                            onclick="document.getElementById('addJob').style.display = 'none'">لغو
-                    </button>
-                    <br>
-                </form>
+                <input class="w3-input w3-border-teal w3-center" type="text" id="jobTitle" name="jobTitle" placeholder="عنوان شغل">
+                <div class="w3-row">
+                    <select class="w3-select w3-center w3-half" style="margin-top: 1.6%" id="sex" name="sex">
+                        <option value="" disabled selected>جنسیت</option>
+                        <option value="مرد">مرد</option>
+                        <option value="زن">زن</option>
+                        <option value="مرد و زن">مرد و زن</option>
+                    </select>
+                    <input class="w3-input w3-border-teal w3-center w3-half" id="capacity" name="capacity" type="number" placeholder="تعداد">
+                </div>
+                <div class="w3-row">
+                    <select class="w3-select w3-center w3-quarter" style="margin-top: 1.6%" id="contributeKind" name="contributeKind">
+                        <option value="" disabled selected>نوع قرارداد</option>
+                        <option value="دائمی">دائمی</option>
+                        <option value="فراردادی">فراردادی</option>
+                        <option value="پروژه‌ای">پروژه‌ای</option>
+                        <option value="فصلی">فصلی</option>
+                    </select>
+                    <input class="w3-input w3-border-teal w3-center w3-half" id="salary" name="salary" type="number" placeholder="حقوق">
+                    <b class="w3-quarter w3-center w3-margin-top">&nbsp;تومان</b>
+                </div>
+                <input class="w3-input w3-border-teal w3-center" type="text" id="skills" name="skills" placeholder="توانایی‌ها. آنها را با , از هم جدا کنید">
+                <textarea class="w3-input w3-border-teal w3-center" id="otherRequirment" name="otherRequirment" style="resize:vertical;"
+                          placeholder="سایر توضیحات"></textarea>
+                <br>
+                <button class="w3-btn w3-green w3-right" type="button" onclick="addNewJob()">ثبت</button>
+                <button class="w3-btn w3-red w3-left" type="button"
+                        onclick="document.getElementById('addJob').style.display = 'none'">لغو
+                </button>
+                <br>
             </div>
         </div>
     </div>
@@ -330,6 +328,25 @@
                 toDate : $('#toDate').val(),
                 title : $('#title').val(),
                 description : $('#description').val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                
+            }
+        });
+    }
+    
+    function addNewJob(){
+        $.ajax({
+            url: "/JobSocialNetwork/AddNewJobController",
+            type: 'POST',
+            data: {
+                jobTitle : $('#jobTitle').val(),
+                sex : $('#sex').val(),
+                capacity : $('#capacity').val(),
+                contributeKind : $('#contributeKind').val(),
+                salary : $('#salary').val(),
+                skills : $('#skills').val(),
+                otherRequirment : $('#otherRequirment').val()
             },
             success: function (data, textStatus, jqXHR) {
                 
