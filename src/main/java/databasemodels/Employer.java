@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "employer")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Employer.findAll", query = "SELECT e FROM Employer e"),
@@ -49,34 +50,43 @@ public class Employer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "name")
     private String name;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
+    @Column(name = "phone")
     private String phone;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 80)
+    @Column(name = "email")
     private String email;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "region")
     private String region;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "city")
     private String city;
     @Size(max = 100)
+    @Column(name = "remainaddress")
     private String remainaddress;
     @Size(max = 200)
+    @Column(name = "summury")
     private String summury;
     @Size(max = 50)
+    @Column(name = "imageaddress")
     private String imageaddress;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer1")
     private Collection<Employerjobfield> employerjobfieldCollection;
@@ -233,7 +243,7 @@ public class Employer implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Employer[ id=" + id + " ]";
+        return "databasemodels.Employer[ id=" + id + " ]";
     }
     
 }

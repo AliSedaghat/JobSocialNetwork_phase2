@@ -6,7 +6,9 @@
 package databasemodels;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,10 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,6 +59,16 @@ public class Account implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "kind")
     private String kind;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    private Collection<Team> teamCollection;
+    @OneToMany(mappedBy = "receiver")
+    private Collection<Notification> notificationCollection;
+    @OneToMany(mappedBy = "sender")
+    private Collection<Notification> notificationCollection1;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    private Collection<Jobseeker> jobseekerCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    private Collection<Employer> employerCollection;
 
     public Account() {
     }
@@ -100,6 +114,51 @@ public class Account implements Serializable {
 
     public void setKind(String kind) {
         this.kind = kind;
+    }
+
+    @XmlTransient
+    public Collection<Team> getTeamCollection() {
+        return teamCollection;
+    }
+
+    public void setTeamCollection(Collection<Team> teamCollection) {
+        this.teamCollection = teamCollection;
+    }
+
+    @XmlTransient
+    public Collection<Notification> getNotificationCollection() {
+        return notificationCollection;
+    }
+
+    public void setNotificationCollection(Collection<Notification> notificationCollection) {
+        this.notificationCollection = notificationCollection;
+    }
+
+    @XmlTransient
+    public Collection<Notification> getNotificationCollection1() {
+        return notificationCollection1;
+    }
+
+    public void setNotificationCollection1(Collection<Notification> notificationCollection1) {
+        this.notificationCollection1 = notificationCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Jobseeker> getJobseekerCollection() {
+        return jobseekerCollection;
+    }
+
+    public void setJobseekerCollection(Collection<Jobseeker> jobseekerCollection) {
+        this.jobseekerCollection = jobseekerCollection;
+    }
+
+    @XmlTransient
+    public Collection<Employer> getEmployerCollection() {
+        return employerCollection;
+    }
+
+    public void setEmployerCollection(Collection<Employer> employerCollection) {
+        this.employerCollection = employerCollection;
     }
 
     @Override

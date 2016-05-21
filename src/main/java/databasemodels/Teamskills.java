@@ -7,6 +7,7 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "teamskills")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Teamskills.findAll", query = "SELECT t FROM Teamskills t"),
@@ -36,10 +37,12 @@ public class Teamskills implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "title")
     private String title;
     @JoinColumn(name = "team", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -103,7 +106,7 @@ public class Teamskills implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Teamskills[ id=" + id + " ]";
+        return "databasemodels.Teamskills[ id=" + id + " ]";
     }
     
 }

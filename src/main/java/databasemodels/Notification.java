@@ -7,6 +7,7 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "notification")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n"),
@@ -32,6 +33,7 @@ public class Notification implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
+    @Column(name = "id")
     private Integer id;
     @JoinColumn(name = "job", referencedColumnName = "id")
     @ManyToOne
@@ -104,7 +106,7 @@ public class Notification implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Notification[ id=" + id + " ]";
+        return "databasemodels.Notification[ id=" + id + " ]";
     }
     
 }

@@ -7,6 +7,7 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -17,9 +18,11 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 public class JobskillsPK implements Serializable {
     @Basic(optional = false)
+    @Column(name = "id")
     private int id;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "jobid")
     private int jobid;
 
     public JobskillsPK() {
@@ -72,7 +75,7 @@ public class JobskillsPK implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.JobskillsPK[ id=" + id + ", jobid=" + jobid + " ]";
+        return "databasemodels.JobskillsPK[ id=" + id + ", jobid=" + jobid + " ]";
     }
     
 }

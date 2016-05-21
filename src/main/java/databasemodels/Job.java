@@ -6,16 +6,22 @@
 package databasemodels;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -56,6 +62,13 @@ public class Job implements Serializable {
     @Size(max = 100)
     @Column(name = "otherrequirment")
     private String otherrequirment;
+    @OneToMany(mappedBy = "job")
+    private Collection<Notification> notificationCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "job")
+    private Collection<Jobskills> jobskillsCollection;
+    @JoinColumn(name = "employer", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Employer employer1;
 
     public Job() {
     }
@@ -127,6 +140,32 @@ public class Job implements Serializable {
 
     public void setOtherrequirment(String otherrequirment) {
         this.otherrequirment = otherrequirment;
+    }
+
+    @XmlTransient
+    public Collection<Notification> getNotificationCollection() {
+        return notificationCollection;
+    }
+
+    public void setNotificationCollection(Collection<Notification> notificationCollection) {
+        this.notificationCollection = notificationCollection;
+    }
+
+    @XmlTransient
+    public Collection<Jobskills> getJobskillsCollection() {
+        return jobskillsCollection;
+    }
+
+    public void setJobskillsCollection(Collection<Jobskills> jobskillsCollection) {
+        this.jobskillsCollection = jobskillsCollection;
+    }
+
+    public Employer getEmployer1() {
+        return employer1;
+    }
+
+    public void setEmployer1(Employer employer1) {
+        this.employer1 = employer1;
     }
 
     @Override

@@ -7,6 +7,7 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -23,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "employerjobfield")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Employerjobfield.findAll", query = "SELECT e FROM Employerjobfield e"),
@@ -37,6 +38,7 @@ public class Employerjobfield implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "title")
     private String title;
     @JoinColumn(name = "employer", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
@@ -104,7 +106,7 @@ public class Employerjobfield implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Employerjobfield[ employerjobfieldPK=" + employerjobfieldPK + " ]";
+        return "databasemodels.Employerjobfield[ employerjobfieldPK=" + employerjobfieldPK + " ]";
     }
     
 }

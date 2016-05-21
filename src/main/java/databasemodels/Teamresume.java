@@ -8,6 +8,7 @@ package databasemodels;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author SAEED
  */
 @Entity
-@Table(catalog = "jobsocialnetworkdb", schema = "")
+@Table(name = "teamresume")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Teamresume.findAll", query = "SELECT t FROM Teamresume t"),
@@ -42,21 +43,26 @@ public class Teamresume implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "title")
     private String title;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "employername")
     private String employername;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "startdate")
     @Temporal(TemporalType.DATE)
     private Date startdate;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "endadate")
     @Temporal(TemporalType.DATE)
     private Date endadate;
     @JoinColumn(name = "team", referencedColumnName = "id")
@@ -148,7 +154,7 @@ public class Teamresume implements Serializable {
 
     @Override
     public String toString() {
-        return "dao.databasemodels.Teamresume[ id=" + id + " ]";
+        return "databasemodels.Teamresume[ id=" + id + " ]";
     }
     
 }
