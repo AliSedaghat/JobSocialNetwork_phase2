@@ -44,22 +44,23 @@
             <label class="w3-right"><b>سوابق</b></label><br>
             <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
                 <div class="w3-third w3-padding">
-                    <label class="w3-validate">تاریخ
-                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.fromDate}">
+                    <label class="w3-validate">از تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="fromDate" name="fromDate" type="date">
                     </label>
-                    <label class="w3-validate">تاریخ
-                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="date" value="${jobSeekerResumeBean.tillDate}">
+                    <label class="w3-validate">تا تاریخ
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="toDate" name="toDate" type="date">
                     </label>
                 </div>
                 <div class="w3-twothird w3-padding">
                     <label class="w3-validate">محل کار
-                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.workPlace}">
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="location" name="location" type="text">
                     </label>
                     <label class="w3-validate">مسئولیت
-                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="text" value="${jobSeekerResumeBean.responsibility}">
+                        <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" id="responsibility" name="responsibility" type="text">
                     </label>
                 </div>
-            </div>
+                <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
+            </div> 
         </div>
     </div>
 
@@ -229,8 +230,8 @@
             data: {
                 fromDate : $('#fromDate').val(),
                 toDate : $('#toDate').val(),
-                title : $('#title').val(),
-                description : $('#description').val()
+                location : $('#location').val(),
+                responsibility : $('#responsibility').val()
             },
             success: function (data, textStatus, jqXHR) {
                 
