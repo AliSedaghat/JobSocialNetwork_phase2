@@ -15,4 +15,5 @@ public interface TeamManager {
     public Integer getCountAll();
     public void createOrUpdate(Team team);
     public Team getbyAccountId(Integer accountId);
+    public Team get(Integer id);
 }

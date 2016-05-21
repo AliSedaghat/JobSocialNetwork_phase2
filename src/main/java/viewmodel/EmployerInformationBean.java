@@ -17,9 +17,19 @@ public class EmployerInformationBean {
     private String state;
     private String city;
     private String remainAddr;
+    private String imageUrl;
     
     public EmployerInformationBean() {}
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    
     public String getEmployerName() {
         return employerName;
     }

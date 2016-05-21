@@ -25,15 +25,24 @@ public class TeamManagerImpl implements TeamManager{
     public Integer getCountAll() {
         return teamDAO.getCountAll();
     }
-
+    
     @Override
+    @Transactional
     public Team getbyAccountId(Integer accountId) {
         return teamDAO.getByAccountId(accountId);
     }
 
     @Override
+    @Transactional
     public void createOrUpdate(Team team) {
         teamDAO.createOrUpdate(team);
     }
+    
+    @Override
+    @Transactional
+    public Team get(Integer id) {
+        return teamDAO.read(id);
+    }
+    
     
 }

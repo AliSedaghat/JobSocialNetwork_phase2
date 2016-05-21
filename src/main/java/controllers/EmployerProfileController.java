@@ -51,6 +51,7 @@ public class EmployerProfileController extends HttpServlet {
         employerInformationBean.setEmployerName(employer.getName());
         employerInformationBean.setEmail(employer.getEmail());
         employerInformationBean.setPhoneNum(employer.getPhone());
+        employerInformationBean.setImageUrl(employer.getImageaddress());
         
         List<EmployerSearchResultBean> employerSearchResultBeans = new ArrayList<>();
         Iterator<Job> jobs = employer.getJobCollection().iterator();

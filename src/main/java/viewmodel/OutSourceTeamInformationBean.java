@@ -17,9 +17,19 @@ public class OutSourceTeamInformationBean {
     private String state;
     private String city;
     private String rmainAddr;
+    private String imageUrl;
     
     public OutSourceTeamInformationBean() {}
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    
     public String getTeamName() {
         return teamName;
     }
