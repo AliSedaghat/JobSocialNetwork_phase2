@@ -11,21 +11,78 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
-        function initialize() {
-            var myCenter = new google.maps.LatLng(35.7991, 51.3947);
-            var mapProp = {
-                center: myCenter,
-                zoom: 20,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker=new google.maps.Marker({
-                position:myCenter
-            });
+        var map = null;
 
-            marker.setMap(map);
+        window.onload = function() {
+
+                // initialize the map
+                var mapHolder = document.getElementById("googleMap");
+                map = new google.maps.Map(
+                        mapHolder, 
+                        {
+                                zoom: 3,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                        }
+                );
+
+                // centering the map
+                map.setCenter(new google.maps.LatLng(43.229195, 27.872314));
+                addressToLocation(${employerInformationBean.state} + ' - ' + ${employerInformationBean.city}, changeMapLocation);
+        };
+
+        // processing the results
+        function changeMapLocation(locations) {
+                if(locations && locations.length) {
+                    var numOfLocations = locations.length;
+                    for(var i=0; i<numOfLocations; i++) {	
+                        var marker = new google.maps.Marker({
+                                map: map,
+                                position: locations[i].location
+                        });
+                    }
+                    map.panTo(locations[0].location);
+                    map.setZoom(8);
+                } else {
+                }
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
+
+        // converting the address's string to a google.maps.LatLng object
+        function addressToLocation(address, callback) {
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode(
+                        {
+                                address: address
+                        }, 
+                        function(results, status) {
+
+                                var resultLocations = [];
+
+                                if(status == google.maps.GeocoderStatus.OK) {
+                                        if(results) {
+                                                var numOfResults = results.length;
+                                                for(var i=0; i<numOfResults; i++) {
+                                                        var result = results[i];
+                                                        resultLocations.push(
+                                                                {
+                                                                        text:result.formatted_address,
+                                                                        addressStr:result.formatted_address,
+                                                                        location:result.geometry.location
+                                                                }
+                                                        );
+                                                };
+                                        }
+                                } else if(status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                        // address not found
+                                }
+
+                                if(resultLocations.length > 0) {
+                                        callback(resultLocations);
+                                } else {
+                                        callback(null);
+                                }
+                        }
+                );
+        }
     </script>
 </head>
 <body>
