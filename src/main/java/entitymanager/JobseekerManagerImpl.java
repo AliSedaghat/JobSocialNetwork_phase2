@@ -5,10 +5,11 @@
  */
 package entitymanager;
 
+import dao.JobSeekerDAOImpl;
+import databasemodels.Jobseeker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import dao.JobSeekerDAOImpl;
 
 /**
  *
@@ -23,6 +24,24 @@ public class JobseekerManagerImpl implements JobseekerManager{
     @Transactional
     public Integer getCountAll() {
         return jobSeekerDAO.getCountAll();
+    }
+    
+    @Override
+    @Transactional
+    public Integer create(Jobseeker jobseeker) {
+        return jobSeekerDAO.create(jobseeker);
+    }
+    
+    @Override
+    @Transactional
+    public void update(Jobseeker jobseeker) {
+        jobSeekerDAO.update(jobseeker);
+    }
+    
+    @Override
+    @Transactional
+    public Jobseeker get(Integer id) {
+        return jobSeekerDAO.read(id);
     }
     
 }

@@ -101,7 +101,7 @@
             <img src="images/img_avatar.png" style="width:30%" class="w3-card-2 w3-circle w3-margin-right w3-right" alt="عکس کاربر">
             <div class="w3-third w3-input-group w3-card-2">
                 <form class="w3-form" method="post" action="/ChangePasswordController">
-                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی" value="${passwordChangeBean.currentPass}">
+                    <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="newPassword" placeholder="رمز جدید">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="repeatPassword" placeholder="تکرار رمز">
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
