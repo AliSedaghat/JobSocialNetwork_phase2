@@ -13,7 +13,16 @@ package viewmodel;
 public class TeamNotificationBean {
     private String teamName;
     private String jobTitle;
+    private String senderId;
 
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+    
     public TeamNotificationBean() {
     }
 

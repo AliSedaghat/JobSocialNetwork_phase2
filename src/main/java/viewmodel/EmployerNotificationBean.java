@@ -13,7 +13,16 @@ package viewmodel;
 public class EmployerNotificationBean {
     private String jobTitle;
     private String employerName;
+    private String senderId;
 
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+    
     public EmployerNotificationBean() {
     }
 

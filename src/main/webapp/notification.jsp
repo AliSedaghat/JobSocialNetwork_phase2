@@ -25,6 +25,7 @@
         
         
         <c:forEach items="${jobSeekerNotificationBeans}" var="item1">
+            <a href="/JobSocialNetwork/JobSeekerProfileController?senderId=${item1.senderId}">رفتن به صفحه کارجو</a>
             <li class="w3-padding-16 w3-container">
                 <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
@@ -36,6 +37,7 @@
         </c:forEach>
             
         <c:forEach items="${employerNotificationBeans}" var="item2">
+            <a href="/JobSocialNetwork/EmployerProfileController?senderId=${item2.senderId}">رفتن به صفحه کارفرما</a>
             <li class="w3-padding-16 w3-container">
             <span onclick="this.parentElement.style.display='none'"
                   class="w3-closebtn w3-padding w3-margin-right w3-medium">x</span>
