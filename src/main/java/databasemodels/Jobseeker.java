@@ -53,6 +53,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Jobseeker.findByAccountId", query = "SELECT j FROM Jobseeker j WHERE j.account = :accountId"),
     @NamedQuery(name = "Jobseeker.findByShowprivacy", query = "SELECT j FROM Jobseeker j WHERE j.showprivacy = :showprivacy")})
 public class Jobseeker implements Serializable {
+    @Size(max = 8)
+    @Column(name = "showprivacy")
+    private String showprivacy;
+    @Size(max = 45)
+    @Column(name = "jobseekercol")
+    private String jobseekercol;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -108,8 +114,6 @@ public class Jobseeker implements Serializable {
     @Size(max = 50)
     @Column(name = "imageaddress")
     private String imageaddress;
-    @Column(name = "showprivacy")
-    private Integer showprivacy;
     @JoinColumn(name = "account", referencedColumnName = "id")
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Account account;
@@ -232,13 +236,6 @@ public class Jobseeker implements Serializable {
         this.imageaddress = imageaddress;
     }
 
-    public Integer getShowprivacy() {
-        return showprivacy;
-    }
-
-    public void setShowprivacy(Integer showprivacy) {
-        this.showprivacy = showprivacy;
-    }
 
     public Account getAccount() {
         return account;
@@ -289,6 +286,22 @@ public class Jobseeker implements Serializable {
     @Override
     public String toString() {
         return "databasemodels.Jobseeker[ id=" + id + " ]";
+    }
+
+    public String getShowprivacy() {
+        return showprivacy;
+    }
+
+    public void setShowprivacy(String showprivacy) {
+        this.showprivacy = showprivacy;
+    }
+
+    public String getJobseekercol() {
+        return jobseekercol;
+    }
+
+    public void setJobseekercol(String jobseekercol) {
+        this.jobseekercol = jobseekercol;
     }
     
 }
