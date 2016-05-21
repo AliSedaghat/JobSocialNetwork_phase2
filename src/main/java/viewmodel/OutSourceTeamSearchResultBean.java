@@ -13,9 +13,20 @@ package viewmodel;
 public class OutSourceTeamSearchResultBean {
     private String teamTitle;
     private String[] skills;
-
+    private String senderId;
+    
     public OutSourceTeamSearchResultBean() {
     }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+    
+    
 
     public String getTeamTitle() {
         return teamTitle;

@@ -796,13 +796,12 @@
     
     <c:forEach items="${jobSeekerSearchResultBeans}" var="item1">
         <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-            <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item1.jobTitle}"/></b></p></div>
-                <div class="w3-right-align w3-padding">
-                    <p>ما برای این شغل به&nbsp;<b><c:out value="${item1.numOfPersons}"/></b>&nbsp;نفر&nbsp;<b><c:out value="${item1.sex}"/></b>&nbsp;نیاز داریم</p>
-                    <p>نحوه مشارکت ما به صورت&nbsp;<b><c:out value="${item1.kindOfWork}"/></b>&nbsp;با حقوق&nbsp;<b><c:out value="${item1.minWage}"/> تومان</b>&nbsp;خواهد بود</p>
-                    <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
-                        class="fa fa-expand"></i></span>
-                توانایی‌هایی که از شما انتظار داریم این‌هاست
+            <div class="w3-center w3-container w3-teal"><p><a href="/JobSocialNetwork/JobSeekerProfileController?senderId=${item1.senderId}"><b><c:out value="${item1.jobSeekerName}"/><</b></a></p></div>
+        <div class="w3-right-align w3-padding">
+            <p><b><c:out value="${item1.degree}"/></b></p>
+            <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
+                    class="fa fa-expand"></i></span>
+                توانایی های من در این زمینه هاست
 
                 <ul class="w3-dropdown-content w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
                     <li><c:out value="${item1.skills[0]}"/></li>
@@ -815,11 +814,11 @@
                 <p><c:out value="${item1.desc}"/></p>
             </div>
         </div>
-        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست استخدام&nbsp;&nbsp;&nbsp;<span><i
+        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>  
+    </div>
     </c:forEach>
     
         
@@ -833,12 +832,13 @@
     
     <c:forEach items="${employerSearchResultBeans}" var="item2">
         <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item2.jobSeekerName}"/></b></p></div>
-        <div class="w3-right-align w3-padding">
-            <p><b><c:out value="${item2.degree}"/></b></p>
-            <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
-                    class="fa fa-expand"></i></span>
-                توانایی های من در این زمینه هاست
+            <div class="w3-center w3-container w3-teal"><p><a href="/JobSocialNetwork/EmployerProfileController?senderId=${item2.senderId}"><b><c:out value="${item2.jobTitle}"/></b></a></p></div>
+                <div class="w3-right-align w3-padding">
+                    <p>ما برای این شغل به&nbsp;<b><c:out value="${item2.numOfPersons}"/></b>&nbsp;نفر&nbsp;<b><c:out value="${item2.sex}"/></b>&nbsp;نیاز داریم</p>
+                    <p>نحوه مشارکت ما به صورت&nbsp;<b><c:out value="${item2.kindOfWork}"/></b>&nbsp;با حقوق&nbsp;<b><c:out value="${item2.minWage}"/> تومان</b>&nbsp;خواهد بود</p>
+                    <div class="w3-dropdown-hover w3-hover-light-blue" onclick="openSkills(this)"><span><i
+                        class="fa fa-expand"></i></span>
+                توانایی‌هایی که از شما انتظار داریم این‌هاست
 
                 <ul class="w3-dropdown-content w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
                     <li><c:out value="${item2.skills[0]}"/></li>
@@ -851,11 +851,11 @@
                 <p><c:out value="${item2.desc}"/></p>
             </div>
         </div>
-        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست همکاری&nbsp;&nbsp;&nbsp;<span><i
+        <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست استخدام&nbsp;&nbsp;&nbsp;<span><i
                 class="fa fa-send"></i></span>
 
         </button>
-    </div>
+    </div>  
     </c:forEach>
     
     
@@ -1159,7 +1159,7 @@
     
     <c:forEach items="${outSourceTeamSearchResultBeans}" var="item3">
         <div class="w3-card-4 w3-margin w3-col l3 m5 s12 w3-border-teal w3-border">
-        <div class="w3-center w3-container w3-teal"><p><b><c:out value="${item3.teamTitle}"/></b></p></div>
+            <div class="w3-center w3-container w3-teal"><p><a href="/JobSocialNetwork/TeamProfileController?senderId=${item3.senderId}"><b><c:out value="${item3.teamTitle}"/></b></a></p></div>
         <div class="w3-right-align w3-padding">
             <ul class="w3-right-align w3-ul w3-animate-zoom w3-hoverable" style="width: 100%;">
                 <li><c:out value="${item3.skills[0]}"/></li>

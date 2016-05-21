@@ -11,62 +11,40 @@ package viewmodel;
  * @author ali
  */
 public class JobSeekerSearchResultBean {
-    private String jobTitle;
-    private String sex;
-    private String numOfPersons;
-    private String desc;
-    private String kindOfWork;
-    private String minWage;
+    private String jobSeekerName;
+    private String degree;
     private String[] skills;
+    private String desc;
+    private String senderId;
     
-    public JobSeekerSearchResultBean() {}
 
-    public String getJobTitle() {
-        return jobTitle;
+    public JobSeekerSearchResultBean() {
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public String getSex() {
-        return sex;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+    
+    
+
+    public String getJobSeekerName() {
+        return jobSeekerName;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setJobSeekerName(String jobSeekerName) {
+        this.jobSeekerName = jobSeekerName;
     }
 
-    public String getNumOfPersons() {
-        return numOfPersons;
+    public String getDegree() {
+        return degree;
     }
 
-    public void setNumOfPersons(String numOfPersons) {
-        this.numOfPersons = numOfPersons;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getKindOfWork() {
-        return kindOfWork;
-    }
-
-    public void setKindOfWork(String kindOfWork) {
-        this.kindOfWork = kindOfWork;
-    }
-
-    public String getMinWage() {
-        return minWage;
-    }
-
-    public void setMinWage(String minWage) {
-        this.minWage = minWage;
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 
     public String[] getSkills() {
@@ -75,6 +53,14 @@ public class JobSeekerSearchResultBean {
 
     public void setSkills(String[] skills) {
         this.skills = skills;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     
