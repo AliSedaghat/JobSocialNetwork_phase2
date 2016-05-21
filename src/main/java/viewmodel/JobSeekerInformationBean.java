@@ -18,9 +18,19 @@ public class JobSeekerInformationBean {
     private String state;
     private String city;
     private String remainAddr;
+    private String imageUrl;
     
     public JobSeekerInformationBean() {}
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    
     public String getSex() {
         return sex;
     }
