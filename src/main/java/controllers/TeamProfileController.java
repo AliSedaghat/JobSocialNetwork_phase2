@@ -22,6 +22,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import viewmodel.OutSourceTeamInformationBean;
 import viewmodel.OutSourceTeamResumeBean;
 
@@ -44,7 +46,9 @@ public class TeamProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        TeamManagerImpl mng = new TeamManagerImpl();
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
+        TeamManagerImpl mng = (TeamManagerImpl)ctx.getBean("teamManagerImpl");
         
         String senderId = request.getParameter("senderId");
         Team team = mng.get(Integer.parseInt(senderId));

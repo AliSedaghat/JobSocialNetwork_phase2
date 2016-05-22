@@ -7,11 +7,13 @@ package dao;
 
 import databasemodels.Employer;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author SAEED
  */
+@Repository
 public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
 
     public EmployerDAOImpl(Class<Employer> type) {

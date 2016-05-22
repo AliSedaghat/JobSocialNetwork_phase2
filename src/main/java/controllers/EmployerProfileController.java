@@ -20,6 +20,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import viewmodel.EmployerInformationBean;
 import viewmodel.EmployerSearchResultBean;
 
@@ -42,10 +44,11 @@ public class EmployerProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        EmployerManagerImpl mng = new EmployerManagerImpl();
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");        
+        EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");   
         
         String senderId = request.getParameter("senderId");
-        Employer employer = mng.get(Integer.parseInt(senderId));
+        Employer employer = manager.get(Integer.parseInt(senderId));
         
         EmployerInformationBean employerInformationBean = new EmployerInformationBean();
         employerInformationBean.setEmployerName(employer.getName());

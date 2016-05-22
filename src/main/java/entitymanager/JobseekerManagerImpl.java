@@ -45,11 +45,13 @@ public class JobseekerManagerImpl implements JobseekerManager{
     }
 
     @Override
+    @Transactional
     public void createOrUpdate(Jobseeker jobseeker) {
         jobSeekerDAO.createOrUpdate(jobseeker);
     }
 
     @Override
+    @Transactional
     public Jobseeker getbyAccountId(Integer accountId) {
         return jobSeekerDAO.getByAccountId(accountId);
     }

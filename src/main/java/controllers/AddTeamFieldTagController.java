@@ -15,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -34,11 +36,14 @@ public class AddTeamFieldTagController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         request.setCharacterEncoding("utf-8");
         final String tagText = request.getParameter("tagText");
         if(tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
-            TeamManagerImpl manager = new TeamManagerImpl();
+            TeamManagerImpl manager = (TeamManagerImpl)ctx.getBean("teamManagerImpl");
             Team team = manager.getbyAccountId(accountId);
             
             Teamskills teamskills = new Teamskills();

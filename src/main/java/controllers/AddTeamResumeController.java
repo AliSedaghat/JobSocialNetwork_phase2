@@ -18,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -37,6 +39,9 @@ public class AddTeamResumeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         request.setCharacterEncoding("utf-8");
         final int accountId = (int) request.getSession(true).getAttribute("accountId");
         try {
@@ -46,7 +51,7 @@ public class AddTeamResumeController extends HttpServlet {
             final String title = request.getParameter("title");
             final String employerName = request.getParameter("employerName");
             
-            final TeamManagerImpl manager = new TeamManagerImpl();
+            TeamManagerImpl manager = (TeamManagerImpl)ctx.getBean("teamManagerImpl");
             final Team team = manager.getbyAccountId(accountId);
             final Teamresume resume = new Teamresume();
             

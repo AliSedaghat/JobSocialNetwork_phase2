@@ -16,6 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -35,11 +37,16 @@ public class AddFieldTagController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
+        
+        
         request.setCharacterEncoding("utf-8");
         final String tagText = request.getParameter("tagText");
         if(tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
-            EmployerManagerImpl manager = new EmployerManagerImpl();
             Employer employer = manager.getbyAccountId(accountId);
             
             Employerjobfield employerjobfield = new Employerjobfield();

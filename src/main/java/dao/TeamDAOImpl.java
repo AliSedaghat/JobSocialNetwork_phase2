@@ -7,11 +7,13 @@ package dao;
 
 import databasemodels.Team;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author SAEED
  */
+@Repository
 public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
 
     public TeamDAOImpl(Class<Team> type) {

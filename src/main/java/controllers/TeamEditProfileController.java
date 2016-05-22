@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -35,6 +37,9 @@ public class TeamEditProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         request.setCharacterEncoding("utf-8");
         final int accountId = (int) request.getSession().getAttribute("accountId");
         final Part imageFile = request.getPart("imageFile");
@@ -50,7 +55,7 @@ public class TeamEditProfileController extends HttpServlet {
         final String city = request.getParameter("city");
         final String remainAddress = request.getParameter("remainParameter");
         final String summury = request.getParameter("summury");
-        TeamManagerImpl manager = new TeamManagerImpl();
+        TeamManagerImpl manager = (TeamManagerImpl)ctx.getBean("teamManagerImpl");
         
         Team team = manager.getbyAccountId(accountId);
         team.setName(name);

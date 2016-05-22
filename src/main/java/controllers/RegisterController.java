@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -34,6 +36,8 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         
         final String username = request.getParameter("username");
         final String password = request.getParameter("password");
@@ -65,7 +69,7 @@ public class RegisterController extends HttpServlet {
             newAccount.setUsername(username);
             newAccount.setPassword(password);
             newAccount.setKind(kind);
-            AccountManagerImpl manager = new AccountManagerImpl();
+            AccountManagerImpl manager = (AccountManagerImpl)ctx.getBean("accountManagerImpl");
             int id = manager.create(newAccount);
             HttpSession session = request.getSession();
             session.setAttribute("accountId", id); // save id of user in session

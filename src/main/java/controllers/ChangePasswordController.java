@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -33,6 +35,8 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         final String curPassword = request.getParameter("oldPassword");
         final String newPassword = request.getParameter("newPassword");
         final String repeatPassword = request.getParameter("repeatPassword");
@@ -53,7 +57,7 @@ public class ChangePasswordController extends HttpServlet {
         
         if(errorMessages.equals("")){// everythings is right
             final int accountId = (int) request.getSession().getAttribute("accountId");
-            AccountManagerImpl manager = new AccountManagerImpl();
+            AccountManagerImpl manager = (AccountManagerImpl)ctx.getBean("accountManagerImpl");
             Account account = manager.get(accountId);
             if(account.getPassword().equals(curPassword)){
                 account.setPassword(newPassword);

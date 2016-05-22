@@ -16,6 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import viewmodel.SiteCurrentInformation;
 
 /**
@@ -37,10 +39,13 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SiteCurrentInformation information = new SiteCurrentInformation();
-        EmployerManagerImpl employerManagerImpl = new EmployerManagerImpl();
-        TeamManagerImpl teamManagerImpl = new TeamManagerImpl();
-        JobManagerImpl jobManagerImpl = new JobManagerImpl();
-        JobseekerManagerImpl jobseekerManagerImpl = new JobseekerManagerImpl();
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        EmployerManagerImpl employerManagerImpl = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
+        TeamManagerImpl teamManagerImpl = (TeamManagerImpl)ctx.getBean("teamManagerImpl");
+        JobManagerImpl jobManagerImpl = (JobManagerImpl)ctx.getBean("jobManagerImpl");
+        JobseekerManagerImpl jobseekerManagerImpl = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
+        
         information.setNumOfEmployers(employerManagerImpl.getCountAll());
         information.setNumOfJobSeekers(jobseekerManagerImpl.getCountAll());
         information.setNumOfJobs(jobManagerImpl.getCountAll());

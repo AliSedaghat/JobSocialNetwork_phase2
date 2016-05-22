@@ -8,17 +8,16 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.SessionFactory;
-//import org.hibernate.cfg.Configuration;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 /**
  *
  * @author SAEED
  * @param <T> kind of class
  * @param <PK> primary key of the class
  */
-@Service
+@SuppressWarnings("unchecked")
+@Repository
 public abstract class GenericDAOImpl<T, PK extends Serializable>
     implements GenericDAO<T, PK>{
 

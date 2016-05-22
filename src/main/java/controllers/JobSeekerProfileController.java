@@ -25,6 +25,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import viewmodel.JobSeekerInformationBean;
 import viewmodel.JobSeekerProfileInfoBean;
 import viewmodel.JobSeekerWorkExperienceBean;
@@ -48,11 +50,15 @@ public class JobSeekerProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         final int accountId = (int)request.getSession().getAttribute("accountId");
-        AccountManagerImpl manager = new AccountManagerImpl();
+        AccountManagerImpl manager = (AccountManagerImpl)ctx.getBean("accountManagerImpl");
         Account account = manager.get(accountId);
         String kind = account.getKind();
-        JobseekerManagerImpl mng = new JobseekerManagerImpl();
+        
+        
+        JobseekerManagerImpl mng = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
         
         
         String senderId = request.getParameter("senderId");

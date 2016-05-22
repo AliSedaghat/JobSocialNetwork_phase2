@@ -18,6 +18,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -37,6 +39,9 @@ public class AddJobseekerResumeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
         request.setCharacterEncoding("utf-8");
         final int accountId = (int) request.getSession(true).getAttribute("accountId");
         try {
@@ -46,7 +51,8 @@ public class AddJobseekerResumeController extends HttpServlet {
             final String location = request.getParameter("location");
             final String responsibility = request.getParameter("responsibility");
             
-            final JobseekerManagerImpl manager = new JobseekerManagerImpl();
+            JobseekerManagerImpl manager = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
+
             final Jobseeker jobseeker = manager.getbyAccountId(accountId);
             final Jobseekerresume resume = new Jobseekerresume();
             

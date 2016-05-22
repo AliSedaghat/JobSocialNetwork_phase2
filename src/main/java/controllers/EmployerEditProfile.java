@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -54,7 +56,9 @@ public class EmployerEditProfile extends HttpServlet {
         final String city = request.getParameter("city");
         final String remainAddress = request.getParameter("remainParameter");
         final String summury = request.getParameter("summury");
-        EmployerManagerImpl manager = new EmployerManagerImpl();
+        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
         
         Employer employer = manager.getbyAccountId(accountId);
         employer.setName(name);

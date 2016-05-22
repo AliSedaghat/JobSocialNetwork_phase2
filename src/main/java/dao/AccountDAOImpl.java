@@ -7,11 +7,13 @@ package dao;
 
 import databasemodels.Account;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author SAEED
  */
+@Repository
 public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
 
     public AccountDAOImpl(Class<Account> type) {
