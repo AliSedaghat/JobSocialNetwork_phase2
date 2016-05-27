@@ -16,17 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
  * @author SAEED
  */
 @Service
-public class EmployerJobFieldManagerImpl implements EmployerJobFieldManager{
+public class EmployerJobFieldManagerImpl{
     @Autowired
     private EmployerJobFieldDAOImpl employerJobFieldDAO;
     
-    @Override
     @Transactional
     public Integer create(Employerjobfield employerjobfield) {
         return employerJobFieldDAO.create(employerjobfield);
     }
 
-    @Override
     @Transactional
     public void delete(Employerjobfield employerjobfield) {
         employerJobFieldDAO.delete(employerjobfield);

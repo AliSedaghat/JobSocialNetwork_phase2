@@ -16,34 +16,27 @@ import databasemodels.Employer;
  * @author SAEED
  */
 @Service
-public class EmployerManagerImpl implements EmployerManager{
+public class EmployerManagerImpl{
     @Autowired
     private EmployerDAOImpl employerDAO;
     
-    @Override
     @Transactional
     public Integer getCountAll() {
         return employerDAO.getCountAll();
     }
 
-    @Override
     @Transactional
     public void createOrUpdate(Employer employer) {
         employerDAO.createOrUpdate(employer);
     }
 
-    @Override
     @Transactional
     public Employer getbyAccountId(Integer accountId) {
         return employerDAO.getByAccountId(accountId);
     }
     
-    @Override
     @Transactional
     public Employer get(Integer id) {
         return employerDAO.read(id);
     }
-    
-    
-    
 }

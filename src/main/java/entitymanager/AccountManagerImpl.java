@@ -17,23 +17,20 @@ import databasemodels.Account;
  * @author SAEED
  */
 @Service
-public class AccountManagerImpl implements AccountManager{
+public class AccountManagerImpl {
     @Autowired
     private AccountDAOImpl accountDAO;
 
-    @Override
     @Transactional
     public Integer create(Account account) {
         return accountDAO.create(account);
     }
 
-    @Override
     @Transactional
     public Account get(Integer id) {
         return accountDAO.read(id);
     }
 
-    @Override
     @Transactional
     public void update(Account account) {
         accountDAO.update(account);

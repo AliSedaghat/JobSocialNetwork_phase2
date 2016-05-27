@@ -16,41 +16,35 @@ import org.springframework.transaction.annotation.Transactional;
  * @author SAEED
  */
 @Service
-public class JobseekerManagerImpl implements JobseekerManager{
+public class JobseekerManagerImpl {
     @Autowired
     private JobSeekerDAOImpl jobSeekerDAO;
     
-    @Override
     @Transactional
     public Integer getCountAll() {
         return jobSeekerDAO.getCountAll();
     }
     
-    @Override
     @Transactional
     public Integer create(Jobseeker jobseeker) {
         return jobSeekerDAO.create(jobseeker);
     }
     
-    @Override
     @Transactional
     public void update(Jobseeker jobseeker) {
         jobSeekerDAO.update(jobseeker);
     }
     
-    @Override
     @Transactional
     public Jobseeker get(Integer id) {
         return jobSeekerDAO.read(id);
     }
 
-    @Override
     @Transactional
     public void createOrUpdate(Jobseeker jobseeker) {
         jobSeekerDAO.createOrUpdate(jobseeker);
     }
 
-    @Override
     @Transactional
     public Jobseeker getbyAccountId(Integer accountId) {
         return jobSeekerDAO.getByAccountId(accountId);

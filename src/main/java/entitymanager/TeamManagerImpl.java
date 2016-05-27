@@ -16,29 +16,25 @@ import databasemodels.Team;
  * @author SAEED
  */
 @Service
-public class TeamManagerImpl implements TeamManager{
+public class TeamManagerImpl{
     @Autowired
     private TeamDAOImpl teamDAO;
     
-    @Override
     @Transactional
     public Integer getCountAll() {
         return teamDAO.getCountAll();
     }
     
-    @Override
     @Transactional
     public Team getbyAccountId(Integer accountId) {
         return teamDAO.getByAccountId(accountId);
     }
 
-    @Override
     @Transactional
     public void createOrUpdate(Team team) {
         teamDAO.createOrUpdate(team);
     }
     
-    @Override
     @Transactional
     public Team get(Integer id) {
         return teamDAO.read(id);

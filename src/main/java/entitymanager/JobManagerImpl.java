@@ -15,11 +15,10 @@ import dao.JobDAOImpl;
  * @author SAEED
  */
 @Service
-public class JobManagerImpl implements JobManager{
+public class JobManagerImpl {
     @Autowired
     private JobDAOImpl jobDAO;
     
-    @Override
     @Transactional
     public Integer getCountAll() {
         return jobDAO.getCountAll();
