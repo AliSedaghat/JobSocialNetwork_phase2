@@ -55,7 +55,7 @@ public class AddNewJobController extends HttpServlet {
         final Employer employer = manager.getbyAccountId(accountId);
         
         Job job = new Job();
-        job.setEmployer1(employer);
+        job.setEmployer(employer);
         job.setTitle(jobTitle);
         job.setSex(sex);
         job.setCapacity(Integer.parseInt(capacity));
@@ -64,7 +64,7 @@ public class AddNewJobController extends HttpServlet {
         List<String> skillList = Arrays.asList(skills.split(","));
         for (String skill : skillList) {
             Jobskills jobskills = new Jobskills();
-            jobskills.setJob(job);
+            jobskills.setJobid(job);
             jobskills.setTitle(skill);
             job.getJobskillsCollection().add(jobskills);
         }

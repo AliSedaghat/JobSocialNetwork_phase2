@@ -51,7 +51,7 @@ public class AddFieldTagController extends HttpServlet {
             
             Employerjobfield employerjobfield = new Employerjobfield();
             employerjobfield.setTitle(tagText);
-            employerjobfield.setEmployer1(employer);
+            employerjobfield.setEmployer(employer);
             
             employer.setEmployerjobfieldCollection(new ArrayList<Employerjobfield>());
             employer.getEmployerjobfieldCollection().add(employerjobfield);
