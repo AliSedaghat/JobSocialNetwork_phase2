@@ -16,6 +16,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
 
+    public EmployerDAOImpl() {
+        super(Employer.class);
+    }
+    
     public EmployerDAOImpl(Class<Employer> type) {
         super(type);
     }

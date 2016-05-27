@@ -27,7 +27,7 @@ public abstract class GenericDAOImpl<T, PK extends Serializable>
     protected SessionFactory factory;
     
     public GenericDAOImpl(Class<T> type) {
-        this.type = type;        
+        this.type = type;
     }
     
     @Override

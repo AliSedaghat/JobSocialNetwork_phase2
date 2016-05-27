@@ -16,6 +16,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
 
+    public AccountDAOImpl() {
+        super(Account.class);
+    }
+    
     public AccountDAOImpl(Class<Account> type) {
         super(type);
     }
