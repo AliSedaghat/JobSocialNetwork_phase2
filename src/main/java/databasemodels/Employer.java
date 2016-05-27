@@ -88,14 +88,14 @@ public class Employer implements Serializable {
     @Size(max = 50)
     @Column(name = "imageaddress")
     private String imageaddress;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer1")
-    private Collection<Employerjobfield> employerjobfieldCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer")
+    private Collection<Employerjobfield> employerjobfieldCollection;
+    @OneToMany(mappedBy = "employer")
     private Collection<Employerresume> employerresumeCollection;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Account account;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer")
     private Collection<Job> jobCollection;
 
     public Employer() {

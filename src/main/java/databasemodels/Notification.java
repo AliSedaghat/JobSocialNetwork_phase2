@@ -7,7 +7,6 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -37,13 +36,13 @@ public class Notification implements Serializable {
     @Column(name = "id")
     private Integer id;
     @JoinColumn(name = "job", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Job job;
     @JoinColumn(name = "receiver", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Account receiver;
     @JoinColumn(name = "sender", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Account sender;
 
     public Notification() {

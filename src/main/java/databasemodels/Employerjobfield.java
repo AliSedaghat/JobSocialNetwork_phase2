@@ -7,10 +7,11 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -29,44 +30,42 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Employerjobfield.findAll", query = "SELECT e FROM Employerjobfield e"),
-    @NamedQuery(name = "Employerjobfield.findById", query = "SELECT e FROM Employerjobfield e WHERE e.employerjobfieldPK.id = :id"),
-    @NamedQuery(name = "Employerjobfield.findByEmployer", query = "SELECT e FROM Employerjobfield e WHERE e.employerjobfieldPK.employer = :employer"),
+    @NamedQuery(name = "Employerjobfield.findById", query = "SELECT e FROM Employerjobfield e WHERE e.id = :id"),
     @NamedQuery(name = "Employerjobfield.findByTitle", query = "SELECT e FROM Employerjobfield e WHERE e.title = :title")})
 public class Employerjobfield implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected EmployerjobfieldPK employerjobfieldPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "title")
     private String title;
-    @JoinColumn(name = "employer", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Employer employer1;
+    @JoinColumn(name = "employer", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Employer employer;
 
     public Employerjobfield() {
     }
 
-    public Employerjobfield(EmployerjobfieldPK employerjobfieldPK) {
-        this.employerjobfieldPK = employerjobfieldPK;
+    public Employerjobfield(Integer id) {
+        this.id = id;
     }
 
-    public Employerjobfield(EmployerjobfieldPK employerjobfieldPK, String title) {
-        this.employerjobfieldPK = employerjobfieldPK;
+    public Employerjobfield(Integer id, String title) {
+        this.id = id;
         this.title = title;
     }
 
-    public Employerjobfield(int id, int employer) {
-        this.employerjobfieldPK = new EmployerjobfieldPK(id, employer);
+    public Integer getId() {
+        return id;
     }
 
-    public EmployerjobfieldPK getEmployerjobfieldPK() {
-        return employerjobfieldPK;
-    }
-
-    public void setEmployerjobfieldPK(EmployerjobfieldPK employerjobfieldPK) {
-        this.employerjobfieldPK = employerjobfieldPK;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -77,18 +76,18 @@ public class Employerjobfield implements Serializable {
         this.title = title;
     }
 
-    public Employer getEmployer1() {
-        return employer1;
+    public Employer getEmployer() {
+        return employer;
     }
 
-    public void setEmployer1(Employer employer1) {
-        this.employer1 = employer1;
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (employerjobfieldPK != null ? employerjobfieldPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -99,7 +98,7 @@ public class Employerjobfield implements Serializable {
             return false;
         }
         Employerjobfield other = (Employerjobfield) object;
-        if ((this.employerjobfieldPK == null && other.employerjobfieldPK != null) || (this.employerjobfieldPK != null && !this.employerjobfieldPK.equals(other.employerjobfieldPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -107,7 +106,7 @@ public class Employerjobfield implements Serializable {
 
     @Override
     public String toString() {
-        return "databasemodels.Employerjobfield[ employerjobfieldPK=" + employerjobfieldPK + " ]";
+        return "databasemodels.Employerjobfield[ id=" + id + " ]";
     }
     
 }

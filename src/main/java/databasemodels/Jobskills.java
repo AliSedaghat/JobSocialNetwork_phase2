@@ -7,10 +7,11 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -29,44 +30,42 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Jobskills.findAll", query = "SELECT j FROM Jobskills j"),
-    @NamedQuery(name = "Jobskills.findById", query = "SELECT j FROM Jobskills j WHERE j.jobskillsPK.id = :id"),
-    @NamedQuery(name = "Jobskills.findByJobid", query = "SELECT j FROM Jobskills j WHERE j.jobskillsPK.jobid = :jobid"),
+    @NamedQuery(name = "Jobskills.findById", query = "SELECT j FROM Jobskills j WHERE j.id = :id"),
     @NamedQuery(name = "Jobskills.findByTitle", query = "SELECT j FROM Jobskills j WHERE j.title = :title")})
 public class Jobskills implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected JobskillsPK jobskillsPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "title")
     private String title;
-    @JoinColumn(name = "jobid", referencedColumnName = "id", insertable = false, updatable = false)
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Job job;
+    @JoinColumn(name = "jobid", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Job jobid;
 
     public Jobskills() {
     }
 
-    public Jobskills(JobskillsPK jobskillsPK) {
-        this.jobskillsPK = jobskillsPK;
+    public Jobskills(Integer id) {
+        this.id = id;
     }
 
-    public Jobskills(JobskillsPK jobskillsPK, String title) {
-        this.jobskillsPK = jobskillsPK;
+    public Jobskills(Integer id, String title) {
+        this.id = id;
         this.title = title;
     }
 
-    public Jobskills(int id, int jobid) {
-        this.jobskillsPK = new JobskillsPK(id, jobid);
+    public Integer getId() {
+        return id;
     }
 
-    public JobskillsPK getJobskillsPK() {
-        return jobskillsPK;
-    }
-
-    public void setJobskillsPK(JobskillsPK jobskillsPK) {
-        this.jobskillsPK = jobskillsPK;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -77,18 +76,18 @@ public class Jobskills implements Serializable {
         this.title = title;
     }
 
-    public Job getJob() {
-        return job;
+    public Job getJobid() {
+        return jobid;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
+    public void setJobid(Job jobid) {
+        this.jobid = jobid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (jobskillsPK != null ? jobskillsPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -99,7 +98,7 @@ public class Jobskills implements Serializable {
             return false;
         }
         Jobskills other = (Jobskills) object;
-        if ((this.jobskillsPK == null && other.jobskillsPK != null) || (this.jobskillsPK != null && !this.jobskillsPK.equals(other.jobskillsPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -107,7 +106,7 @@ public class Jobskills implements Serializable {
 
     @Override
     public String toString() {
-        return "databasemodels.Jobskills[ jobskillsPK=" + jobskillsPK + " ]";
+        return "databasemodels.Jobskills[ id=" + id + " ]";
     }
     
 }

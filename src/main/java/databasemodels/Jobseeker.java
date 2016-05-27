@@ -51,14 +51,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Jobseeker.findByImageaddress", query = "SELECT j FROM Jobseeker j WHERE j.imageaddress = :imageaddress"),
     @NamedQuery(name = "Jobseeker.count", query = "SELECT COUNT(j.id) FROM Jobseeker j"),
     @NamedQuery(name = "Jobseeker.findByAccountId", query = "SELECT j FROM Jobseeker j WHERE j.account = :accountId"),
-    @NamedQuery(name = "Jobseeker.findByShowprivacy", query = "SELECT j FROM Jobseeker j WHERE j.showprivacy = :showprivacy")})
+    @NamedQuery(name = "Jobseeker.findByShowprivacy", query = "SELECT j FROM Jobseeker j WHERE j.showprivacy = :showprivacy"),
+    @NamedQuery(name = "Jobseeker.findByJobseekercol", query = "SELECT j FROM Jobseeker j WHERE j.jobseekercol = :jobseekercol")})
 public class Jobseeker implements Serializable {
-    @Size(max = 8)
-    @Column(name = "showprivacy")
-    private String showprivacy;
-    @Size(max = 45)
-    @Column(name = "jobseekercol")
-    private String jobseekercol;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,7 +100,7 @@ public class Jobseeker implements Serializable {
     private String remainaddress;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 10)
     @Column(name = "education")
     private String education;
     @Size(max = 200)
@@ -114,8 +109,14 @@ public class Jobseeker implements Serializable {
     @Size(max = 50)
     @Column(name = "imageaddress")
     private String imageaddress;
+    @Size(max = 8)
+    @Column(name = "showprivacy")
+    private String showprivacy;
+    @Size(max = 45)
+    @Column(name = "jobseekercol")
+    private String jobseekercol;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Account account;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker")
     private Collection<Jobseekerresume> jobseekerresumeCollection;
@@ -236,6 +237,21 @@ public class Jobseeker implements Serializable {
         this.imageaddress = imageaddress;
     }
 
+    public String getShowprivacy() {
+        return showprivacy;
+    }
+
+    public void setShowprivacy(String showprivacy) {
+        this.showprivacy = showprivacy;
+    }
+
+    public String getJobseekercol() {
+        return jobseekercol;
+    }
+
+    public void setJobseekercol(String jobseekercol) {
+        this.jobseekercol = jobseekercol;
+    }
 
     public Account getAccount() {
         return account;
@@ -286,22 +302,6 @@ public class Jobseeker implements Serializable {
     @Override
     public String toString() {
         return "databasemodels.Jobseeker[ id=" + id + " ]";
-    }
-
-    public String getShowprivacy() {
-        return showprivacy;
-    }
-
-    public void setShowprivacy(String showprivacy) {
-        this.showprivacy = showprivacy;
-    }
-
-    public String getJobseekercol() {
-        return jobseekercol;
-    }
-
-    public void setJobseekercol(String jobseekercol) {
-        this.jobseekercol = jobseekercol;
     }
     
 }
