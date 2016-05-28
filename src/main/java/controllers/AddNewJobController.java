@@ -10,6 +10,7 @@ import databasemodels.Job;
 import databasemodels.Jobskills;
 import entitymanager.EmployerManagerImpl;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -42,7 +43,7 @@ public class AddNewJobController extends HttpServlet {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         
         request.setCharacterEncoding("utf-8");
-        final int accountId = (int) request.getSession(true).getAttribute("accountId");
+        final int accountId = (int) request.getSession().getAttribute("accountId");
         final String jobTitle = request.getParameter("jobTitle");
         final String sex = request.getParameter("sex");
         final String capacity = request.getParameter("capacity");
@@ -62,6 +63,7 @@ public class AddNewJobController extends HttpServlet {
         job.setContributekind(contributeKind);
         job.setSalary(Integer.parseInt(salary));
         List<String> skillList = Arrays.asList(skills.split(","));
+        job.setJobskillsCollection(new ArrayList());
         for (String skill : skillList) {
             Jobskills jobskills = new Jobskills();
             jobskills.setJobid(job);
@@ -70,6 +72,7 @@ public class AddNewJobController extends HttpServlet {
         }
         job.setOtherrequirment(otherRequirment);
 
+        employer.setJobCollection(new ArrayList());
         employer.getJobCollection().add(job);
         
         manager.createOrUpdate(employer);

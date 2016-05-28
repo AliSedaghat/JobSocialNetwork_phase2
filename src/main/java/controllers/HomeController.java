@@ -24,7 +24,7 @@ import viewmodel.SiteCurrentInformation;
  *
  * @author SAEED
  */
-@WebServlet(name = "HomeController", urlPatterns = {"/"})
+@WebServlet(name = "HomeController", urlPatterns = {"/Home"})
 public class HomeController extends HttpServlet {
 
     /**
