@@ -180,7 +180,7 @@
                     </div>
                     
                     <label><b class="w3-right">میزان تحصیلات</b>
-                    <select class="w3-select" name="option">
+                    <select class="w3-select" name="education">
                         <option value="" disabled selected>میزان تحصیلات خود را انتخاب کنید</option>
                         <option value="بی سواد">بی سواد</option>
                         <option value="ابتدایی">ابتدایی</option>
