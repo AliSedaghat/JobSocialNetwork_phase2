@@ -5,6 +5,7 @@
  */
 package filemanagement;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,8 +19,12 @@ import java.io.OutputStream;
 public class FileManager {
     public static String saveFile(String fileName, InputStream is){
         try {
-            String path = "../../webapp/images/user'sImage/" + fileName;
-            try (OutputStream os = new FileOutputStream(path)) {
+            //String path = ".\\.\\webapp\\images\\user'sImage\\" + fileName;
+            File file = new File("D:\\Java\\JobSocialNetwork_phase2\\src\\main\\webapp\\images\\user'sImage\\", fileName);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            try (OutputStream os = new FileOutputStream(file)) {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
                 //read from is to buffer
@@ -29,9 +34,10 @@ public class FileManager {
                 is.close();
                 //flush OutputStream to write any buffered data to file
                 os.flush();
-                return path;
+                //return path;
             }
         } catch (IOException e) {
+            e.printStackTrace();
         }
         return "";
     }
