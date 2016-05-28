@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="outSourceTeamResumeBean" class="viewmodel.OutSourceTeamResumeBean" scope="request"/>
 <jsp:useBean id="outSourceTeamInformationBean" class="viewmodel.OutSourceTeamInformationBean" scope="request"/>
-<jsp:useBean id="passwordChangeBean" class="viewmodel.PasswordChangeBean" scope="request"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +66,7 @@
     <div class="w3-half w3-right w3-border-left w3-border-blue w3-margin-top w3-margin-bottom">
         <div class="w3-container w3-row">
             <div class="w3-third w3-input-group w3-card-2">
-                <form class="w3-form" method="post" action="/ChangePasswordController">
+                <form class="w3-form" method="post" action="/JobSocialNetwork/ChangePasswordController">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="newPassword" placeholder="رمز جدید">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="repeatPassword" placeholder="تکرار رمز">
