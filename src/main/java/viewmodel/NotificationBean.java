@@ -12,9 +12,18 @@ import java.util.List;
  * @author SAEED
  */
 public class NotificationBean {
+    private String returnEditProfileUrl;
     private List<EmployerNotificationBean> employerNotificationBeans;
     private List<JobSeekerNotificationBean> jobSeekerNotificationBeans;
     private List<TeamNotificationBean> teamNotificationBeans;
+
+    public String getReturnEditProfileUrl() {
+        return returnEditProfileUrl;
+    }
+
+    public void setReturnEditProfileUrl(String returnEditProfileUrl) {
+        this.returnEditProfileUrl = returnEditProfileUrl;
+    }
 
     public List<EmployerNotificationBean> getEmployerNotificationBeans() {
         return employerNotificationBeans;
