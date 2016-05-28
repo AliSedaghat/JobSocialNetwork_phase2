@@ -6,12 +6,12 @@
 package controllers;
 
 import databasemodels.Employer;
-import databasemodels.Employerjobfield;
 import databasemodels.Employerresume;
 import entitymanager.EmployerManagerImpl;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +41,6 @@ public class AddEmployerResumeController extends HttpServlet {
             throws ServletException, IOException {
         
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
-        EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
         
         request.setCharacterEncoding("utf-8");
         final int accountId = (int) request.getSession(true).getAttribute("accountId");
@@ -52,15 +51,19 @@ public class AddEmployerResumeController extends HttpServlet {
             final String title = request.getParameter("title");
             final String description = request.getParameter("description");
             
+            EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
+            
             final Employer employer = manager.getbyAccountId(accountId);
             final Employerresume resume = new Employerresume();
             
-            resume.setEmployer(employer);
             resume.setStartdate(fromDate);
             resume.setEnddate(toDate);
             resume.setTitle(title);
             resume.setDescription(description);
             
+            resume.setEmployer(employer);
+            
+            employer.setEmployerresumeCollection(new ArrayList());
             employer.getEmployerresumeCollection().add(resume);
             
             manager.createOrUpdate(employer);

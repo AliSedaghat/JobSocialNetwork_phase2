@@ -7,7 +7,6 @@ package controllers;
 
 import databasemodels.Employer;
 import databasemodels.Employerjobfield;
-import entitymanager.EmployerJobFieldManagerImpl;
 import entitymanager.EmployerManagerImpl;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,22 +37,20 @@ public class AddFieldTagController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
-        EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
-        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");        
         
         request.setCharacterEncoding("utf-8");
         final String tagText = request.getParameter("tagText");
-        if(tagText.equals("")){
+        if(!tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
+            EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
             Employer employer = manager.getbyAccountId(accountId);
             
             Employerjobfield employerjobfield = new Employerjobfield();
             employerjobfield.setTitle(tagText);
             employerjobfield.setEmployer(employer);
             
-            employer.setEmployerjobfieldCollection(new ArrayList<Employerjobfield>());
+            employer.setEmployerjobfieldCollection(new ArrayList());
             employer.getEmployerjobfieldCollection().add(employerjobfield);
             
             manager.createOrUpdate(employer);
