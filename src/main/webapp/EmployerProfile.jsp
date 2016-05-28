@@ -86,6 +86,8 @@
                 );
         }
     </script>
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/commonFunctions.js"></script>
 </head>
 <body>
 
@@ -162,7 +164,8 @@
                     <p><c:out value="${item1.desc}"/></p>
                 </div>
                 </div>
-                <button class="w3-container w3-teal w3-btn-block" type="button" onclick="document.getElementById('confirmModal').style.display='block'">ارسال درخواست استخدام&nbsp;&nbsp;&nbsp;<span><i
+                <button class="w3-container w3-teal w3-btn-block" 
+                        type="button" onclick="sendNotification(${employerInformationBean.employerAccountId}, ${item1.jobId})">ارسال درخواست استخدام&nbsp;&nbsp;&nbsp;<span><i
                         class="fa fa-send"></i></span>
                 </button>
             </div>  
