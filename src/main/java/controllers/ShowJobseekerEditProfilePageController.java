@@ -52,7 +52,7 @@ public class ShowJobseekerEditProfilePageController extends HttpServlet {
         final JobseekerManagerImpl manager = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
         final Jobseeker jobseeker = manager.getbyAccountId(accountId);
         
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         
         final JobSeekerInformationBean jobSeekerInformationBean = new JobSeekerInformationBean();
         jobSeekerInformationBean.setSex(jobseeker.getSex());
