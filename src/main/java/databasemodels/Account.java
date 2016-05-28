@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,15 +60,15 @@ public class Account implements Serializable {
     @Size(min = 1, max = 9)
     @Column(name = "kind")
     private String kind;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.EAGER)
     private Collection<Team> teamCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver", fetch = FetchType.EAGER)
     private Collection<Notification> notificationCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender", fetch = FetchType.EAGER)
     private Collection<Notification> notificationCollection1;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.EAGER)
     private Collection<Jobseeker> jobseekerCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.EAGER)
     private Collection<Employer> employerCollection;
 
     public Account() {
