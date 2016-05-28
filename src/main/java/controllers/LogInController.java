@@ -56,7 +56,7 @@ public class LogInController extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("/ShowJobseekerEditProfilePageController");
                     break;
                 case "team":
-                    dispatcher = request.getRequestDispatcher("teamEditProfile.jsp");
+                    dispatcher = request.getRequestDispatcher("/ShowTeamEditProfilePageController");
                     break;
                 default:
                     dispatcher = request.getRequestDispatcher("404.jsp");
