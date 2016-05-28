@@ -33,7 +33,10 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
     public Account get(String username, String Password){
         try{
             return (Account) factory.getCurrentSession()
-                .getNamedQuery("Account.findByUsernameAndPassword").list().get(0);
+                .getNamedQuery("Account.findByUsernameAndPassword")
+                    .setParameter("username", username)
+                    .setParameter("password", Password)
+                    .list().get(0);
         }catch(Exception e){
             return null;
         }
