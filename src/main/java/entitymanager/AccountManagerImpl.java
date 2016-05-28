@@ -32,6 +32,11 @@ public class AccountManagerImpl {
     }
 
     @Transactional
+    public Account get(String username, String password) {
+        return accountDAO.get(username, password);
+    }
+    
+    @Transactional
     public void update(Account account) {
         accountDAO.update(account);
     }
