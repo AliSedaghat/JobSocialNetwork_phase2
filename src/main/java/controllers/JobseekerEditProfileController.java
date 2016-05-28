@@ -5,8 +5,8 @@
  */
 package controllers;
 
-import databasemodels.Account;
 import databasemodels.Jobseeker;
+import entitymanager.AccountManagerImpl;
 import entitymanager.JobseekerManagerImpl;
 import filemanagement.FileManager;
 import java.io.IOException;
@@ -75,7 +75,8 @@ public class JobseekerEditProfileController extends HttpServlet {
             Jobseeker jobseeker = manager.getbyAccountId(accountId);
             if(jobseeker == null){
                 jobseeker = new Jobseeker(); // first insertion of informations
-                jobseeker.setAccount(new Account(accountId));
+                AccountManagerImpl managerImpl = (AccountManagerImpl) ctx.getBean("accountManagerImpl");
+                jobseeker.setAccount(managerImpl.get(accountId));
             }
             jobseeker.setName(name);
             jobseeker.setSex(sex);
