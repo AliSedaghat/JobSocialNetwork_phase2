@@ -6,12 +6,13 @@
 
 package viewmodel;
 
+import java.util.List;
+
 /**
  *
  * @author ali
  */
 public class EmployerSearchResultBean {
-    
     
     private String jobTitle;
     private String sex;
@@ -19,21 +20,8 @@ public class EmployerSearchResultBean {
     private String desc;
     private String kindOfWork;
     private String minWage;
-    private String[] skills;
-    private String senderId;
-    
-    public EmployerSearchResultBean() {}
+    private List<String> skills;
 
-    public String getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(String senderId) {
-        this.senderId = senderId;
-    }
-
-    
-    
     public String getJobTitle() {
         return jobTitle;
     }
@@ -82,13 +70,12 @@ public class EmployerSearchResultBean {
         this.minWage = minWage;
     }
 
-    public String[] getSkills() {
+    public List<String> getSkills() {
         return skills;
     }
 
-    public void setSkills(String[] skills) {
+    public void setSkills(List<String> skills) {
         this.skills = skills;
     }
-    
     
 }
