@@ -118,14 +118,14 @@
                     <div id="errorPanel" class="w3-red w3-right-align w3-padding" style="display: none">
                         <p>نام کاربری یا رمز عبور اشتباه است</p>
                     </div>
-                    <form method="post" action="LoginServlet">
+                    <form method="post" action="/JobSocialNetwork/LogInController">
                         <label class="w3-right"><b>نام کاربری</b></label>
-                        <input id="email" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" placeholder="ایمیل خود را وارد کنید">
+                        <input id="email" name="username" class="w3-input w3-border-teal w3-margin-bottom w3-right-align" type="email" placeholder="ایمیل خود را وارد کنید">
 
                         <label class="w3-right"><b>رمز عبور</b></label>
-                        <input id="password" class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="password" placeholder="رمز خود را وارد کنید">
+                        <input id="password" name="password" class="w3-input w3-border-teal w3-right-align w3-margin-bottom" type="password" placeholder="رمز خود را وارد کنید">
 
-                        <button class="w3-btn w3-btn-block w3-green" type="button" onclick="tempRedirect('email','password')">ورود</button>
+                        <button class="w3-btn w3-btn-block w3-green" type="submit" >ورود</button>
                         <div class="w3-row">
                             <input class="w3-left w3-check w3-margin-top" type="checkbox" checked="checked">
                             <p class=" w3-left w3-center w3-margin-top">من را به خاطر بسپار</p>
