@@ -22,7 +22,7 @@
         </li>
         <li class="w3-right w3-margin-8"><a
                 class="w3-btn w3-green w3-border w3-border-white w3-hover-white w3-round-xlarge"
-                href="index.html">خروج</a></li>
+                href="/JobSocialNetwork/LogOutController">خروج</a></li>
     </ul>
 </header>
 
