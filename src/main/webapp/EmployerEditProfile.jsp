@@ -1,10 +1,7 @@
-<%-- 
-    Document   : EmployerEditProfile
-    Created on : May 11, 2016, 9:53:00 PM
-    Author     : ali
---%>
-
+<%@page import="java.io.File"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="employerInformationBean" class="viewmodel.EmployerInformationBean" scope="request"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +34,12 @@
             
             <label class="w3-right"><b>زمینه‌های کاری</b></label><br><br>
             <div id="tagArea1">
-                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span
+                <c:forEach items="${employerInformationBean.skills}" var="skill">
+                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">${skill}<span
                         class="w3-closebtn w3-small"
                         onclick="this.parentElement.style.display='none'">&nbsp;&nbsp;x</span>
-                </div>
+                    </div>
+                </c:forEach>
             </div>
             <br>
 
@@ -72,7 +71,29 @@
                     </label>
                 </div>
                 <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
-            </div>                
+            </div>
+            <div id="submitedResume">
+                <c:forEach items="${employerInformationBean.employerResumeBeans}" var="resume">
+                    <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
+                        <div class="w3-third w3-padding">
+                            <div class="w3-validate">از تاریخ
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.fromDate}</p>
+                            </div>
+                            <div class="w3-validate">تا تاریخ
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.tillDate}</p>
+                            </div>
+                        </div>
+                        <div class="w3-twothird w3-padding">
+                            <div class="w3-validate">عنوان پروژه
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.title}</p>
+                            </div>
+                            <div class="w3-validate">شرح
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
     </div>
 
@@ -86,7 +107,19 @@
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
                 </form>
             </div>
-            <img src="images/img_avatar.png" style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
+            <img 
+                <%
+                    File file = new File(employerInformationBean.getImageUrl());
+                    String url;
+                    if(file.exists()){
+                        url = "images/user'sImage/" + file.getName();
+                    }else{
+                        url = "images/img_avatar.png";
+                    }
+                    employerInformationBean.setImageUrl(url);
+                %>
+                src="${employerInformationBean.imageUrl}"
+                style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
                  alt="عکس کاربر" id="userImage">
             
         </div>
@@ -103,23 +136,23 @@
                     <br/><br/>
                     <label class="w3-right"><b>نام شرکت</b></label>
                     <input class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="name" type="text"
-                           placeholder="نام شرکت یا محل کسب و کار خود را وارد کنید">
+                           placeholder="نام شرکت یا محل کسب و کار خود را وارد کنید" value="${employerInformationBean.employerName}">
 
                     <label><b class="w3-right">شماره تلفن</b>
                         <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="phone" type="tel"
-                               placeholder="تلفن خود را وارد کنید">
+                               placeholder="تلفن خود را وارد کنید" value="${employerInformationBean.phoneNum}">
                     </label>
 
                     <label><b class="w3-right">ایمیل</b>
                         <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="email" type="email"
-                               placeholder="ایمیل خود را وارد کنید">
+                               placeholder="ایمیل خود را وارد کنید" value="${employerInformationBean.email}">
                     </label>
 
                     <label class="w3-right"><b>آدرس</b></label><br>
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید">${employerInformationBean.remainAddr}</textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
@@ -169,7 +202,7 @@
                     </div>
                     <label class="w3-right"><b>سایر توضیحات</b></label>
                         <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align"
-                                  placeholder="یک پاراگراف در مورد شرکت خود بنویسید" name="summury"></textarea>
+                                  placeholder="یک پاراگراف در مورد شرکت خود بنویسید" name="summury">${employerInformationBean.summury}</textarea>
                     <button class="w3-btn w3-btn-block w3-green" type="submit">ثبت ویرایش</button>
                 </div>
             </form>
@@ -182,7 +215,7 @@
     <p class="w3-right-align"><b>موقعیت‌های شغلی برای استخدام در این شرکت</b></p>
 
     <div class="w3-btn fa fa-plus w3-blue-grey" onclick="document.getElementById('addJob').style.display='block'"></div>
-    <table class="w3-table-all">
+    <table class="w3-table-all" id="submitedJobs">
         <tr class="w3-blue-grey">
             <td class="w3-center"><b>عنوان شغل</b></td>
             <td class="w3-center"><b>جنسیت</b></td>
@@ -192,33 +225,17 @@
             <td class="w3-center"><b>توانایی‌های لازم</b></td>
             <td class="w3-center"><b>سایر توضیحات</b></td>
         </tr>
-        <tr>
-            <td class="w3-center">برنامه نویس</td>
-            <td class="w3-center">مرد</td>
-            <td class="w3-center">5</td>
-            <td class="w3-center">پروژه‌ای</td>
-            <td class="w3-center">2,000,000 تومان</td>
-            <td class="w3-center">اندروید,sqlite</td>
-            <td class="w3-center">روحیه کار تیمی بالا یکی از ملزومات کار ماست</td>
-        </tr>
-        <tr>
-            <td class="w3-center">برنامه نویس</td>
-            <td class="w3-center">مرد</td>
-            <td class="w3-center">5</td>
-            <td class="w3-center">پروژه‌ای</td>
-            <td class="w3-center">2,000,000 تومان</td>
-            <td class="w3-center">اندروید,sqlite</td>
-            <td class="w3-center">روحیه کار تیمی بالا یکی از ملزومات کار ماست</td>
-        </tr>
-        <tr>
-            <td class="w3-center">برنامه نویس</td>
-            <td class="w3-center">مرد</td>
-            <td class="w3-center">5</td>
-            <td class="w3-center">پروژه‌ای</td>
-            <td class="w3-center">2,000,000 تومان</td>
-            <td class="w3-center">اندروید,sqlite</td>
-            <td class="w3-center">روحیه کار تیمی بالا یکی از ملزومات کار ماست</td>
-        </tr>
+        <c:forEach items="${employerInformationBean.employerSearchResultBeans}" var="job">
+            <tr>
+                <td class="w3-center">${job.jobTitle}</td>
+                <td class="w3-center">${job.sex}</td>
+                <td class="w3-center">${job.numOfPersons}</td>
+                <td class="w3-center">${job.kindOfWork}</td>
+                <td class="w3-center">${job.minWage}&nbsp; تومان</td>
+                <td class="w3-center"><c:forEach items="${job.skills}" var="skill">${skill},</c:forEach></td>
+                <td class="w3-center">${job.desc}</td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 
@@ -298,7 +315,27 @@
                 description : $('#description').val()
             },
             success: function (data, textStatus, jqXHR) {
-                
+                var submitedResume = $('#submitedResume');
+                submitedResume.append(
+                    '<div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">'
+                        + '<div class="w3-third w3-padding">'
+                            +'<div class="w3-validate">از تاریخ'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#fromDate').val() +'</p>'
+                            +'</div>'
+                            +'<div class="w3-validate">تا تاریخ'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#toDate').val() +'</p>'
+                            +'</div>'
+                        +'</div>'
+                        +'<div class="w3-twothird w3-padding">'
+                            +'<div class="w3-validate">عنوان پروژه'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ ('#title').val() +'</p>'
+                            +'</div>'
+                            +'<div class="w3-validate">شرح'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#description').val() +'</p>'
+                            +'</div>'
+                        +'</div>'
+                    +'</div>'
+                );
             }
         });
     }
@@ -317,7 +354,18 @@
                 otherRequirment : $('#otherRequirment').val()
             },
             success: function (data, textStatus, jqXHR) {
-                
+                var submitedJobs = $('#submitedJobs');
+                submitedJobs.append(
+                    '<tr>'
+                        +'<td class="w3-center">'+ $('#jobTitle').val() +'</td>'
+                        +'<td class="w3-center">'+ $('#sex').val() +'</td>'
+                        +'<td class="w3-center">'+ $('#capacity').val() +'</td>'
+                        +'<td class="w3-center">'+ $('#contributeKind').val() +'</td>'
+                        +'<td class="w3-center">'+ $('#salary').val() +'تومان</td>'
+                        +'<td class="w3-center">'+ $('#skills').val() +'</td>'
+                        +'<td class="w3-center">'+ $('#otherRequirment').val() +'</td>'
+                    +'</tr>'        
+                );
             }
         });
     }
