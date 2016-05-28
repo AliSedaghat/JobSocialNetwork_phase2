@@ -21,7 +21,7 @@ public class EmployerManagerImpl{
     private EmployerDAOImpl employerDAO;
     
     @Transactional
-    public Integer getCountAll() {
+    public Long getCountAll() {
         return employerDAO.getCountAll();
     }
 

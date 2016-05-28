@@ -20,7 +20,7 @@ public class JobManagerImpl {
     private JobDAOImpl jobDAO;
     
     @Transactional
-    public Integer getCountAll() {
+    public Long getCountAll() {
         return jobDAO.getCountAll();
     }
     

@@ -21,7 +21,7 @@ public class TeamManagerImpl{
     private TeamDAOImpl teamDAO;
     
     @Transactional
-    public Integer getCountAll() {
+    public Long getCountAll() {
         return teamDAO.getCountAll();
     }
     

@@ -21,7 +21,7 @@ public class JobseekerManagerImpl {
     private JobSeekerDAOImpl jobSeekerDAO;
     
     @Transactional
-    public Integer getCountAll() {
+    public Long getCountAll() {
         return jobSeekerDAO.getCountAll();
     }
     
