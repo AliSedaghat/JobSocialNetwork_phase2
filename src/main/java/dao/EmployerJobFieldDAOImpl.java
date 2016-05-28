@@ -30,7 +30,7 @@ public class EmployerJobFieldDAOImpl extends GenericDAOImpl<Employerjobfield, In
     }
 
     @Override
-    public Integer getCountAll() {
+    public Long getCountAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

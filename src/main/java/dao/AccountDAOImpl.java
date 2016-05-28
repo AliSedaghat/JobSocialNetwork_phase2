@@ -44,7 +44,7 @@ public class AccountDAOImpl extends GenericDAOImpl<Account, Integer>{
     }
 
     @Override
-    public Integer getCountAll() {
+    public Long getCountAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

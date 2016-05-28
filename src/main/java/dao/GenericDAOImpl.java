@@ -57,5 +57,5 @@ public abstract class GenericDAOImpl<T, PK extends Serializable>
     
     public abstract List<T> getAll();
     
-    public abstract Integer getCountAll();
+    public abstract Long getCountAll();
 }

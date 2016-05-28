@@ -31,8 +31,8 @@ public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
     }
     
     @Override
-    public Integer getCountAll() {
-        return (Integer) factory.getCurrentSession()
+    public Long getCountAll() {
+        return (Long) factory.getCurrentSession()
                 .getNamedQuery("Team.count").list().get(0);
     }
     

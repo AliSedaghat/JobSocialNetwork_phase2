@@ -30,8 +30,8 @@ public class JobDAOImpl extends GenericDAOImpl<Job, Integer>{
     }
 
     @Override
-    public Integer getCountAll() {
-        return (Integer) factory.getCurrentSession()
+    public Long getCountAll() {
+        return (Long) factory.getCurrentSession()
                 .getNamedQuery("Job.count").list().get(0);
     }
     
