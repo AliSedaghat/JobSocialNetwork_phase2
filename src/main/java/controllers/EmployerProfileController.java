@@ -52,6 +52,7 @@ public class EmployerProfileController extends HttpServlet {
         Employer employer = manager.get(requestedAccountId);
         
         final EmployerInformationBean employerInformationBean = new EmployerInformationBean();
+        employerInformationBean.setEmployerAccountId(employer.getAccount().getId());
         employerInformationBean.setEmployerName(employer.getName());
         employerInformationBean.setEmail(employer.getEmail());
         employerInformationBean.setPhoneNum(employer.getPhone());
@@ -65,6 +66,7 @@ public class EmployerProfileController extends HttpServlet {
         while(jobs.hasNext()) {
             final Job job = jobs.next();
             final EmployerSearchResultBean employerSearchResultBean = new EmployerSearchResultBean();
+            employerSearchResultBean.setJobId(job.getId());
             employerSearchResultBean.setJobTitle(job.getTitle());
             employerSearchResultBean.setSex(job.getSex());
             employerSearchResultBean.setNumOfPersons(String.valueOf(job.getCapacity()));
