@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -91,7 +92,8 @@ public class JobseekerEditProfileController extends HttpServlet {
             jobseeker.setEducation(education);
             jobseeker.setSummury(summury);
             manager.createOrUpdate(jobseeker);
-            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/ShowJobseekerEditProfilePageController");
+            dispatcher.forward(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(JobseekerEditProfileController.class.getName()).log(Level.SEVERE, null, ex);
         }

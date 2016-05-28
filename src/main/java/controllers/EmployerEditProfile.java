@@ -5,13 +5,13 @@
  */
 package controllers;
 
-import databasemodels.Account;
 import databasemodels.Employer;
 import entitymanager.AccountManagerImpl;
 import entitymanager.EmployerManagerImpl;
 import filemanagement.FileManager;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -76,6 +76,9 @@ public class EmployerEditProfile extends HttpServlet {
         employer.setImageaddress(imageAddress);
         employer.setSummury(summury);
         manager.createOrUpdate(employer);
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/ShowEmployerEditProfilePageController");
+        dispatcher.forward(request, response);
     }
 
 }
