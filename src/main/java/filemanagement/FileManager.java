@@ -19,8 +19,8 @@ import java.io.OutputStream;
 public class FileManager {
     public static String saveFile(String fileName, InputStream is){
         try {
-            //String path = ".\\.\\webapp\\images\\user'sImage\\" + fileName;
-            File file = new File("D:\\Java\\JobSocialNetwork_phase2\\src\\main\\webapp\\images\\user'sImage\\", fileName);
+            String path = "D:\\Java\\JobSocialNetwork_phase2\\src\\main\\webapp\\images\\user'sImage\\" + fileName;
+            File file = new File(path);
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -34,10 +34,9 @@ public class FileManager {
                 is.close();
                 //flush OutputStream to write any buffered data to file
                 os.flush();
-                //return path;
+                return path;
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return "";
     }
