@@ -86,7 +86,7 @@ public class Employer implements Serializable {
     @Size(max = 200)
     @Column(name = "summury")
     private String summury;
-    @Size(max = 50)
+    @Size(max = 500)
     @Column(name = "imageaddress")
     private String imageaddress;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer", fetch = FetchType.EAGER)

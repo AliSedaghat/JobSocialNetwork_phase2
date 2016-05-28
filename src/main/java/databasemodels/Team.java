@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Team.findByEmail", query = "SELECT t FROM Team t WHERE t.email = :email"),
     @NamedQuery(name = "Team.findByRegion", query = "SELECT t FROM Team t WHERE t.region = :region"),
     @NamedQuery(name = "Team.findByCity", query = "SELECT t FROM Team t WHERE t.city = :city"),
-    @NamedQuery(name = "Team.findByRemialaddress", query = "SELECT t FROM Team t WHERE t.remialaddress = :remialaddress"),
+    @NamedQuery(name = "Team.findByRemainaddress", query = "SELECT t FROM Team t WHERE t.remainaddress = :remainaddress"),
     @NamedQuery(name = "Team.count", query = "SELECT COUNT(t.id) FROM Team t"),
     @NamedQuery(name = "Team.findByAccountId", query = "SELECT t FROM Team t WHERE t.account = :accountId"),
     @NamedQuery(name = "Team.findBySummury", query = "SELECT t FROM Team t WHERE t.summury = :summury")})
@@ -73,8 +73,8 @@ public class Team implements Serializable {
     @Column(name = "city")
     private String city;
     @Size(max = 45)
-    @Column(name = "remialaddress")
-    private String remialaddress;
+    @Column(name = "remainaddress")
+    private String remainaddress;
     @Size(max = 200)
     @Column(name = "summury")
     private String summury;
@@ -150,11 +150,11 @@ public class Team implements Serializable {
     }
 
     public String getRemialaddress() {
-        return remialaddress;
+        return remainaddress;
     }
 
-    public void setRemialaddress(String remialaddress) {
-        this.remialaddress = remialaddress;
+    public void setRemialaddress(String remainaddress) {
+        this.remainaddress = remainaddress;
     }
 
     public String getSummury() {
