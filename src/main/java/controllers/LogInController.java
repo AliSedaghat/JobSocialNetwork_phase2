@@ -53,7 +53,7 @@ public class LogInController extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("EmployerEditProfile.jsp");
                     break;
                 case "jobseeker":
-                    dispatcher = request.getRequestDispatcher("jobFinderEditProfile.jsp");
+                    dispatcher = request.getRequestDispatcher("/ShowJobseekerEditProfilePageController");
                     break;
                 case "team":
                     dispatcher = request.getRequestDispatcher("teamEditProfile.jsp");

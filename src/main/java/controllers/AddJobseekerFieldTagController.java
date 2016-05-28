@@ -41,7 +41,7 @@ public class AddJobseekerFieldTagController extends HttpServlet {
         
         request.setCharacterEncoding("utf-8");
         final String tagText = request.getParameter("tagText");
-        if(tagText.equals("")){
+        if(!tagText.equals("")){
             final int accountId = (int) request.getSession().getAttribute("accountId");
             JobseekerManagerImpl manager = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
             Jobseeker jobseeker = manager.getbyAccountId(accountId);

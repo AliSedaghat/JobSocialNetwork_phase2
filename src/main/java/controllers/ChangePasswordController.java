@@ -37,7 +37,7 @@ public class ChangePasswordController extends HttpServlet {
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         
-        final String curPassword = request.getParameter("oldPassword");
+        final String curPassword = request.getParameter("curPassword");
         final String newPassword = request.getParameter("newPassword");
         final String repeatPassword = request.getParameter("repeatPassword");
         
