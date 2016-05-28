@@ -1,8 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.io.File"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="jobSeekerInformationBean" class="viewmodel.JobSeekerInformationBean" scope="request"/>
-<jsp:useBean id="jobSeekerResumeBean" class="viewmodel.JobSeekerResumeBean" scope="request"/>
-<jsp:useBean id="passwordChangeBean" class="viewmodel.PasswordChangeBean" scope="request"/>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +32,12 @@
             
             <label class="w3-right"><b>توانایی‌ها</b></label><br><br>
             <div id="tagArea1">
-                <div class="w3-card-2 w3-tag w3-blue w3-margin-2">مدیریت پروژه<span
+                <c:forEach items="${jobSeekerInformationBean.skills}" var="skill">
+                    <div class="w3-card-2 w3-tag w3-blue w3-margin-2">${skill}<span
                         class="w3-closebtn w3-small"
                         onclick="this.parentElement.style.display='none'">&nbsp;&nbsp;x</span>
-                </div>
+                    </div>
+                </c:forEach>
             </div><br>
 
             <div class="w3-row">
@@ -61,20 +65,58 @@
                 </div>
                 <button class="w3-btn w3-btn-block w3-green" type="button" onclick="submitResume()">ثبت روزمه</button>
             </div> 
+            <div id="submitedResume">
+                <c:forEach items="${jobSeekerInformationBean.jobSeekerResumeBeans}" var="resume">
+                    <div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">
+                        <div class="w3-third w3-padding">
+                            <div class="w3-validate">از تاریخ
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.fromDate}</p>
+                            </div>
+                            <div class="w3-validate">تا تاریخ
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.tillDate}</p>
+                            </div>
+                        </div>
+                        <div class="w3-twothird w3-padding">
+                            <div class="w3-validate">محل کار
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.workPlace}</p>
+                            </div>
+                            <div class="w3-validate">مسئولیت
+                                <p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">${resume.responsibility}</p>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
     </div>
 
         <div class="w3-half w3-right w3-border-left w3-border-blue w3-margin-top w3-margin-bottom">
         <div class="w3-container w3-row">
             <div class="w3-third w3-input-group w3-card-2">
-                <form class="w3-form" method="post" action="/ChangePasswordController">
+                <form class="w3-form" method="post" action="/JobSocialNetwork/ChangePasswordController">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="curPassword" placeholder="رمز فعلی">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="newPassword" placeholder="رمز جدید">
                     <input class="w3-input w3-border-teal w3-right-align" type="password" name="repeatPassword" placeholder="تکرار رمز">
                     <button class="w3-btn w3-btn-block w3-green w3-margin-top" type="submit">تغییر رمز</button>
                 </form>
             </div>
-            <img src="images/img_avatar.png" style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
+            <img 
+                <%
+                    File file = new File(jobSeekerInformationBean.getImageUrl());
+                    if(file.exists()){
+                        String url = jobSeekerInformationBean.getImageUrl();
+                        url = url.replace("\\", "/");
+                        jobSeekerInformationBean.setImageUrl(url);
+                %>
+                    src="${jobSeekerInformationBean.imageUrl}"
+                <%
+                    }else{        
+                %>
+                    src="images/img_avatar.png"
+                <%
+                    }
+                %>
+                style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
                  alt="عکس کاربر" id="userImage">
             
         </div>
@@ -89,18 +131,18 @@
                     <br/><br/>
                     <div class="w3-half w3-right">
                         <label class="w3-validate">مرد
-                            <input type="radio" name="sex" value="مرد" class="w3-radio" checked><br>
+                            <input type="radio" name="sex" value="مرد" class="w3-radio" <%if (jobSeekerInformationBean.getSex().equals("مرد")){%> checked<%}%> ><br>
                         </label>
                         <label class="w3-validate">زن
-                            <input type="radio" name="sex" value="زن" class="w3-radio">
+                            <input type="radio" name="sex" value="زن" class="w3-radio" <%if (jobSeekerInformationBean.getSex().equals("زن")){%> checked<%}%> >
                         </label>
                     </div>
                     <div class="w3-half w3-left">
                         <label><b class="w3-right">نمابش اطلاعات برای</b>
                             <select class="w3-select" name="showPrivacy">
-                                <option value="" disabled selected>چه کسانی اطلاعات شما را ببینند؟</option>
-                                <option value="all">همه</option>
-                                <option value="contact">کارفرمایانی که برایشان درخواست استخدام فرستاده‌ام</option>
+                                <option value="" disabled <%if (!"all".equals(jobSeekerInformationBean.getShowPrivacy()) && !"contact".equals(jobSeekerInformationBean.getShowPrivacy()) ){%> selected<%}%>>چه کسانی اطلاعات شما را ببینند؟</option>
+                                <option value="all" <%if ("all".equals(jobSeekerInformationBean.getShowPrivacy())){%> selected<%}%> >همه</option>
+                                <option value="contact" <%if ("contact".equals(jobSeekerInformationBean.getShowPrivacy())){%> selected<%}%> >کارفرمایانی که برایشان درخواست استخدام فرستاده‌ام</option>
                             </select>
                         </label>
                     </div>
@@ -123,14 +165,14 @@
                     
                     <label><b class="w3-right">ایمیل</b>
                         <input class="w3-input w3-border-teal w3-right-align w3-margin-bottom" name="email" type="email"
-                               placeholder="ایمیل خود را وارد کنید">
+                               placeholder="ایمیل خود را وارد کنید" value="${jobSeekerInformationBean.email}">
                     </label>
                     
                     <label class="w3-right"><b>آدرس</b></label><br>
                     <div class="w3-row">
                         <div class="w3-third w3-padding">
                             <label class="w3-validate">ادامه آدرس
-                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید"></textarea>
+                                <textarea class="w3-input w3-border-teal w3-margin-bottom w3-right-align" name="remainAddress" style="resize: vertical;" placeholder="آدرس را وارد کنید">${jobSeekerInformationBean.remainAddr}</textarea>
                             </label>
                         </div>
                         <div class="w3-third w3-padding">
@@ -181,15 +223,17 @@
                     
                     <label><b class="w3-right">میزان تحصیلات</b>
                     <select class="w3-select" name="education">
-                        <option value="" disabled selected>میزان تحصیلات خود را انتخاب کنید</option>
-                        <option value="بی سواد">بی سواد</option>
-                        <option value="ابتدایی">ابتدایی</option>
-                        <option value="راهنمایی">راهنمایی</option>
-                        <option value="دیپلم">دیپلم</option>
-                        <option value="فوق دیپلم">فوق دیپلم</option>
-                        <option value="لیسانس">لیسانس</option>
-                        <option value="فوق لیسانس">فوق لیسانس</option>
-                        <option value="دکتری">دکتری</option>
+                        <option value="" disabled <%if(jobSeekerInformationBean.getDegreeType() == null){%>selected<%}%> >میزان تحصیلات خود را انتخاب کنید</option>
+                        <%
+                                List<String> educations = Arrays.asList("بی سواد", "ابتدایی", "راهنمایی", "دیپلم", "فوق دیپلم", "لیسانس", "فوق لیسانس", "دکتری");
+                                for(String education:educations){
+                                    if(education.equals(jobSeekerInformationBean.getDegreeType())){
+                                        out.println("<option value=\"" + education + "\" selected>" + education + "</option>");
+                                    }else{
+                                        out.println("<option value=\"" + education + "\">" + education + "</option>");
+                                    }
+                                }
+                        %>
                     </select>
                     </label>
                     <br>
@@ -197,7 +241,7 @@
                     
                     <label class="w3-right"><b>سایر توضیحات</b></label>
                         <textarea style="resize:vertical;" class="w3-input w3-border-teal w3-margin-bottom w3-right-align"
-                                  placeholder="یک پاراگراف در مورد شرکت خود بنویسید" name="summury"></textarea>
+                                  placeholder="یک پاراگراف در مورد شرکت خود بنویسید" name="summury">${jobSeekerInformationBean.otherDesc}</textarea>
                     <button class="w3-btn w3-btn-block w3-green" type="submit">ثبت ویرایش</button>
                 </div>
             </form>
@@ -234,7 +278,28 @@
                 responsibility : $('#responsibility').val()
             },
             success: function (data, textStatus, jqXHR) {
-                
+                var submitedResume = $('#submitedResume');
+                submitedResume.append(
+                    '<div class="w3-card-2 w3-row w3-right-align w3-leftbar w3-border-light-blue w3-margin">'
+                        + '<div class="w3-third w3-padding">'
+                            +'<div class="w3-validate">از تاریخ'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#fromDate').val() +'</p>'
+                            +'</div>'
+                            +'<div class="w3-validate">تا تاریخ'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#toDate').val() +'</p>'
+                            +'</div>'
+                        +'</div>'
+                        +'<div class="w3-twothird w3-padding">'
+                            +'<div class="w3-validate">محل کار'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#location').val() +'</p>'
+                            +'</div>'
+                            +'<div class="w3-validate">مسئولیت'
+                                +'<p class="w3-input w3-border-teal w3-margin-bottom w3-right-align">'+ $('#responsibility').val() +'</p>'
+                            +'</div>'
+                        +'</div>'
+                    +'</div>'
+                );
+                        
             }
         });
     }
