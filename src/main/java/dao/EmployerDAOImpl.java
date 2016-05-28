@@ -37,9 +37,13 @@ public class EmployerDAOImpl extends GenericDAOImpl<Employer, Integer>{
     }
     
     public Employer getByAccountId(Integer accountId){
-        return  (Employer) factory.getCurrentSession()
-                .getNamedQuery("Employer.findByAccountId")
-                    .setString("accountId", accountId.toString()).list().get(0);
+        try{
+            return  (Employer) factory.getCurrentSession()
+                    .getNamedQuery("Employer.findByAccountId")
+                        .setString("accountId", accountId.toString()).list().get(0);
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
     }
     
 }

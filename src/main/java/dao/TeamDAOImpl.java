@@ -37,8 +37,12 @@ public class TeamDAOImpl extends GenericDAOImpl<Team, Integer>{
     }
     
     public Team getByAccountId(Integer accountId){
-        return   (Team) factory.getCurrentSession()
-                .getNamedQuery("Team.findByAccountId")
-                    .setString("accountId", accountId.toString()).list().get(0);
+        try{
+            return (Team) factory.getCurrentSession()
+                    .getNamedQuery("Team.findByAccountId")
+                        .setString("accountId", accountId.toString()).list().get(0);
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
     }
 }
