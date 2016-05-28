@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Job.findBySex", query = "SELECT j FROM Job j WHERE j.sex = :sex"),
     @NamedQuery(name = "Job.findByContributekind", query = "SELECT j FROM Job j WHERE j.contributekind = :contributekind"),
     @NamedQuery(name = "Job.findBySalary", query = "SELECT j FROM Job j WHERE j.salary = :salary"),
+    @NamedQuery(name = "Job.count", query = "SELECT COUNT(j.id) FROM Job j"),
     @NamedQuery(name = "Job.findByOtherrequirment", query = "SELECT j FROM Job j WHERE j.otherrequirment = :otherrequirment")})
 public class Job implements Serializable {
     private static final long serialVersionUID = 1L;
