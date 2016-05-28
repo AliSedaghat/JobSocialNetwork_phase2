@@ -44,45 +44,59 @@ public class EmployerProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
+        
+        final int requestedAccountId = Integer.parseInt(request.getParameter("requestedAccountId"));
+        
         EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");   
+        Employer employer = manager.get(requestedAccountId);
         
-        String senderId = request.getParameter("senderId");
-        Employer employer = manager.get(Integer.parseInt(senderId));
-        
-        EmployerInformationBean employerInformationBean = new EmployerInformationBean();
+        final EmployerInformationBean employerInformationBean = new EmployerInformationBean();
         employerInformationBean.setEmployerName(employer.getName());
         employerInformationBean.setEmail(employer.getEmail());
         employerInformationBean.setPhoneNum(employer.getPhone());
+        employerInformationBean.setState(employer.getRegion());
+        employerInformationBean.setCity(employer.getCity());
+        employerInformationBean.setRemainAddr(employer.getRemainaddress());
         employerInformationBean.setImageUrl(employer.getImageaddress());
         
         List<EmployerSearchResultBean> employerSearchResultBeans = new ArrayList<>();
         Iterator<Job> jobs = employer.getJobCollection().iterator();
         while(jobs.hasNext()) {
-            EmployerSearchResultBean employerSearchResultBean = new EmployerSearchResultBean();
-            employerSearchResultBean.setJobTitle(jobs.next().getTitle());
-            employerSearchResultBean.setNumOfPersons(String.valueOf(jobs.next().getCapacity()));
-            employerSearchResultBean.setSex(jobs.next().getSex());
-            employerSearchResultBean.setMinWage(String.valueOf(jobs.next().getSalary()));
-            employerSearchResultBean.setKindOfWork(jobs.next().getContributekind());
+            final Job job = jobs.next();
+            final EmployerSearchResultBean employerSearchResultBean = new EmployerSearchResultBean();
+            employerSearchResultBean.setJobTitle(job.getTitle());
+            employerSearchResultBean.setSex(job.getSex());
+            employerSearchResultBean.setNumOfPersons(String.valueOf(job.getCapacity()));
+            employerSearchResultBean.setDesc(job.getOtherrequirment());
+            employerSearchResultBean.setKindOfWork(job.getContributekind());
+            employerSearchResultBean.setMinWage(String.valueOf(job.getSalary()));
             
-            Iterator<Jobskills> jobSkills = jobs.next().getJobskillsCollection().iterator();
-            String[] skills = new String[jobs.next().getJobskillsCollection().size()];
-            int i = 0;
+            
+            Iterator<Jobskills> jobSkills = job.getJobskillsCollection().iterator();
+            ArrayList<String> skills = new ArrayList<>();
             while(jobSkills.hasNext()) {
-                skills[i] = jobSkills.next().getTitle();
-                i++;
+                skills.add(jobSkills.next().getTitle());
             }
             employerSearchResultBean.setSkills(skills);
-            employerSearchResultBean.setDesc(jobs.next().getOtherrequirment());
-            
             employerSearchResultBeans.add(employerSearchResultBean);
         }
         
+        employerInformationBean.setEmployerSearchResultBeans(employerSearchResultBeans);
+        
         request.setAttribute("employerInformationBean", employerInformationBean);
-        request.setAttribute("employerSearchResultBeans", employerSearchResultBeans);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("EmployerProfile.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
     }
 }

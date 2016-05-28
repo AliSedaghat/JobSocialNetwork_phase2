@@ -7,6 +7,7 @@ package controllers;
 
 import databasemodels.Account;
 import databasemodels.Employer;
+import entitymanager.AccountManagerImpl;
 import entitymanager.EmployerManagerImpl;
 import filemanagement.FileManager;
 import java.io.IOException;
@@ -54,13 +55,18 @@ public class EmployerEditProfile extends HttpServlet {
         final String email = request.getParameter("email");
         final String region = request.getParameter("region");
         final String city = request.getParameter("city");
-        final String remainAddress = request.getParameter("remainParameter");
+        final String remainAddress = request.getParameter("remainAddress");
         final String summury = request.getParameter("summury");
         
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         EmployerManagerImpl manager = (EmployerManagerImpl)ctx.getBean("employerManagerImpl");
         
         Employer employer = manager.getbyAccountId(accountId);
+        if(employer == null){
+            employer = new Employer();
+            AccountManagerImpl managerImpl = (AccountManagerImpl) ctx.getBean("accountManagerImpl");
+            employer.setAccount(managerImpl.get(accountId));
+        }
         employer.setName(name);
         employer.setPhone(phone);
         employer.setEmail(email);
