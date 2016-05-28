@@ -13,6 +13,7 @@ import java.util.List;
  * @author ali
  */
 public class EmployerInformationBean {
+    private int employerAccountId;
     private String employerName;
     private String phoneNum;
     private String email;
@@ -26,6 +27,14 @@ public class EmployerInformationBean {
     private List<EmployerResumeBean> employerResumeBeans;
     
     public EmployerInformationBean() {}
+
+    public int getEmployerAccountId() {
+        return employerAccountId;
+    }
+
+    public void setEmployerAccountId(int employerAccountId) {
+        this.employerAccountId = employerAccountId;
+    }
 
     public String getImageUrl() {
         return imageUrl;

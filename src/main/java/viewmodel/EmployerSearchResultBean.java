@@ -13,7 +13,7 @@ import java.util.List;
  * @author ali
  */
 public class EmployerSearchResultBean {
-    
+    private int jobId;
     private String jobTitle;
     private String sex;
     private String numOfPersons;
@@ -21,6 +21,14 @@ public class EmployerSearchResultBean {
     private String kindOfWork;
     private String minWage;
     private List<String> skills;
+
+    public int getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(int jobId) {
+        this.jobId = jobId;
+    }
 
     public String getJobTitle() {
         return jobTitle;
