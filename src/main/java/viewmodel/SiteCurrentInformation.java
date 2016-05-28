@@ -11,44 +11,43 @@ package viewmodel;
  * @author ali
  */
 public class SiteCurrentInformation {
-    private int numOfJobs;
-    private int numOfJobSeekers;
-    private int numOfEmployers;
-    private int numOfTeams;
+    private long numOfJobs;
+    private long numOfJobSeekers;
+    private long numOfEmployers;
+    private long numOfTeams;
     
     public SiteCurrentInformation() {}
 
-    public int getNumOfJobs() {
+    public long getNumOfJobs() {
         return numOfJobs;
     }
 
-    public void setNumOfJobs(int numOfJobs) {
+    public void setNumOfJobs(long numOfJobs) {
         this.numOfJobs = numOfJobs;
     }
 
-    public int getNumOfJobSeekers() {
+    public long getNumOfJobSeekers() {
         return numOfJobSeekers;
     }
 
-    public void setNumOfJobSeekers(int numOfJobSeekers) {
+    public void setNumOfJobSeekers(long numOfJobSeekers) {
         this.numOfJobSeekers = numOfJobSeekers;
     }
 
-    public int getNumOfEmployers() {
+    public long getNumOfEmployers() {
         return numOfEmployers;
     }
 
-    public void setNumOfEmployers(int numOfEmployers) {
+    public void setNumOfEmployers(long numOfEmployers) {
         this.numOfEmployers = numOfEmployers;
     }
 
-    public int getNumOfTeams() {
+    public long getNumOfTeams() {
         return numOfTeams;
     }
 
-    public void setNumOfTeams(int numOfTeams) {
+    public void setNumOfTeams(long numOfTeams) {
         this.numOfTeams = numOfTeams;
     }
-    
     
 }
