@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import dao.JobDAOImpl;
+import databasemodels.Job;
 
 /**
  *
@@ -24,4 +25,13 @@ public class JobManagerImpl {
         return jobDAO.getCountAll();
     }
     
+    @Transactional
+    public void createOrUpdate(Job job) {
+        jobDAO.createOrUpdate(job);
+    }
+    
+    @Transactional
+    public Job get(Integer id) {
+        return jobDAO.read(id);
+    }
 }
