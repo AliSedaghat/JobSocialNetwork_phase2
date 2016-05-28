@@ -6,6 +6,7 @@
 package controllers;
 
 import databasemodels.Notification;
+import entitymanager.AccountManagerImpl;
 import entitymanager.NotificationManagerImpl;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class NotificationPageController extends HttpServlet {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         
         final int accountId = (int) request.getSession().getAttribute("accountId");
-        
+        AccountManagerImpl accountManager = 
+                (AccountManagerImpl) ctx.getBean("accountManagerImpl");
         NotificationManagerImpl notificationManager = 
                 (NotificationManagerImpl) ctx.getBean("notificationManagerImpl");
         
@@ -79,6 +81,17 @@ public class NotificationPageController extends HttpServlet {
                     
             }
             NotificationBean notificationBean = new NotificationBean();
+            switch(accountManager.get(accountId).getKind()){
+                case "employer":
+                    notificationBean.setReturnEditProfileUrl("/JobSocialNetwork/ShowEmployerEditProfilePageController");
+                    break;
+                case "jobseeker":
+                    notificationBean.setReturnEditProfileUrl("/JobSocialNetwork/ShowJobseekerEditProfilePageController");
+                    break;
+                case "team":
+                    notificationBean.setReturnEditProfileUrl("/JobSocialNetwork/ShowTeamEditProfilePageController");
+                    break;
+            }
             notificationBean.setEmployerNotificationBeans(employerNotificationBeans);
             notificationBean.setJobSeekerNotificationBeans(jobSeekerNotificationBeans);
             notificationBean.setTeamNotificationBeans(teamNotificationBeans);
