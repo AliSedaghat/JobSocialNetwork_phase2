@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import databasemodels.Account;
 import databasemodels.Jobseeker;
 import entitymanager.JobseekerManagerImpl;
 import filemanagement.FileManager;
@@ -65,13 +66,17 @@ public class JobseekerEditProfileController extends HttpServlet {
             final String email = request.getParameter("email");
             final String region = request.getParameter("region");
             final String city = request.getParameter("city");
-            final String remainAddress = request.getParameter("remainParameter");
+            final String remainAddress = request.getParameter("remainAddress");
             final String summury = request.getParameter("summury");
-            
+            final String education = request.getParameter("education");
             
             JobseekerManagerImpl manager = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
 
             Jobseeker jobseeker = manager.getbyAccountId(accountId);
+            if(jobseeker == null){
+                jobseeker = new Jobseeker(); // first insertion of informations
+                jobseeker.setAccount(new Account(accountId));
+            }
             jobseeker.setName(name);
             jobseeker.setSex(sex);
             jobseeker.setShowprivacy(showPrivacy);
@@ -82,6 +87,7 @@ public class JobseekerEditProfileController extends HttpServlet {
             jobseeker.setCity(city);
             jobseeker.setRemainaddress(remainAddress);
             jobseeker.setImageaddress(imageAddress);
+            jobseeker.setEducation(education);
             jobseeker.setSummury(summury);
             manager.createOrUpdate(jobseeker);
             
