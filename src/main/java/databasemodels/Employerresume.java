@@ -8,8 +8,10 @@ package databasemodels;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -66,7 +68,7 @@ public class Employerresume implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date enddate;
     @JoinColumn(name = "employer", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Employer employer;
 
     public Employerresume() {

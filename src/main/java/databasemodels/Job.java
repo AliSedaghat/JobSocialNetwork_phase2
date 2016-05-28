@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -66,12 +67,12 @@ public class Job implements Serializable {
     @Size(max = 100)
     @Column(name = "otherrequirment")
     private String otherrequirment;
-    @OneToMany(mappedBy = "job")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "job", fetch = FetchType.EAGER)
     private Collection<Notification> notificationCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobid", fetch = FetchType.EAGER)
     private Collection<Jobskills> jobskillsCollection;
     @JoinColumn(name = "employer", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private Employer employer;
 
     public Job() {

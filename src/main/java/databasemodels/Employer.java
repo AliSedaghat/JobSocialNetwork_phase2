@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -88,14 +89,14 @@ public class Employer implements Serializable {
     @Size(max = 50)
     @Column(name = "imageaddress")
     private String imageaddress;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer", fetch = FetchType.EAGER)
     private Collection<Employerjobfield> employerjobfieldCollection;
-    @OneToMany(mappedBy = "employer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer", fetch = FetchType.EAGER)
     private Collection<Employerresume> employerresumeCollection;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private Account account;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employer", fetch = FetchType.EAGER)
     private Collection<Job> jobCollection;
 
     public Employer() {

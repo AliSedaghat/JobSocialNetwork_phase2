@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,8 +52,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Jobseeker.findByImageaddress", query = "SELECT j FROM Jobseeker j WHERE j.imageaddress = :imageaddress"),
     @NamedQuery(name = "Jobseeker.count", query = "SELECT COUNT(j.id) FROM Jobseeker j"),
     @NamedQuery(name = "Jobseeker.findByAccountId", query = "SELECT j FROM Jobseeker j WHERE j.account = :accountId"),
-    @NamedQuery(name = "Jobseeker.findByShowprivacy", query = "SELECT j FROM Jobseeker j WHERE j.showprivacy = :showprivacy"),
-    @NamedQuery(name = "Jobseeker.findByJobseekercol", query = "SELECT j FROM Jobseeker j WHERE j.jobseekercol = :jobseekercol")})
+    @NamedQuery(name = "Jobseeker.findByShowprivacy", query = "SELECT j FROM Jobseeker j WHERE j.showprivacy = :showprivacy")})
 public class Jobseeker implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -106,21 +106,18 @@ public class Jobseeker implements Serializable {
     @Size(max = 200)
     @Column(name = "summury")
     private String summury;
-    @Size(max = 50)
+    @Size(max = 500)
     @Column(name = "imageaddress")
     private String imageaddress;
     @Size(max = 8)
     @Column(name = "showprivacy")
     private String showprivacy;
-    @Size(max = 45)
-    @Column(name = "jobseekercol")
-    private String jobseekercol;
     @JoinColumn(name = "account", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     private Account account;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker", fetch = FetchType.EAGER)
     private Collection<Jobseekerresume> jobseekerresumeCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobseeker", fetch = FetchType.EAGER)
     private Collection<Jobseekerskills> jobseekerskillsCollection;
 
     public Jobseeker() {
@@ -243,14 +240,6 @@ public class Jobseeker implements Serializable {
 
     public void setShowprivacy(String showprivacy) {
         this.showprivacy = showprivacy;
-    }
-
-    public String getJobseekercol() {
-        return jobseekercol;
-    }
-
-    public void setJobseekercol(String jobseekercol) {
-        this.jobseekercol = jobseekercol;
     }
 
     public Account getAccount() {
