@@ -6,14 +6,11 @@
 
 package controllers;
 
-import databasemodels.Account;
 import databasemodels.Jobseeker;
 import databasemodels.Jobseekerresume;
 import databasemodels.Jobseekerskills;
-import entitymanager.AccountManagerImpl;
 import entitymanager.JobseekerManagerImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,8 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import viewmodel.JobSeekerInformationBean;
-import viewmodel.JobSeekerProfileInfoBean;
-import viewmodel.JobSeekerWorkExperienceBean;
+import viewmodel.JobSeekerResumeBean;
 
 /**
  *
@@ -52,55 +48,70 @@ public class JobSeekerProfileController extends HttpServlet {
         
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Beans.xml");
         
-        final int accountId = (int)request.getSession().getAttribute("accountId");
-        AccountManagerImpl manager = (AccountManagerImpl)ctx.getBean("accountManagerImpl");
-        Account account = manager.get(accountId);
-        String kind = account.getKind();
-        
+        final int requestedAccountId = Integer.parseInt(request.getParameter("requestedAccountId"));
         
         JobseekerManagerImpl mng = (JobseekerManagerImpl)ctx.getBean("jobseekerManagerImpl");
+        Jobseeker jobseeker = mng.getbyAccountId(requestedAccountId);
         
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         
-        String senderId = request.getParameter("senderId");
-        Jobseeker jobseeker = mng.get(Integer.parseInt(senderId));
-        Iterator<Jobseekerresume> jobSeekerResumes = jobseeker.getJobseekerresumeCollection().iterator();
-        List<JobSeekerWorkExperienceBean> jobSeekerWorkExperienceBeans = new ArrayList<>();
-        
-        DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-        while(jobSeekerResumes.hasNext()) {
-            JobSeekerWorkExperienceBean jobSeekerWorkExperienceBean = new JobSeekerWorkExperienceBean();
-            jobSeekerWorkExperienceBean.setFromDate(df.format(jobSeekerResumes.next().getStartdate()));
-            jobSeekerWorkExperienceBean.setTillDate(df.format(jobSeekerResumes.next().getEnddate()));
-            jobSeekerWorkExperienceBean.setWorkPlace(jobSeekerResumes.next().getTitle());
-            jobSeekerWorkExperienceBean.setResponsibility(jobSeekerResumes.next().getResponsibility());
-            jobSeekerWorkExperienceBeans.add(jobSeekerWorkExperienceBean);
-        }
-        
-        
-        JobSeekerProfileInfoBean jobSeekerProfileInfoBean = new JobSeekerProfileInfoBean();        
-        jobSeekerProfileInfoBean.setDegree(jobseeker.getEducation());
-        
-        Iterator<Jobseekerskills> jobSeekerSkills =jobseeker.getJobseekerskillsCollection().iterator();
-        String[] skills = new String[jobseeker.getJobseekerskillsCollection().size()];
-        int i = 0;
-        while(jobSeekerSkills.hasNext()) {
-            skills[i] = jobSeekerSkills.next().getTitle();
-            i++;
-        }
-        jobSeekerProfileInfoBean.setSkills(skills);
-                
-        JobSeekerInformationBean jobSeekerInformationBean = new JobSeekerInformationBean();
+        final JobSeekerInformationBean jobSeekerInformationBean = new JobSeekerInformationBean();
+        jobSeekerInformationBean.setSex(jobseeker.getSex());
+        jobSeekerInformationBean.setDegreeType(jobseeker.getEducation());
         jobSeekerInformationBean.setNameAndFamilyName(jobseeker.getName());
         jobSeekerInformationBean.setBirthDate(df.format(jobseeker.getBirthday()));
         jobSeekerInformationBean.setPhoneNum(jobseeker.getPhone());
+        jobSeekerInformationBean.setEmail(jobseeker.getEmail());
+        jobSeekerInformationBean.setCity(jobseeker.getCity());
+        jobSeekerInformationBean.setState(jobseeker.getRegion());
+        jobSeekerInformationBean.setRemainAddr(jobseeker.getRemainaddress());
+        jobSeekerInformationBean.setShowPrivacy(jobseeker.getShowprivacy());
         jobSeekerInformationBean.setImageUrl(jobseeker.getImageaddress());
         
+        Iterator<Jobseekerskills> jobSeekerSkills =jobseeker.getJobseekerskillsCollection().iterator();
+        List<String> skills = new ArrayList<>();
+        while(jobSeekerSkills.hasNext()) {
+            skills.add(jobSeekerSkills.next().getTitle());
+        }
+        jobSeekerInformationBean.setSkills(skills);
         
-        request.setAttribute("jobSeekerWorkExperienceBeans", jobSeekerWorkExperienceBeans);
-        request.setAttribute("jobSeekerProfileInfoBean", jobSeekerProfileInfoBean);
+        final List<JobSeekerResumeBean> jobSeekerResumeBeans = new ArrayList<>();
+        Iterator<Jobseekerresume> jobSeekerResumes = jobseeker.getJobseekerresumeCollection().iterator();
+        while(jobSeekerResumes.hasNext()) {
+            Jobseekerresume jobseekerresume = jobSeekerResumes.next();
+            JobSeekerResumeBean JobSeekerResumeBean = new JobSeekerResumeBean();
+            JobSeekerResumeBean.setFromDate(df.format(jobseekerresume.getStartdate()));
+            JobSeekerResumeBean.setTillDate(df.format(jobseekerresume.getEnddate()));
+            JobSeekerResumeBean.setWorkPlace(jobseekerresume.getTitle());
+            JobSeekerResumeBean.setResponsibility(jobseekerresume.getResponsibility());
+            jobSeekerResumeBeans.add(JobSeekerResumeBean);
+        }
+        jobSeekerInformationBean.setJobSeekerResumeBeans(jobSeekerResumeBeans);
+        
         request.setAttribute("jobSeekerInformationBean", jobSeekerInformationBean);
+        
+        if(request.getSession().getAttribute("accountId") != null){
+            final int accountId = (int) request.getSession().getAttribute("accountId");
+            if(accountId == requestedAccountId){
+                request.setAttribute("pageOnwer", true);
+            }else{
+                request.setAttribute("pageOnwer", false);
+            }
+        }else{
+            request.setAttribute("pageOnwer", false);
+        }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("jobFinderProfile.jsp");
         dispatcher.forward(request, response);
     }  
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req, resp);
+    }
 }

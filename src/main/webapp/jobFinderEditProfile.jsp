@@ -103,19 +103,15 @@
             <img 
                 <%
                     File file = new File(jobSeekerInformationBean.getImageUrl());
+                    String url;
                     if(file.exists()){
-                        String url = jobSeekerInformationBean.getImageUrl();
-                        url = url.replace("\\", "/");
-                        jobSeekerInformationBean.setImageUrl(url);
-                %>
-                    src="${jobSeekerInformationBean.imageUrl}"
-                <%
-                    }else{        
-                %>
-                    src="images/img_avatar.png"
-                <%
+                        url = "images/user'sImage/" + file.getName();
+                    }else{
+                        url = "images/img_avatar.png";
                     }
+                    jobSeekerInformationBean.setImageUrl(url);
                 %>
+                src="${jobSeekerInformationBean.imageUrl}"
                 style="width:200px;height:200px" class="w3-card-2 w3-circle w3-margin-right w3-right"
                  alt="عکس کاربر" id="userImage">
             

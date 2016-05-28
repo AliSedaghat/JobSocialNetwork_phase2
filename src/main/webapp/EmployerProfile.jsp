@@ -12,7 +12,8 @@
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script>
         var map = null;
-
+        var state = '<c:out value="${employerInformationBean.state}" />';
+        var city = '<c:out value="${employerInformationBean.city}" />';
         window.onload = function() {
 
                 // initialize the map
@@ -27,7 +28,7 @@
 
                 // centering the map
                 map.setCenter(new google.maps.LatLng(43.229195, 27.872314));
-                addressToLocation(${employerInformationBean.state} + ' - ' + ${employerInformationBean.city}, changeMapLocation);
+                addressToLocation(state + ' - ' + city, changeMapLocation);
         };
 
         // processing the results
@@ -57,7 +58,7 @@
 
                                 var resultLocations = [];
 
-                                if(status == google.maps.GeocoderStatus.OK) {
+                                if(status === google.maps.GeocoderStatus.OK) {
                                         if(results) {
                                                 var numOfResults = results.length;
                                                 for(var i=0; i<numOfResults; i++) {
@@ -71,7 +72,7 @@
                                                         );
                                                 };
                                         }
-                                } else if(status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                } else if(status === google.maps.GeocoderStatus.ZERO_RESULTS) {
                                         // address not found
                                 }
 
