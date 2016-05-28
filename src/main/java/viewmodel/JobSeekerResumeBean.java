@@ -11,31 +11,12 @@ package viewmodel;
  * @author ali
  */
 public class JobSeekerResumeBean {
-    private String degreeType;
-    private String[] skills;
     private String workPlace;
     private String responsibility;
     private String fromDate;
     private String tillDate;
-    private String otherDesc;
     
     public JobSeekerResumeBean() {}
-
-    public String getDegreeType() {
-        return degreeType;
-    }
-
-    public void setDegreeType(String degreeType) {
-        this.degreeType = degreeType;
-    }
-
-    public String[] getSkills() {
-        return skills;
-    }
-
-    public void setSkills(String[] skills) {
-        this.skills = skills;
-    }
 
     public String getWorkPlace() {
         return workPlace;
@@ -68,14 +49,4 @@ public class JobSeekerResumeBean {
     public void setTillDate(String tillDate) {
         this.tillDate = tillDate;
     }
-
-    public String getOtherDesc() {
-        return otherDesc;
-    }
-
-    public void setOtherDesc(String otherDesc) {
-        this.otherDesc = otherDesc;
-    }
-    
-    
 }
