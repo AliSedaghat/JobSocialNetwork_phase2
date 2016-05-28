@@ -96,3 +96,17 @@ function showImage(input,id) {
         filerdr.readAsDataURL(input.files[0]);
     }
 }
+
+function sendNotification(destinationId, jobId){
+    $.ajax({
+            url: "/JobSocialNetwork/SendNotification",
+            type: 'POST',
+            data: {
+                destinationId : destinationId,
+                jobId: jobId
+            },
+            success: function (data, textStatus, jqXHR) {
+                
+            }
+        });
+}
