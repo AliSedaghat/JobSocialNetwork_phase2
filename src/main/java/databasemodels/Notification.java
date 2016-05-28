@@ -7,8 +7,10 @@ package databasemodels;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Notification.findAll", query = "SELECT n FROM Notification n"),
+    @NamedQuery(name = "Notification.findByReceiverId", query = "SELECT n FROM Notification n WHERE n.receiver = :receiver"),
     @NamedQuery(name = "Notification.findById", query = "SELECT n FROM Notification n WHERE n.id = :id")})
 public class Notification implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -37,13 +40,13 @@ public class Notification implements Serializable {
     @Column(name = "id")
     private Integer id;
     @JoinColumn(name = "job", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Job job;
     @JoinColumn(name = "receiver", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Account receiver;
     @JoinColumn(name = "sender", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Account sender;
 
     public Notification() {
